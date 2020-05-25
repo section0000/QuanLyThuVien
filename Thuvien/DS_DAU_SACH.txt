@@ -164,7 +164,7 @@ Nguyen Du
 Tho
 1000
 1820
-192
+193
 3
 TKND0
 0
@@ -173,7 +173,7 @@ TKND1
 0
 Hang 1, Ngan 10
 TKND2
-0
+1
 Hang 1, Ngan 10
 Ke Tam Xuong
 KTX

@@ -2,6 +2,7 @@
 #define Mathe
 #include "Data.h"
 #include "Xuatthongtindocgia.h"
+#include "Dohoa.h"
 	using namespace std;
 bool Kiem_tra_trung_ma_the(TREE t, int x)
 {
@@ -80,13 +81,20 @@ void Chuan_hoa_chu(string &a)
 	}
 }
 void Nhap_doc_gia(TREE t, DOC_GIA &dg)
-{
-	dg.Ma_the = Tao_ma_the(t);
-	cout << "Ma the: " << dg.Ma_the;
-	cout << "\nNhap ho: ";
+{	
+//	int c;
+//	do
+//	{
+	dg.Ma_the = Tao_ma_the(t); ShowCur(1);
+	gotoxy(30, 10);
+	cout << "Ma the: "<<dg.Ma_the<<endl;
+	gotoxy(30, 12);
+	cout << "Nhap ho: ";cin.ignore(); 
 	getline(cin, dg.Ho);
+	gotoxy(30, 14);
 	cout << "Nhap ten: ";
 	getline(cin, dg.Ten);
+	gotoxy(30, 16);
 	cout << "Nhap gioi tinh: ";
 	do
 	{
@@ -94,12 +102,20 @@ void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 		Chuan_hoa_chu(dg.Phai);
 		if (dg.Phai != "Nam" && dg.Phai != "Nu")
 		{
-			cout << "Gioi tinh khong hop le. Xin nhap lai.\n";
-			cout << "Nhap lai gioi tinh: ";
+			gotoxy(30, 18);
+			cout << "Gioi tinh khong hop le. Xin nhap lai: ";
 		}
 	}while (dg.Phai != "Nam" && dg.Phai != "Nu");
 	Chuan_hoa_chu(dg.Ho);
-	Chuan_hoa_chu(dg.Ten);
+	Chuan_hoa_chu(dg.Ten);	
+	gotoxy(30,20); cout<<"=> Them thanh cong";
+	Sleep(2000);
+//	c=getch();
+//	if(c==0) c=getch();
+//	if(c==27) break;
+//	
+//	} while(1);
+	
 }
 // Them
 void Them_doc_gia(TREE &t, DOC_GIA dg, DS_DOC_GIA &ds_dg)
@@ -136,14 +152,20 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 		Chinh_sua_thong_tin_doc_gia(t->pLeft, mathe);
 		if (t->data.Ma_the == mathe)
 		{
-			cout << "\n\tTHONG TIN DOC GIA\n";
+			gotoxy(60,11);
+			cout << "THONG TIN DOC GIA";
+			//gotoxy(30,12);
 			Xuat_thong_tin_1_doc_gia(t->data);
-			cout << "\n\tCHINH SUA THONG TIN\n";
-			cin.ignore();
-			cout << "\nNhap ho: ";
+			gotoxy(59,19);
+			cout << "CHINH SUA THONG TIN";
+			cin.ignore(); ShowCur(1);
+			gotoxy(30,20);
+			cout << "Nhap ho: ";
 			getline(cin, t->data.Ho);
+			gotoxy(30,21);
 			cout << "Nhap ten: ";
 			getline(cin, t->data.Ten);
+			gotoxy(30,22);
 			cout << "Nhap gioi tinh: ";
 			do
 			{
@@ -151,22 +173,26 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 				Chuan_hoa_chu(t->data.Phai);
 				if (t->data.Phai != "Nam" && t->data.Phai != "Nu")
 				{
-					cout << "Gioi tinh khong hop le. Xin nhap lai.\n";
-					cout << "Nhap lai gioi tinh: ";
+					gotoxy(30,23);
+					cout << "Gioi tinh khong hop le. Xin nhap lai: ";
 				}
 			}while (t->data.Phai != "Nam" && t->data.Phai != "Nu");
+			gotoxy(30,24);
 			cout << "Nhap trang thai the: ";
 			do
 			{
 				cin >> t->data.Trang_thai_the;
 				if (t->data.Trang_thai_the != 0 && t->data.Trang_thai_the != 1)
 				{
-					cout << "Trang thai the khong hop le. Xin nhap lai.\n";
+					gotoxy(30,25);
+					cout << "Trang thai the khong hop le. Xin nhap lai.";
+					gotoxy(30,26);
 					cout << "Nhap lai trang thai the: ";
 				}
 			}while (t->data.Trang_thai_the != 0 && t->data.Trang_thai_the != 1);
 			Chuan_hoa_chu(t->data.Ho);
 			Chuan_hoa_chu(t->data.Ten);
+			gotoxy(30,30);
 			cout << "=> Sua thanh cong.\n";
 			return;
 		}
@@ -198,7 +224,8 @@ void Xoa_node_bat_ki(TREE &t, int mathe, DS_DOC_GIA &ds_dg) // mathe chinh la ma
     {
     	if (t->data.So_luong_sach_dang_muon > 0)
     	{
-    		cout << "Doc gia hien van chua tra sach. Khong the xoa.\n";
+    		gotoxy(30,12);
+    		cout << "Doc gia hien van chua tra sach. Khong the xoa.";
     		return;
 		}
         // Neu nhu mathe nho hon ma the cua node goc
@@ -233,6 +260,8 @@ void Xoa_node_bat_ki(TREE &t, int mathe, DS_DOC_GIA &ds_dg) // mathe chinh la ma
             }
             delete X;
             ds_dg.so_luong--;
+            gotoxy(30,12);
+    		cout<<"=> Da xoa xong.";
         }
     }
 }

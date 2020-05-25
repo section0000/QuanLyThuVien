@@ -2,6 +2,7 @@
 #include<time.h>
 #include<algorithm>
 #include<windows.h>
+#include <mylib.h>
 #include "Data.h"
 #include "Themxoahieuchinhdocgia.h" 
 #include "Xuatthongtindocgia.h"
@@ -11,6 +12,7 @@
 #include "Ghi_file.h"
 #include "Doc_file.h"
 #include "Giai_phong_du_lieu.h"
+#include "Dohoa.h"
 	using namespace std;
 // Doc gia
 void Nhap_doc_gia(TREE t, DOC_GIA &dg);
@@ -48,12 +50,12 @@ void Menu(DS_DOC_GIA &ds_dg, TREE &t, DS_DAU_SACH ds_dau_sach, DS_DANH_MUC_SACH 
 	int luachon;
 	while(true)
 	{
-		system("cls");
+		//system("cls");
 		cout << "\t\tQUAN LY THU VIEN\n";
 		cout << "\t\tDOC GIA\n";
 		cout << "\t1.Them doc gia.\n";
-		cout << "\t2.Chinh sua thong tin doc gia.\n";		
-		cout << "\t3.Xoa doc gia.\n";			
+		cout << "\t2.Chng tin doc gia.\n";		
+		cout << "\t3.Xoa doc gia.\inh sua thon";			
 		cout << "\t4.Xuat thong tin doc gia theo ma the.\n";
 		cout << "\t5.Xuat thong tin doc gia theo ho ten.\n";
 		cout << "\t6.Danh sach sach dang muon cua 1 doc gia.\n";
@@ -276,9 +278,71 @@ void Menu(DS_DOC_GIA &ds_dg, TREE &t, DS_DAU_SACH ds_dau_sach, DS_DANH_MUC_SACH 
 		}
 	}
 }
+//TEST
+const int so_item = 5;
+const int dong =8;
+const int cot = 54 ;
 
+char menu_chinh [so_item][50] = {"           DOC GIA          ",
+			                     "           DAU SACH         ",
+			                     "        DANH MUC SACH       ",
+			                     "        MUON TRA SACH       ",
+			                     "            THOAT           "};
+int MenuDong(char td [so_item][50]){
+	DeMuc("               MENU               ");
+	khung_menu();
+  Normal();
+  //system("cls");   
+  int chon =0;
+  int i; 
+  for ( i=0; i< so_item ; i++)
+  { gotoxy(cot, dong +i);
+    cout << td[i];
+  }
+  HighLight();
+  gotoxy(cot,dong+chon);
+  cout << td[chon];
+  char kytu;
+do {
+  kytu = getch();
+  if (kytu==0) kytu = getch();
+  switch (kytu) {
+    case Up :if (chon+1 >1)
+  			  {
+  		              	Normal();
+              	gotoxy(cot,dong+chon);
+              	cout << td[chon];
+              	chon --;
+              	HighLight();
+              	gotoxy(cot,dong+chon);
+              	cout << td[chon];
+  				
+  			  }
+  			  break;
+  	case Down :if (chon+1 <so_item)
+  			  {
+  		        Normal();
+              	gotoxy(cot,dong+chon);
+              	cout << td[chon];
+              	chon ++;
+              	HighLight();
+              	gotoxy(cot,dong+chon);
+              	cout << td[chon];
+  				
+  			  }
+  			  break;
+  	case 13 : return chon+1;
+  	case 27: {
+  		system("cls");
+		exit(0);
+	  }
+  }  // end switch
+  } while (1);
+}
+//
 int main()
 {
+	resizeConsole(1000, 700);
 	srand((int) time(0));
 	TREE t;
 	Khoi_tao_cay(t);
@@ -289,10 +353,223 @@ int main()
 	cout << "Dang tai du lieu...";
 	Load_file_doc_gia(t, ds_dg);
 	Load_file_dau_sach(ds_dau_sach);
-	Sleep(1200);
+	//Sleep(1200);
 	cout << "\nTai du lieu thanh cong.";
-	Sleep(1200);
-	Menu(ds_dg,t, ds_dau_sach, ds_dms);
-	system("pause");
+	//Sleep(1200);
+	system("cls");
+	
+	
+	//test
+	int chon;
+	do
+  {
+  	ShowCur(0);
+  	khung_vien();
+  	huong_dan();
+    chon = MenuDong (menu_chinh);
+	Normal();
+    switch (chon )
+	{
+    case 1: 
+    {
+    	int thoat=0;
+    	int chon_dg;
+    	do
+    	{
+    		ShowCur(0);
+    		xoa_man_hinh();
+    		chon_dg = MenuDongDG(menu_dg);
+			Normal();
+    		switch (chon_dg)
+    		{
+    			case 1:
+    			{
+    			ve_lai_man_hinh();
+    			DeMuc("           THEM DOC GIA");
+    			DOC_GIA dg;
+				Nhap_doc_gia(t,dg);
+				Them_doc_gia(t,dg,ds_dg);
+    				break;
+				}
+				case 2:
+				{
+				ve_lai_man_hinh();
+				DeMuc("   CHINH SUA THONG TIN DOC GIA");
+				int n;
+				gotoxy(30,10);
+				cout << "Nhap ma the doc gia: "; ShowCur(1);
+				cin >> n;
+				if (Kiem_tra_trung_ma_the(t, n) == false)
+				{
+					gotoxy(30,12);
+					cout << "Doc gia khong co trong thu vien.";
+					Sleep(2000);
+				}
+				else
+				{
+					Chinh_sua_thong_tin_doc_gia(t, n);
+					Sleep(1200);
+				}
+				break;
+				}
+				case 3:
+				{
+					ve_lai_man_hinh();
+					DeMuc("           XOA DOC GIA");
+					int mathe;
+					gotoxy(30,10);
+					cout << "Nhap ma the cua doc gia: "; ShowCur(1);
+					cin >> mathe;
+					if (Kiem_tra_trung_ma_the(t, mathe) == false)
+					{
+						gotoxy(30,12);
+						cout << "Doc gia khong co trong thu vien.";
+						Sleep(2000);
+					}
+					else
+					{
+						Xoa_node_bat_ki(t,mathe, ds_dg);
+						Sleep(2000);
+					}
+					break;
+				}
+				case 4:
+				{
+					ve_lai_man_hinh();
+					DeMuc("   SACH DANG MUON CUA 1 DOC GIA");
+					int mathe;
+					gotoxy(30,10);
+					cout << "Nhap ma the cua doc gia: ";
+					cin >> mathe;
+					if (Kiem_tra_trung_ma_the(t, mathe) == false)
+					{
+						gotoxy(30,12);
+						cout << "Doc gia khong co trong thu vien.";
+						Sleep(2000);
+					}
+					else
+					{
+						Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(t, mathe);
+						//Sleep(1200);
+						//system("pause");
+					}
+					break;		
+				}
+				case 5:
+				{
+					ve_lai_man_hinh();
+					DeMuc("       DANH SACH DOC GIA QUA HAN");
+					Xuat_danh_sach_doc_gia_qua_han_theo_thoi_gian_giam_dan(t, ds_dg);
+					break;
+				}
+				case 0 : thoat++; break;
+			}
+			system("cls");
+   			khung_vien();
+   			huong_dan();
+			if(thoat != 0) break;
+		}
+		while(1);
+		break;
+	}
+	case 2: 
+    {
+    	int chon_ds;
+    	do
+    	{
+			xoa_man_hinh();
+    		
+    		chon_ds = MenuDongDS(menu_ds);Normal();
+    		switch (chon_ds)
+    		{
+    			case 1:
+    			{
+    				system("cls");
+    				khung_vien(); huong_dan();
+    				gotoxy(20,20);
+    				cout<<"nhap ten: ";
+    				break;
+				}
+				case 0 : break;
+			}
+			xoa_man_hinh();
+			break;
+		}
+		while(1);
+		break;
+	}
+	case 3:
+		{
+			int chon_dms;
+    	do
+    	{
+			xoa_man_hinh();
+    		
+    		chon_dms = MenuDongDMS(menu_dms);Normal();
+    		switch (chon_dms)
+    		{
+    			case 1:
+    			{
+    				system("cls");
+    				khung_vien(); huong_dan();
+    				gotoxy(20,20);
+    				cout<<"nhap ten: ";
+    				break;
+				}
+				case 0 : break;
+			}
+			xoa_man_hinh();
+			break;
+		}
+		while(1);
+		break;
+		}
+	case 4:
+		{
+			int chon_mt;
+    	do
+    	{
+			xoa_man_hinh();
+    		
+    		chon_mt = MenuDongMT(menu_mt);Normal();
+    		switch (chon_mt)
+    		{
+    			case 1:
+    			{
+    				system("cls");
+    				khung_vien(); huong_dan();
+    				gotoxy(20,20);
+    				cout<<"nhap ten: ";
+    				break;
+				}	
+				case 0 : break;
+			}
+			xoa_man_hinh();
+			break;
+		}
+		while(1);
+		break;
+		}
+//    case 2: LietKe(ds); break;
+//    case 3: { printf ("\n Ban nhap ma so sinh vien : ") ;
+//	      cin >> maso ;
+//	      ThongTinSv(ds,maso); break;
+//	    };
+//	case 4: { printf ("\n Ban nhap ma so sinh vien muon xoa : ") ;
+//	      cin >> maso ;
+//	      XoaSv(ds,maso); break;
+//	    };    
+//    case 5: SaveFile(ds,filename); break;
+//    case 6: OpenFile(ds,filename); break;
+//    case 7: { if (NhapSV(ds, sv)==1) InsertOrder (ds,sv);
+//              break;
+//    } ;
+    
+     case so_item : system("cls"); return 0;
+   }
+  } while (1);
+	
+	//Menu(ds_dg,t, ds_dau_sach, ds_dms);
+
 	return 0;
 }

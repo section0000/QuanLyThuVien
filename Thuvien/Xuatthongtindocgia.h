@@ -12,25 +12,54 @@ void Tinh_ngay_qua_han_cua_cac_doc_gia(TREE &t)
 }
 void Xuat_thong_tin_1_doc_gia(DOC_GIA dg)
 {
+	gotoxy(30,12);
 	cout << "Ma the: " << dg.Ma_the;
-	cout << "\nHo ten: " << dg.Ho << " " << dg.Ten;
-	cout << "\nGioi tinh: " << dg.Phai;
+	gotoxy(30,13);
+	cout << "Ho ten: " << dg.Ho << " " << dg.Ten;
+	gotoxy(30,14);
+	cout << "Gioi tinh: " << dg.Phai;
 	if (dg.Trang_thai_the == 0)
 	{
-		cout << "\nTrang thai the: " << dg.Trang_thai_the << " (Bi khoa)";
+		gotoxy(30,15);
+		cout << "Trang thai the: " << dg.Trang_thai_the << " (Bi khoa)";
 	}
 	else
 	{
-		cout << "\nTrang thai the: " << dg.Trang_thai_the << " (Dang hoat dong)";
+		gotoxy(30,15);
+		cout << "Trang thai the: " << dg.Trang_thai_the << " (Dang hoat dong)";
 	}
-	cout << "\nSo luong sach dang muon: " << dg.So_luong_sach_dang_muon;
+	gotoxy(30,16);
+	cout << "So luong sach dang muon: " << dg.So_luong_sach_dang_muon;
 	dg.So_ngay_qua_han = Ngay_qua_han(dg.ds_muon_tra_cua_doc_gia);
 	if (dg.So_ngay_qua_han < 0)
 	{
 		dg.So_ngay_qua_han = 0;
 	}
-	cout << "\nSo ngay qua han: " << dg.So_ngay_qua_han;
-	cout << "\nTong so sach da muon: " << dg.ds_muon_tra_cua_doc_gia.so_luong << endl << endl;
+	gotoxy(30,17);
+	cout << "So ngay qua han: " << dg.So_ngay_qua_han;
+	gotoxy(30,18);
+	cout << "Tong so sach da muon: " << dg.ds_muon_tra_cua_doc_gia.so_luong << endl << endl;
+}
+void Xuat_thong_tin_1_doc_gia_theo_hang(DOC_GIA dg, int dong)
+{
+	gotoxy(30,14+dong);
+	cout<<dg.Ma_the<<"\t"<<dg.Ten<<"\t"<<dg.Phai;
+	if (dg.Trang_thai_the == 0)
+	{
+		gotoxy(45,14+dong);
+		cout << "Trang thai the: " << dg.Trang_thai_the << " (Bi khoa)";
+	}
+	else
+	{
+		gotoxy(45,14+dong);
+		cout << "Trang thai the: " << dg.Trang_thai_the << " (Dang hoat dong)";
+	}
+	gotoxy(59,14+dong);
+	cout<<dg.So_luong_sach_dang_muon;
+	gotoxy(65,14+dong);
+	cout<<dg.ds_muon_tra_cua_doc_gia.so_luong;
+	gotoxy(70,14+dong);
+	cout<<dg.So_ngay_qua_han;
 }
 void Xuat_thong_tin_doc_gia_theo_ma_the(TREE t) // Xuat theo the ma the tang dan
 {
@@ -91,24 +120,40 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 }
 void Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_MUON_TRA ds_mt, TREE t)
 {
-	cout << "\tDANH SACH SACH DANG MUON CUA DOC GIA: " << t->data.Ho << " " << t->data.Ten << endl;
+	int c;
+	gotoxy(30,12);
+	cout << "DANH SACH SACH DANG MUON CUA DOC GIA: " << t->data.Ho << " " << t->data.Ten << endl;
+	gotoxy(30,14);
+	cout<<"Ma sach \tNgay muon \tTen sach \t\t\t\tTrang thai sach";
+	int dem=0;
 	for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
 	{
 		if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
 		{
-			cout << "Ma sach: " << k->data.Ma_sach << endl;
-			cout << "Ngay muon: " << k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam << endl;
-			cout << "Ten sach: " << k->data.Ten_sach << endl;
+			dem++;
+			gotoxy(30,14+dem);
+	cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< k->data.Ten_sach;
 			if (k->data.Trang_thai == 0)
 			{
-				cout << "Trang thai sach: " << k->data.Trang_thai << " (Dang muon)" << endl << endl;	
+				gotoxy(96,14+dem);
+				cout << "Trang thai sach: " << k->data.Trang_thai << " (Dang muon)";	
 			}
 			else if (k->data.Trang_thai == 2)
 			{
-				cout << "Trang thai sach: " << k->data.Trang_thai << " (Da lam mat)" << endl << endl;	
+				gotoxy(96,14+dem);
+				cout << "Trang thai sach: " << k->data.Trang_thai << " (Da lam mat)";	
 			}
 		}
 	}
+	do
+	{
+	if(kbhit())
+	{
+		c = getch();
+		if(c==0) c=getch();
+		if(c==27) break;
+	}
+	} while(1);	
 }
 void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(TREE t, int mathe)
 {
@@ -119,7 +164,8 @@ void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(TREE t, int mathe)
 		{
 			if (t->data.ds_muon_tra_cua_doc_gia.so_luong == 0)
 			{
-				cout << "Doc gia van chua muon sach nao.\n";
+				gotoxy(30,12);
+				cout << "Doc gia van chua muon sach nao.";
 				return;
 			}
 			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(t->data.ds_muon_tra_cua_doc_gia, t);
@@ -161,15 +207,26 @@ void Sap_xep_doc_gia_qua_han_theo_thoi_gian_giam_dan(TREE t, DOC_GIA a[], int &n
 }
 void Xuat_danh_sach_doc_gia_qua_han_theo_thoi_gian_giam_dan(TREE t, DS_DOC_GIA ds_dg)
 {
+	int c;
 	Tinh_ngay_qua_han_cua_cac_doc_gia(t);
 	int n = 0;
 	DOC_GIA *a = new DOC_GIA[ds_dg.so_luong];
 	Sap_xep_doc_gia_qua_han_theo_thoi_gian_giam_dan(t, a, n);
+	gotoxy(30,12);
+	cout <<"Ma the \tHo ten \tGioi tinh \tTrang thai the \tDang muon \tDa muon \tSo ngay qua han";
 	for (int i = 0; i < n; i++)
 	{
-		cout << "\tDOC GIA THU " << i + 1 << endl;
-		Xuat_thong_tin_1_doc_gia(a[i]);
+		Xuat_thong_tin_1_doc_gia_theo_hang(a[i], i);
 	}
 	delete []a;
+	do
+	{
+	if(kbhit())
+	{
+		c = getch();
+		if(c==0) c=getch();
+		if(c==27) break;
+	}
+	} while(1);	
 }
 #endif
