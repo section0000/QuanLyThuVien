@@ -1,6 +1,7 @@
 #ifndef Data
 #define Data
 #include<string>
+
 const int MAX_DAU_SACH = 1000;
 const int MA_THE_MIN = 1;
 const int MA_THE_MAX = 40000;
