@@ -1,4 +1,4 @@
-29
+28
 1668
 Pham Bang
 Bang
@@ -160,15 +160,6 @@ Le
 Viet
 Nam
 1
-1
-TKND2
-23
-5
-2020
-0
-0
-0
-Truyen Kieu
 0
 27502
 Ngo Manh
