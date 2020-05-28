@@ -100,6 +100,15 @@ void Them_dau_sach(DS_DAU_SACH &ds_dau_sach)
 					getline(cin, p->ISBN);
 				}while (Kiem_tra_ki_tu_ISBN(p->ISBN) == false);
 			}
+			if (p->ISBN.length() != 4)
+			{
+				do
+				{
+					cout << "Ma ISBN phai co 4 ki tu. Xin nhap lai.\n";
+					cout << "Nhap lai ma ISBN: ";
+					getline(cin, p->ISBN);
+				}while (p->ISBN.length() != 4);
+			}
 			if (Kiem_tra_trung_ISBN(ds_dau_sach, p->ISBN) == true)
 			{
 				cout << "Ma ISBN da ton tai. Xin nhap lai ma khac.\n";
