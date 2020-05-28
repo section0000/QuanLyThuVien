@@ -3,6 +3,7 @@
 #include<limits>
 #include<ctype.h>  // De lay ham isdigit()
 #include<sstream>  // De convert string sang int
+
 void Nhap_so(int &n)
 {
 	string user_string_num = "";
@@ -20,15 +21,21 @@ void Nhap_so(int &n)
     	// cout << "Nhap so: " // Test chuong trinh thoi
 		if (retype == true)
 		{
-			cout << "Nhap lai: ";
+			ShowCur(1);
+			gotoxy(51, 9);
+			//cout << "Nhap lai: ";
 		}
         do
         {
         	getline(cin, user_string_num);
         	if (user_string_num == "") // Kiem tra truong hop bo trong du lieu
         	{
-        		cout << "=> Khong duoc bo trong du lieu.\n";
-        		cout << "Nhap lai: ";
+//        		cout << "=> Khong duoc bo trong du lieu.\n";
+//        		cout << "Nhap lai: ";
+				thong_bao("Khong duoc bo trong du lieu."); 
+				ShowCur(1);
+				gotoxy(51, 9);
+				//cout << "Nhap lai: ";
 			}
 		}while (user_string_num == "");
 		for (int i = 0; i < user_string_num.size(); i++)
@@ -75,22 +82,23 @@ void Nhap_so(int &n)
             str_stream_object >> user_converted_num;
             is_num_bool = true; // Dung de ra khoi vong lap
             // Hien thi thong bao convert thanh cong (Co the bo qua phan nay)
-            cout << endl
-                 << user_string_num << "(user_string_num) "
-                 << "la mot so!"  << endl
-                 << user_converted_num << "(user_converted_num) "
-                 << "la mot so!"  << endl
-                 << endl;
+//            cout << endl
+//                 << user_string_num << "(user_string_num) "
+//                 << "la mot so!"  << endl
+//                 << user_converted_num << "(user_converted_num) "
+//                 << "la mot so!"  << endl
+//                 << endl;
         }
         else
         {
         	// Thong bao loi
-            cout << endl
-                 << "So khong duoc phep chua khoang trang.\n"
-                 << "So khong duoc phep chua chu cai.\n"
-                 << "So khong duoc phep chua cac bieu tuong.\n"
-                 << "So khong the la so thap phan.\n" 
-                 << endl;
+        	thong_bao("Ma so khong hop le.");
+//            cout << endl
+//                 << "So khong duoc phep chua khoang trang.\n"
+//                 << "So khong duoc phep chua chu cai.\n"
+//                 << "So khong duoc phep chua cac bieu tuong.\n"
+//                 << "So khong the la so thap phan.\n" 
+//                 << endl;
           	// 	 Clear va ingore:
             // "When an input error is made, the stream "breaks," cin returns false, and the program stops. It's very important 
 			// to guard against such errors as we did in the program. But what if we want to recover from the error,
@@ -99,7 +107,7 @@ void Nhap_so(int &n)
 			// 2. Remove the incorrect characters from the stream. One way to do this is with cin.ignore()" 
             cin.clear(); // Hieu nom na la reset lai trang thai cua stream tu bad -> good
             // Ham ignore co 2 tham so: 1 la cho biet can bo qua bao nhieu ki tu, 2 la xac dinh ki tu cuoi cung can bo qua (Giong nhu diem dau va diem cuoi)
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // numeric_limits<streamsize>::max(): Gia tri lon nhat cua mot stream (max)
+        //cin.ignore(numeric_limits<streamsize>::max(), '\n'); // numeric_limits<streamsize>::max(): Gia tri lon nhat cua mot stream (max)
             													 // Noi cach khac: y nghia cua no trong ham ignore nay la 
             													 // 	khong gioi han so luong ki tu bo qua
   
@@ -108,7 +116,7 @@ void Nhap_so(int &n)
             is_num          = 0;
             decimal_count   = 0;
             contains_spaces = false;
-            nhaplai 		= true;
+            retype	 		= true;
         }
     }while (is_num_bool == false);
     n = user_converted_num;

@@ -1,7 +1,6 @@
 #include<iostream>
 #include<time.h>
 #include<algorithm>
-#include<windows.h>
 #include <mylib.h>
 #include "Data.h"
 #include "Themxoahieuchinhdocgia.h" 
@@ -13,6 +12,7 @@
 #include "Doc_file.h"
 #include "Giai_phong_du_lieu.h"
 #include "Dohoa.h"
+#include "Xu_li_nhap_so.h"
 	using namespace std;
 // Doc gia
 void Nhap_doc_gia(TREE t, DOC_GIA &dg);
@@ -377,7 +377,7 @@ int main()
     	do
     	{
     		ShowCur(0);
-    		xoa_man_hinh();
+    		xoa_man_hinh(3, 4, 128, 32);
     		chon_dg = MenuDongDG(menu_dg);
 			Normal();
     		switch (chon_dg)
@@ -396,59 +396,56 @@ int main()
 				ve_lai_man_hinh();
 				DeMuc("   CHINH SUA THONG TIN DOC GIA");
 				int n;
-				gotoxy(30,10);
+				gotoxy(30,9);
 				cout << "Nhap ma the doc gia: "; ShowCur(1);
-				cin >> n;
+				Nhap_so(n);
+				//cin>>n;
 				if (Kiem_tra_trung_ma_the(t, n) == false)
 				{
-					gotoxy(30,12);
-					cout << "Doc gia khong co trong thu vien.";
-					Sleep(2000);
+					thong_bao("Doc gia khong co trong thu vien.");
 				}
 				else
 				{
 					Chinh_sua_thong_tin_doc_gia(t, n);
-					Sleep(1200);
 				}
 				break;
 				}
 				case 3:
 				{
+					ShowCur(1);
 					ve_lai_man_hinh();
 					DeMuc("           XOA DOC GIA");
 					int mathe;
 					gotoxy(30,10);
-					cout << "Nhap ma the cua doc gia: "; ShowCur(1);
-					cin >> mathe;
+					cout << "Nhap ma the cua doc gia: "; //cin.ignore(); 
+					Nhap_so(mathe);
 					if (Kiem_tra_trung_ma_the(t, mathe) == false)
 					{
-						gotoxy(30,12);
-						cout << "Doc gia khong co trong thu vien.";
-						Sleep(2000);
+						thong_bao("Doc gia khong co trong thu vien.");
 					}
 					else
 					{
 						Xoa_node_bat_ki(t,mathe, ds_dg);
-						Sleep(2000);
 					}
 					break;
 				}
 				case 4:
 				{
+					ShowCur(1);
 					ve_lai_man_hinh();
 					DeMuc("   SACH DANG MUON CUA 1 DOC GIA");
 					int mathe;
-					gotoxy(30,10);
+					gotoxy(20,10);
 					cout << "Nhap ma the cua doc gia: ";
-					cin >> mathe;
+					Nhap_so(mathe);
 					if (Kiem_tra_trung_ma_the(t, mathe) == false)
 					{
-						gotoxy(30,12);
-						cout << "Doc gia khong co trong thu vien.";
-						Sleep(2000);
+						gotoxy(20,12);
+						thong_bao("Doc gia khong co trong thu vien.");
 					}
 					else
 					{
+						ShowCur(0);
 						Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(t, mathe);
 						//Sleep(1200);
 						//system("pause");
@@ -460,6 +457,33 @@ int main()
 					ve_lai_man_hinh();
 					DeMuc("       DANH SACH DOC GIA QUA HAN");
 					Xuat_danh_sach_doc_gia_qua_han_theo_thoi_gian_giam_dan(t, ds_dg);
+					break;
+				}
+				case 6:
+				{
+					ve_lai_man_hinh();
+					DOC_GIA a[ds_dg.so_luong];
+					int n = 0;
+					DeMuc("        THONG TIN DOC GIA");
+					Xuat_thong_tin_doc_gia_theo_ho_ten(t, a, ds_dg, n);	
+					break;
+				}
+				case 7:
+				{
+					//int c;
+					ve_lai_man_hinh();
+					DeMuc("        THONG TIN DOC GIA");
+					Xuat_thong_tin_doc_gia_theo_ma_the(t); dem_dg=0;
+					khung_xuat_thong_tin_dg(13, 7, 28);
+//					do
+//					{
+//					if(kbhit())
+//					{
+//					c = getch();
+//					if(c==0) c=getch();
+//					if(c==27) break;
+//					}
+//					} while(1);
 					break;
 				}
 				case 0 : thoat++; break;
@@ -477,7 +501,7 @@ int main()
     	int chon_ds;
     	do
     	{
-			xoa_man_hinh();
+			xoa_man_hinh(3, 4, 128, 32);
     		
     		chon_ds = MenuDongDS(menu_ds);Normal();
     		switch (chon_ds)
@@ -492,7 +516,7 @@ int main()
 				}
 				case 0 : break;
 			}
-			xoa_man_hinh();
+			xoa_man_hinh(3, 4, 128, 32);
 			break;
 		}
 		while(1);
@@ -503,7 +527,7 @@ int main()
 			int chon_dms;
     	do
     	{
-			xoa_man_hinh();
+			xoa_man_hinh(3, 4, 128, 32);
     		
     		chon_dms = MenuDongDMS(menu_dms);Normal();
     		switch (chon_dms)
@@ -518,7 +542,7 @@ int main()
 				}
 				case 0 : break;
 			}
-			xoa_man_hinh();
+			xoa_man_hinh(3, 4, 128, 32);
 			break;
 		}
 		while(1);
@@ -529,7 +553,7 @@ int main()
 			int chon_mt;
     	do
     	{
-			xoa_man_hinh();
+			xoa_man_hinh(3, 4, 128, 32);
     		
     		chon_mt = MenuDongMT(menu_mt);Normal();
     		switch (chon_mt)
@@ -544,27 +568,12 @@ int main()
 				}	
 				case 0 : break;
 			}
-			xoa_man_hinh();
+			xoa_man_hinh(3, 4, 128, 32);
 			break;
 		}
 		while(1);
 		break;
 		}
-//    case 2: LietKe(ds); break;
-//    case 3: { printf ("\n Ban nhap ma so sinh vien : ") ;
-//	      cin >> maso ;
-//	      ThongTinSv(ds,maso); break;
-//	    };
-//	case 4: { printf ("\n Ban nhap ma so sinh vien muon xoa : ") ;
-//	      cin >> maso ;
-//	      XoaSv(ds,maso); break;
-//	    };    
-//    case 5: SaveFile(ds,filename); break;
-//    case 6: OpenFile(ds,filename); break;
-//    case 7: { if (NhapSV(ds, sv)==1) InsertOrder (ds,sv);
-//              break;
-//    } ;
-    
      case so_item : system("cls"); return 0;
    }
   } while (1);
