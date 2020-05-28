@@ -1,6 +1,8 @@
 #ifndef Xuatthongtin
 #define Xuatthongtin
 #include "Ngaythang.h"
+string Tra_ve_ten_sach(DS_DAU_SACH ds_dau_sach, string masach); 
+
 void Tinh_ngay_qua_han_cua_cac_doc_gia(TREE &t)
 {
 	if (t != NULL)
@@ -118,7 +120,7 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 		Xuat_thong_tin_1_doc_gia(a[i]);
 	}
 }
-void Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_MUON_TRA ds_mt, TREE t)
+void Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, DS_MUON_TRA ds_mt, TREE t)
 {
 	int c;
 	gotoxy(30,12);
@@ -130,9 +132,11 @@ void Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_MUON_TRA ds_mt, TREE t)
 	{
 		if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
 		{
+			string tensachtam;
+			tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
 			dem++;
 			gotoxy(30,14+dem);
-	cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< k->data.Ten_sach;
+	cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< tensachtam;
 			if (k->data.Trang_thai == 0)
 			{
 				gotoxy(96,14+dem);
@@ -155,11 +159,11 @@ void Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_MUON_TRA ds_mt, TREE t)
 	}
 	} while(1);	
 }
-void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(TREE t, int mathe)
+void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, TREE t, int mathe)
 {
 	if (t != NULL)
 	{
-		Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(t->pLeft, mathe);
+		Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->pLeft, mathe);
 		if (t->data.Ma_the == mathe)
 		{
 			if (t->data.ds_muon_tra_cua_doc_gia.so_luong == 0)
@@ -168,9 +172,9 @@ void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(TREE t, int mathe)
 				cout << "Doc gia van chua muon sach nao.";
 				return;
 			}
-			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(t->data.ds_muon_tra_cua_doc_gia, t);
+			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
 		}
-		Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(t->pRight, mathe);
+		Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->pRight, mathe);
 	}
 }
 void Chuyen_doc_gia_qua_han_sang_mang(TREE t, DOC_GIA a[], int &n)
