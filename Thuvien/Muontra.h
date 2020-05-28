@@ -60,6 +60,20 @@ bool Mat_sach(DS_MUON_TRA ds_mt)
 	}
 	return false;
 }
+string Tra_ve_ten_sach(DS_DAU_SACH ds_dau_sach, string masach)
+{
+	string tam;
+	tam.insert(tam.begin() + 0, masach.begin() + 0, masach.begin() + 4);
+	for (int i = 0; i < ds_dau_sach.so_luong; i++)
+	{
+		if (ds_dau_sach.list[i]->ISBN == tam)
+		{
+			tam = ds_dau_sach.list[i]->Ten_sach;
+			break;
+		}
+	}
+	return tam;
+}
 void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int mathe)
 {
 	if (t != NULL) // Duyet cay
@@ -69,7 +83,7 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 		{
 			cout << "\tTHONG TIN DOC GIA\n";
 			Xuat_thong_tin_1_doc_gia(t->data);
-			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(t->data.ds_muon_tra_cua_doc_gia, t);
+			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
 			if (t->data.So_luong_sach_dang_muon == 0)
 			{
 				cout << "Doc gia hien van chua muon sach nao.\n";
@@ -131,7 +145,9 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 			// Neu dang muon sach thuoc dau sach nay thi khong duoc muon nua
 			for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
 			{
-				if (k->data.Ten_sach == tensach && k->data.Trang_thai == 0)
+				string tensachtam;
+				tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
+				if (tensachtam == tensach && k->data.Trang_thai == 0)
 				{
 					cout << "Doc gia hien dang muon sach nay roi.\n";
 					return;
@@ -176,7 +192,7 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 							{
 								g->data.Trang_thai = 1; // Thay doi trang thai sach la da co nguoi muon
 								MUON_TRA mt; // Tao 1 bien cho de lam
-								mt.Ten_sach = tensach;
+								// mt.Ten_sach = tensach;
 								mt.Ngay_tra.Nam = 0;
 								mt.Ngay_tra.Thang = 0;
 								mt.Ngay_tra.Ngay = 0;
@@ -219,7 +235,7 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
 		{
 			cout << "\tTHONG TIN DOC GIA\n";
 			Xuat_thong_tin_1_doc_gia(t->data);
-			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(t->data.ds_muon_tra_cua_doc_gia, t);
+			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
 			if (t->data.So_luong_sach_dang_muon == 0)
 			{
 				cout << "Doc gia hien van chua muon sach nao.\n";
@@ -248,7 +264,9 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
 					 // Duyet ds muon tra cua doc gia de tim ra sach co ten do va tien hanh chinh sua thong tin
 					for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
 					{
-						if (k->data.Ten_sach == tensach)
+						string tensachtam;
+						tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
+						if (tensachtam == tensach)
 						{
 							if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2) // 0 la dang muon, 2 la lam mat sach. Lam mat sach thi khi den sach <=> Tra sach 
 							{
@@ -291,7 +309,7 @@ void Xu_li_lam_mat_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_
 			{
 				cout << "\tTHONG TIN DOC GIA\n";
 				Xuat_thong_tin_1_doc_gia(t->data);
-				Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(t->data.ds_muon_tra_cua_doc_gia, t);
+				Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
 				if (t->data.So_luong_sach_dang_muon == 0)
 				{
 					cout << "Doc gia hien van chua muon sach nao.\n";
@@ -318,7 +336,9 @@ void Xu_li_lam_mat_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_
 						// Duyet ds muon tra cua doc gia de tim ra sach co ten do va tien hanh chinh sua thong tin
 						for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
 						{
-							if (k->data.Ten_sach == tensach)
+							string tensachtam;
+							tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
+							if (tensachtam == tensach)
 							{
 								if (k->data.Trang_thai == 0)
 								{
