@@ -1,25 +1,25 @@
 20
 Phong Van
-MVTDT
+VTDT
 Ma Vinh Thanh - Dan Thanh
 Vo Hiep
 6072
 1998
-200
+201
 5
-MVTDT0
+VTDT0
 2
 Hang 1, Ngan 1
-MVTDT1
+VTDT1
 0
 Hang 1, Ngan 1
-MVTDT2
+VTDT2
 0
 Hang 1, Ngan 1
-MVTDT3
-0
+VTDT3
+1
 Hang 1, Ngan 1
-MVTDT4
+VTDT4
 0
 Hang 1, Ngan 1
 Bich Huyet Kiem
@@ -40,20 +40,20 @@ KDBH2
 0
 Hang 1, Ngan 2
 Vo Than
-ONL
+ONLF
 On Nhat Luong
 Vo Hiep
 1230
 1999
 400
 3
-ONL0
+ONLF0
 0
 Hang 1, Ngan 3
-ONL1
+ONLF1
 0
 Hang 1, Ngan 3
-ONL2
+ONLF2
 0
 Hang 1, Ngan 3
 Thien Long Bat Bo
@@ -164,7 +164,7 @@ Nguyen Du
 Tho
 1000
 1820
-193
+192
 3
 TKND0
 0
@@ -173,74 +173,74 @@ TKND1
 0
 Hang 1, Ngan 10
 TKND2
-1
+0
 Hang 1, Ngan 10
 Ke Tam Xuong
-KTX
+KTXF
 Jeffery Deaver
 Tieu Thuyet
 461
 1997
 432
 3
-KTX0
+KTXF0
 0
 Hang 2, Ngan 1
-KTX1
+KTXF1
 0
 Hang 2, Ngan 1
-KTX2
+KTXF2
 0
 Hang 2, Ngan 1
 Muoi Nguoi Da Den Nho
-MNDDN
+NDDN
 Agatha Christie
 Tieu Thuyet
 256
 1939
 386
 3
-MNDDN0
+NDDN0
 0
 Hang 2, Ngan 2
-MNDDN1
+NDDN1
 0
 Hang 2, Ngan 2
-MNDDN2
+NDDN2
 0
 Hang 2, Ngan 2
 Tam Quoc Dien Nghia
-LQT
+LQTT
 La Quan Trung
 Tieu Thuyet
 23230
 1345
 494
 3
-LQT0
+LQTT0
 1
 Hang 2, Ngan 3
-LQT1
+LQTT1
 0
 Hang 2, Ngan 3
-LQT2
+LQTT2
 0
 Hang 2, Ngan 3
 Tay Du Ky
-NTA
+NTAT
 Ngo Thua An
 Than Thoai
 20000
 1986
 403
 3
-NTA0
+NTAT0
 0
 Hang 2, Ngan 4
-NTA1
+NTAT1
 0
 Hang 2, Ngan 4
-NTA2
+NTAT2
 0
 Hang 2, Ngan 4
 Than Bai
@@ -295,37 +295,37 @@ QXLC2
 0
 Hang 2, Ngan 7
 You Are The Apple Of My Eyes
-CBD
+CBDY
 Cuu Ba Dao
 Lang Man
 2000
 2011
 33
 3
-CBD0
+CBDY0
 0
 Hang 2, Ngan 8
-CBD1
+CBDY1
 0
 Hang 2, Ngan 8
-CBD2
+CBDY2
 0
 Hang 2, Ngan 8
 Chiec Thuyen Ngoai Xa
-NMC
+NMCC
 Nguyen Minh Chau
 Van Hoc
 200
 1952
 198
 3
-NMC0
+NMCC0
 0
 Hang 2, Ngan 9
-NMC1
+NMCC1
 0
 Hang 2, Ngan 9
-NMC2
+NMCC2
 0
 Hang 2, Ngan 9
 Lao Hac
