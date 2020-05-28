@@ -29,6 +29,7 @@ void Load_file_doc_gia(TREE &t, DS_DOC_GIA &ds_dg)
 	else
 	{
 		string tam; // Dung de doc ki tu "\n"
+		string tensachtam;
 		Filein >> soluongdocgia; // Dong dau tien doc so luong doc gia
 		for (int i = 0; i < soluongdocgia; i++)
 		{
@@ -41,7 +42,6 @@ void Load_file_doc_gia(TREE &t, DS_DOC_GIA &ds_dg)
 			Filein >> dg.Trang_thai_the;
 			Them_doc_gia(t, dg, ds_dg); // Them doc gia vao cay
 			p = Tim_kiem_doc_gia(t, dg.Ma_the); // Lay thong tin doc gia do ra va doc thong tin tiep theo
-			p->data.Trang_thai_the = dg.Trang_thai_the;
 			// Doc danh sach muon tra cua doc gia
 			Filein >> sosachdangmuon;
 			getline(Filein, tam);
@@ -56,7 +56,7 @@ void Load_file_doc_gia(TREE &t, DS_DOC_GIA &ds_dg)
 				Filein >> mt.Ngay_tra.Thang;
 				Filein >> mt.Ngay_tra.Nam;
 				getline(Filein, tam);
-				getline(Filein, mt.Ten_sach);
+				getline(Filein, tensachtam);
 				Filein >> mt.Trang_thai;
 				getline(Filein, tam);
 				NODE_MUON_TRA *muontra = Khoi_tao_node_mt(mt);
