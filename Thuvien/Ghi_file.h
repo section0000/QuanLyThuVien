@@ -3,7 +3,7 @@
 #include "Data.h"
 #include "Ngaythang.h"
 #include<fstream>
-void Luu_1_doc_gia(TREE t, ofstream &Fileout)
+void Luu_1_doc_gia(DS_DAU_SACH ds_dau_sach, TREE t, ofstream &Fileout)
 {
 	Fileout << t->data.Ma_the << endl;
 	Fileout << t->data.Ho << endl;
@@ -14,6 +14,7 @@ void Luu_1_doc_gia(TREE t, ofstream &Fileout)
 	Fileout << t->data.So_luong_sach_dang_muon << endl;
 	for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
 	{
+		string tensachtam;
 		Fileout << k->data.Ma_sach << endl;
 		// Ngay muon
 		Fileout << k->data.Ngay_muon.Ngay << endl;
@@ -24,20 +25,21 @@ void Luu_1_doc_gia(TREE t, ofstream &Fileout)
 		Fileout << k->data.Ngay_tra.Thang << endl;
 		Fileout << k->data.Ngay_tra.Nam << endl;
 		// Thong tin sach
-		Fileout << k->data.Ten_sach << endl;
+		tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
+		Fileout << tensachtam << endl;
 		Fileout << k->data.Trang_thai << endl;
 	}
 }
-void Luu_ds_doc_gia(TREE t, ofstream &Fileout)
+void Luu_ds_doc_gia(DS_DAU_SACH ds_dau_sach, TREE t, ofstream &Fileout)
 {
 	if (t != NULL)
 	{
-		Luu_ds_doc_gia(t->pLeft, Fileout);
-		Luu_1_doc_gia(t, Fileout);
-		Luu_ds_doc_gia(t->pRight, Fileout);
+		Luu_ds_doc_gia(ds_dau_sach, t->pLeft, Fileout);
+		Luu_1_doc_gia(ds_dau_sach, t, Fileout);
+		Luu_ds_doc_gia(ds_dau_sach, t->pRight, Fileout);
 	}
 }
-void Ghi_file_ds_doc_gia(TREE t, DS_DOC_GIA ds_doc_gia)
+void Ghi_file_ds_doc_gia(DS_DAU_SACH ds_dau_sach, TREE t, DS_DOC_GIA ds_doc_gia)
 {
 	ofstream Fileout;
 	Fileout.open("DS_DOC_GIA.txt", ios_base::out);
@@ -49,7 +51,7 @@ void Ghi_file_ds_doc_gia(TREE t, DS_DOC_GIA ds_doc_gia)
 	else
 	{
 		Fileout << ds_doc_gia.so_luong << endl;
-		Luu_ds_doc_gia(t, Fileout);
+		Luu_ds_doc_gia(ds_dau_sach, t, Fileout);
 	}
 	Fileout.close();
 }

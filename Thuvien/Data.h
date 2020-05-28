@@ -64,7 +64,7 @@ struct muon_tra
 	NGAY_THANG Ngay_tra;
 	int Trang_thai; // 0: Dang muon, 1: Da tra, 2: Lam mat sach
 	// Phan nay them vao, khong co trong yeu cau
-	string Ten_sach;
+	// string Ten_sach;
 };
 typedef struct muon_tra MUON_TRA;
 struct node_muon_tra
