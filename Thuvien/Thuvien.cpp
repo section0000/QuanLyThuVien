@@ -264,7 +264,7 @@ void Menu(DS_DOC_GIA &ds_dg, TREE &t, DS_DAU_SACH ds_dau_sach, DS_DANH_MUC_SACH 
 		}
 		else if (luachon == 21)
 		{
-			Ghi_file_ds_doc_gia(t, ds_dg);
+			Ghi_file_ds_doc_gia(ds_dau_sach, t, ds_dg);
 			Ghi_file_ds_dau_sach(ds_dau_sach);
 		}
 		else if (luachon == 22)
