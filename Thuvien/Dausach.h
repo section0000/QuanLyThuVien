@@ -212,7 +212,7 @@ void Hieu_chinh_dau_sach(DS_DAU_SACH &ds_dau_sach)
 			cout << "\tTHONG TIN DAU SACH\n";
 			Xuat_thong_tin_1_dau_sach(ds_dau_sach.list[i]);
 			cout << "\tCHINH SUA\n";
-			cout << "Nhap ISBN: ";
+			/*cout << "Nhap ISBN: ";
 			do
 			{
 				getline(cin, ds_dau_sach.list[i]->ISBN);
@@ -681,13 +681,25 @@ void Sap_xep_dau_sach_tang_dan_theo_so_lan_muon(DS_DAU_SACH &ds_dau_sach)
 void Top_10_sach(DS_DAU_SACH ds_dau_sach)
 {
 	Sap_xep_dau_sach_tang_dan_theo_so_lan_muon(ds_dau_sach);
-	int vitri = ds_dau_sach.so_luong - 10;
 	int stt = 1;
-	for (int i = vitri; i < ds_dau_sach.so_luong; i++)
+	if (ds_dau_sach.so_luong < 10)
 	{
-		cout << "\n\tDAU SACH THU " << stt++ << endl;
-		Xuat_thong_tin_1_dau_sach(ds_dau_sach.list[i]);	
-		cout << "So lan muon: " << ds_dau_sach.list[i]->So_lan_muon << endl;
+		for (int i = 0; i < ds_dau_sach.so_luong; i++)
+		{	
+			cout << "\n\tDAU SACH THU " << stt++ << endl;
+			Xuat_thong_tin_1_dau_sach(ds_dau_sach.list[i]);	
+			cout << "So lan muon: " << ds_dau_sach.list[i]->So_lan_muon << endl;
+		}
+	}
+	else
+	{
+		int vitri = ds_dau_sach.so_luong - 10;
+		for (int i = vitri; i < ds_dau_sach.so_luong; i++)
+		{
+			cout << "\n\tDAU SACH THU " << stt++ << endl;
+			Xuat_thong_tin_1_dau_sach(ds_dau_sach.list[i]);	
+			cout << "So lan muon: " << ds_dau_sach.list[i]->So_lan_muon << endl;
+		}			
 	}
 }
 #endif
