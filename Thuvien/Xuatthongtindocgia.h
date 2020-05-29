@@ -194,7 +194,7 @@ khung_sach_dang_muon();
 			string tensachtam;
 			tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
 			dem++;
-			gotoxy(30,14+dem);
+			gotoxy(20,15+dem);
 	cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< tensachtam;
 			if (k->data.Trang_thai == 0)
 			{
@@ -227,8 +227,7 @@ void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, TRE
 		{
 			if (t->data.ds_muon_tra_cua_doc_gia.so_luong == 0)
 			{
-				gotoxy(30,12);
-				cout << "Doc gia van chua muon sach nao.";
+				thong_bao("Doc gia van chua muon sach nao.");
 				return;
 			}
 			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);

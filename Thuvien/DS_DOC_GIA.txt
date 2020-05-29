@@ -16,6 +16,15 @@ Truong Hung
 An
 Nam
 1
+1
+NTAT1
+20
+5
+2020
+0
+0
+0
+Tay Du Ky
 0
 4533
 Nguyen Thi Thuy
@@ -160,16 +169,19 @@ Le
 Viet
 Nam
 1
+1
+TPTP2
+28
+5
+2020
+0
+0
+0
+Ve Em Bang Mau Noi Nho
 0
 27502
 Ngo Manh
 Cuong
 Nam
-1
-0
-29288
-Huynh Minh
-Hai
-Nu
 1
 0

@@ -412,12 +412,11 @@ int main()
 				}
 				case 3:
 				{
-					ShowCur(1);
 					ve_lai_man_hinh();
 					DeMuc("           XOA DOC GIA");
 					int mathe;
-					gotoxy(30,10);
-					cout << "Nhap ma the cua doc gia: "; //cin.ignore(); 
+					gotoxy(30,9);
+					cout << "Nhap ma the doc gia: "; ShowCur(1);//cin.ignore(); 
 					Nhap_so(mathe);
 					if (Kiem_tra_trung_ma_the(t, mathe) == false)
 					{
@@ -431,16 +430,14 @@ int main()
 				}
 				case 4:
 				{
-					ShowCur(1);
 					ve_lai_man_hinh();
 					DeMuc("   SACH DANG MUON CUA 1 DOC GIA");
 					int mathe;
-					gotoxy(20,10);
-					cout << "Nhap ma the cua doc gia: ";
+					gotoxy(30,9);
+					cout << "Nhap ma the doc gia: "; ShowCur(1);
 					Nhap_so(mathe);
 					if (Kiem_tra_trung_ma_the(t, mathe) == false)
 					{
-						gotoxy(20,12);
 						thong_bao("Doc gia khong co trong thu vien.");
 					}
 					else

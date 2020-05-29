@@ -147,7 +147,7 @@ Tam Pham
 Lang Man
 500
 2013
-300
+301
 3
 TPTP0
 0
@@ -156,7 +156,7 @@ TPTP1
 0
 Hang 1, Ngan 7
 TPTP2
-0
+1
 Hang 1, Ngan 7
 Truyen Kieu
 TKND
@@ -232,13 +232,13 @@ Ngo Thua An
 Than Thoai
 20000
 1986
-403
+404
 3
 NTAT0
 0
 Hang 2, Ngan 4
 NTAT1
-0
+1
 Hang 2, Ngan 4
 NTAT2
 0
