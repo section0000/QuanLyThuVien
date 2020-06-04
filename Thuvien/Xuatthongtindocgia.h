@@ -72,16 +72,6 @@ void Xuat_thong_tin_1_doc_gia_theo_hang(DOC_GIA dg, int dong_bat_dau, int dem)
 	gotoxy(115,dong_bat_dau+dem);
 	cout<<dg.So_ngay_qua_han;
 }
-int dem_dg=0;
-void Xuat_thong_tin_doc_gia_theo_ma_the(TREE t) // Xuat theo the ma the tang dan
-{
-    if (t != NULL)
-    {
-	    Xuat_thong_tin_doc_gia_theo_ma_the(t->pLeft);
-	    Xuat_thong_tin_1_doc_gia_theo_hang(t->data, 10, dem_dg); dem_dg++;
-        Xuat_thong_tin_doc_gia_theo_ma_the(t->pRight);
-    }   	
-}
 void Chuyen_doc_gia_sang_mang(TREE t, DOC_GIA a[], int &n)
 {
 	if (t == NULL)
@@ -93,6 +83,69 @@ void Chuyen_doc_gia_sang_mang(TREE t, DOC_GIA a[], int &n)
 		Chuyen_doc_gia_sang_mang(t->pLeft, a, n);
 		a[n++] = t->data;
 		Chuyen_doc_gia_sang_mang(t->pRight, a, n);
+	}
+}
+//int dem_dg=0;
+void Sap_xep_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], int &n) // Xuat theo the ma the tang dan
+{
+    Chuyen_doc_gia_sang_mang(t, a, n);
+	for (int i = 0; i < n-1; i++)
+	{
+		for (int j = i + 1; j <= n-1; j++)
+		{
+			if (a[i].Ma_the > a[j].Ma_the)
+			{
+				DOC_GIA t = a[i];
+				a[i] = a[j];
+				a[j] = t;
+			}
+		}
+	}
+}
+void Xuat_thong_tin_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, int n)
+{
+	Sap_xep_doc_gia_theo_ma_the(t, a, n);
+	khung_xuat_thong_tin_dg(13, 7, 28);
+	int dem=0;
+	int c;
+	for (int i = 0; i < ds_dg.so_luong; i++) // do n = ds_dg.so_luong; // dang test
+	{	
+		Xuat_thong_tin_1_doc_gia_theo_hang(a[i], 10, dem);
+		if(dem==24 || i==ds_dg.so_luong-1) 
+		{
+			do
+			{
+				
+				if(kbhit()) {
+					 c=getch();
+					 if (c==0) c=getch();
+					if (c==77 && i<ds_dg.so_luong-1)
+					{
+						dem=-1; 
+						xoa_man_hinh(15, 10, 128, 34);
+						break;
+					}
+					if (c==75 && i>25) 
+					{
+						dem=-1;
+						//i=0;
+						if(i<50 && dem<=24) i=-1;
+						else if(i>49) i=i-50; 
+						xoa_man_hinh(15, 10, 128, 34);
+						break;
+					}
+					if (c==27) 
+					{
+						dem=-1; break;
+					}
+					//break;
+				}
+				
+			} while(1);
+			khung_xuat_thong_tin_dg(13, 7, 28);
+			if(c==27) return;
+		}
+		dem++;
 	}
 }
 string Noi_ho_ten(string ten, string ho)

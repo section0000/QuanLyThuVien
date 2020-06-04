@@ -640,25 +640,17 @@ void Sap_Xep_Dau_Sach_Theo_Ten(DS_DAU_SACH &dau_sach)
         }
     }
 }
-void Xuat_DS_1_The_Loai(DS_DAU_SACH ds, string the_loai)
-{
-    cout<<"\n\n\t\tThe loai "<<the_loai<<endl;
-    int stt = 1;
-    for(int i=0; i<ds.so_luong; i++)
-    {
-        if(ds.list[i]->The_loai == the_loai)
-        {
-        	cout << "\tDau sach thu " << stt++ << endl;
-            /*cout<< ds.list[i]->ISBN<<endl;
-            cout<<ds.list[i]->Nam_xuat_ban<<endl;
-            cout<<ds.list[i]->So_trang<<endl;
-            cout<<ds.list[i]->Tac_gia<<endl;
-            cout<<ds.list[i]->Ten_sach<<endl;
-            cout<<ds.list[i]->The_loai<<endl;*/
-            Xuat_thong_tin_1_dau_sach(ds.list[i]);
-        }
-    }
-}
+//void Xuat_DS_1_The_Loai(DS_DAU_SACH ds, string the_loai)
+//{   
+//    for(int i=0; i<ds.so_luong; i++)
+//    {
+//        if(ds.list[i]->The_loai == the_loai)
+//        {
+//            Xuat_thong_tin_1_dau_sach_theo_hang(ds.list[i], 10, dem);
+//            dem++;
+//        }
+//    }
+//}
 bool Kiem_Tra_Trung_The_Loai(DS_DAU_SACH ds,string theloai[],int soluong[],int h,int i) // h: So luong the loai hien co
 {
 	for (int j = 0; j < h; j++) // Duyet danh sach so luong the loai hien co
@@ -673,6 +665,7 @@ bool Kiem_Tra_Trung_The_Loai(DS_DAU_SACH ds,string theloai[],int soluong[],int h
 }
 void Xuat_DS_Theo_Tung_The_Loai(DS_DAU_SACH ds)
 {
+	int c;
     if(ds.so_luong == 0)
     {
         thong_bao("Thu vien chua co sach nao.");
@@ -691,9 +684,54 @@ void Xuat_DS_Theo_Tung_The_Loai(DS_DAU_SACH ds)
             the_loai[h++] = ds.list[i]->The_loai;
         }
     }
+    khung_xuat_thong_tin_ds(5, 7, 28);
+    int dem_hang=0;
+    int dem_ds=0;
     for(int i=0; i<h; i++)
     {
-        Xuat_DS_1_The_Loai(ds, the_loai[i]);
+        for(int j=0; j<ds.so_luong; j++)
+    	{
+        	if(ds.list[j]->The_loai == the_loai[i])
+        	{
+            	Xuat_thong_tin_1_dau_sach_theo_hang(ds.list[j], 10, dem_hang);
+            	dem_hang++;
+            	dem_ds++;
+        	}
+
+        if(dem_hang>24 || dem_ds==ds.so_luong-1)
+        {
+        	do
+			{
+				if(kbhit()) {
+					c=getch();
+					if (c==0) c=getch();
+					if (c==77 && dem_ds<ds.so_luong)
+					{
+						dem_hang=0; 
+						xoa_man_hinh(7, 10, 128, 37);
+						break;
+					}
+					if (c==75 && dem_ds>25) 
+					{
+						dem_hang=0;
+						dem_ds=0;
+						i=0;
+						j=0;
+						xoa_man_hinh(7, 10, 128, 37);
+						break;
+					}
+					if (c==27) 
+					{
+						//dem=-1; 
+						break;
+					}
+				} 
+			} while(1);
+			khung_xuat_thong_tin_ds(5, 7, 28);
+			if(c==27) return;		
+		}
+	
+		}
     }
 }
 void Tim_thong_tin_sach_dua_vao_ten_sach(DS_DAU_SACH ds_dau_sach, DS_DANH_MUC_SACH ds_dms)

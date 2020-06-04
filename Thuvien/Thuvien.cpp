@@ -127,7 +127,9 @@ void Menu(DS_DOC_GIA &ds_dg, TREE &t, DS_DAU_SACH ds_dau_sach, DS_DANH_MUC_SACH 
 		else if (luachon == 4)
 		{
 			cout << "\n==========THONG TIN DOC GIA==========\n\n";
-			Xuat_thong_tin_doc_gia_theo_ma_the(t);
+			DOC_GIA a[ds_dg.so_luong];
+			int n=0;
+			Xuat_thong_tin_doc_gia_theo_ma_the(t, a, ds_dg, n);
 			system("pause");			
 		}		
 		else if (luachon == 5)
@@ -431,11 +433,12 @@ int main()
 				}
 				case 4:
 				{
+					ShowCur(1);
 					ve_lai_man_hinh();
 					DeMuc("   SACH DANG MUON CUA 1 DOC GIA");
 					int mathe;
 					gotoxy(30,9);
-					cout << "Nhap ma the doc gia: "; ShowCur(1);
+					cout << "Nhap ma the doc gia: "; cin.ignore();
 					Nhap_so(mathe);
 					if (Kiem_tra_trung_ma_the(t, mathe) == false)
 					{
@@ -444,8 +447,6 @@ int main()
 					else
 					{
 						Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t, mathe);
-						//Sleep(1200);
-						//system("pause");
 					}
 					break;		
 				}
@@ -469,8 +470,10 @@ int main()
 				{
 					ve_lai_man_hinh();
 					DeMuc("        THONG TIN DOC GIA");
-					Xuat_thong_tin_doc_gia_theo_ma_the(t); dem_dg=0; //dang test, chua hoan thien
-					khung_xuat_thong_tin_dg(13, 7, 28);
+					DOC_GIA a[ds_dg.so_luong];
+					int n = 0;
+					Xuat_thong_tin_doc_gia_theo_ma_the(t, a, ds_dg, n); //dem_dg=0; //dang test, chua hoan thien
+					//khung_xuat_thong_tin_dg(13, 7, 28);
 					break;
 				}
 				case 0 : thoat++; break;
@@ -550,6 +553,13 @@ int main()
 				case 6:
 				{
 					ve_lai_man_hinh();
+					DeMuc("   XUAT DANH SACH THEO THE LOAI");
+					Xuat_DS_Theo_Tung_The_Loai(ds_dau_sach);
+					break;
+				}
+				case 7:
+				{
+					ve_lai_man_hinh();
 					DeMuc("   10 SACH DUOC MUON NHIEU NHAT");
 					Top_10_sach(ds_dau_sach);
 					break;
@@ -598,13 +608,6 @@ int main()
 					ve_lai_man_hinh();
 					DeMuc("   CHINH SUA SACH THUOC DAU SACH");
 					Hieu_chinh_sach(ds_dms, ds_dau_sach);
-					break;
-				}
-				case 4:
-				{
-					ve_lai_man_hinh();
-					DeMuc("   XUAT DANH SACH THEO THE LOAI");
-					Xuat_DS_Theo_Tung_The_Loai(ds_dau_sach);
 					break;
 				}
 				case 0 : thoat++; break;

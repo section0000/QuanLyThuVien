@@ -1,4 +1,4 @@
-20
+26
 Phong Van
 VTDT
 Ma Vinh Thanh - Dan Thanh
@@ -345,3 +345,51 @@ Hang 2, Ngan 10
 NCLH2
 0
 Hang 2, Ngan 10
+Conan
+APTX
+Gosho Aoyama
+Trinh Tham
+4869
+1994
+0
+0
+Doraemon
+DREM
+Fujiko F. Fujio
+Thieu Nhi
+3000
+1969
+0
+0
+Mat Biec
+PMQA
+Nguyen Nhat Anh
+Tieu Thuyet
+234
+1990
+0
+0
+Cho Toi Xin Mot Ve Di Tuoi Tho
+SDOI
+Nguyen Nhat Anh
+Thieu Nhi
+218
+2008
+0
+0
+Tieng Goi Noi Hoang Da
+OIJG
+Jack London
+Phieu Luu
+202
+1903
+0
+0
+Test
+TEST
+Test
+Test
+1
+2000
+0
+0

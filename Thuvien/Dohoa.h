@@ -62,9 +62,9 @@ int whereY()
 }
 void xoa_man_hinh(int x, int y, int rong, int cao)
   {
-  	for(int i=x; i<=rong; i++) //128
+  	for(int i=x; i<=rong; i++) 
   	{
-		for(int j=y; j<=cao; j++) //32
+		for(int j=y; j<=cao; j++) 
 		{
 			gotoxy(i,j); cout<<" ";	
 		}	
@@ -393,7 +393,7 @@ do {
   } while (1);
 }
 //menu dau sach
-const int so_item_ds = 6;
+const int so_item_ds = 7;
 const int dong_menu_ds =8;
 const int cot_menu_ds = 51 ;
 char menu_ds [so_item_ds][50] = {"           THEM DAU SACH          ",
@@ -401,6 +401,7 @@ char menu_ds [so_item_ds][50] = {"           THEM DAU SACH          ",
 			                   	 "           XOA DAU SACH           ",
 			                  	 "      XUAT THONG TIN DAU SACH     ",
 								 "             TIM SACH             ",
+								 "    XUAT DAU SACH THEO THE LOAI   ",
 								 " 10 DAU SACH DUOC MUON NHIEU NHAT "};
 int MenuDongDS(char td [so_item_ds][50]){
 	DeMuc("             DAU SACH             ");
@@ -453,13 +454,12 @@ do {
   } while (1);
 }
 //menu danh muc sach
-const int so_item_dms = 4;
+const int so_item_dms = 3;
 const int dong_menu_dms =8;
 const int cot_menu_dms = 51 ;
 char menu_dms [so_item_dms][50] = {"     THEM SACH VAO 1 DAU SACH     ",
 				  			 	   "     XOA SACH THUOC 1 DAU SACH    ",
-						 	  	   "  CHINH SUA SACH THUOC 1 DAU SACH ",
-								   "    XUAT DANH SACH THEO THE LOAI  "};
+						 	  	   "  CHINH SUA SACH THUOC 1 DAU SACH "};
 int MenuDongDMS(char td [so_item_dms][50]){
 	DeMuc("          DANH MUC SACH           ");
 	khung_menu();
