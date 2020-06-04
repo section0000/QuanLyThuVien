@@ -130,9 +130,10 @@ void ve_lai_man_hinh()
     khung_vien();
     huong_dan();
 }
+
 void xoa_thong_bao()
 {
-	for (int i=2; i<90; i++)
+	for (int i=2; i<120; i++)
 	{
 		gotoxy(i, 36);
 		cout<<" ";
@@ -140,7 +141,7 @@ void xoa_thong_bao()
 }
 void thong_bao(string s)
 {
-	ShowCur(0);
+	//ShowCur(0);
 	xoa_thong_bao();
 	gotoxy(3, 36); textcolor(10); 
 	cout<<"THONG BAO: "<<s<<" "; 
@@ -275,6 +276,49 @@ void khung_sach_dang_muon()
 		gotoxy(94,14+i); 
 		cout<<"|";
 		gotoxy(112,14+i);
+		cout<<"|";
+	}
+}
+void khung_xuat_thong_tin_ds(int x, int y, int chieu_cao) // cot bat dau tu 10 - hang bat dau tu 9
+{
+	gotoxy(x+3,y+1);
+	cout <<"ISBN";
+	gotoxy(x+23,y+1);
+	cout<<"Ten sach";
+	gotoxy(x+46,y+1);
+	cout<<"So trang";
+	gotoxy(x+65,y+1);//61
+	cout<<"Tac gia";
+	gotoxy(x+84,y+1);
+	cout<<"Nam xuat ban";
+	gotoxy(x+100,y+1);
+	cout<<"The loai";
+	gotoxy(x+113,y+1);
+	cout<<"Luot muon";
+	for (int i=0; i<122; i++) { 
+		gotoxy(x+1+i,y);
+		cout<<"_";
+		gotoxy(x+1+i,y+2);
+		cout<<"_";	
+		gotoxy(x+1+i,y+chieu_cao);
+		cout<<"_";	
+	}
+	for (int i=0; i<chieu_cao; i++) { //cao 24
+		gotoxy(x,y+1+i); //13 22 46 58 83 96 106 124
+		cout<<"|";
+		gotoxy(x+9,y+1+i);
+		cout<<"|";
+		gotoxy(x+44,y+1+i);
+		cout<<"|";
+		gotoxy(x+55,y+1+i);
+		cout<<"|";
+		gotoxy(x+82,y+1+i);
+		cout<<"|";
+		gotoxy(x+97,y+1+i);
+		cout<<"|";
+		gotoxy(x+111,y+1+i);
+		cout<<"|";
+		gotoxy(x+123,y+1+i);
 		cout<<"|";
 	}
 }
@@ -522,6 +566,65 @@ do {
   }  // end switch
   } while (1);
 }
+
+//menu thoat
+const int so_item_thoat = 2;
+const int dong_menu_thoat =25;
+const int cot_menu_thoat = 63 ;
+char menu_thoat [so_item_thoat][50] = {"   CO    ",
+				  			           "  KHONG  "};
+int MenuDongTHOAT(char td [so_item_thoat][50]){
+	//DeMuc("          MUON TRA SACH          ");
+	//khung_menu();
+gotoxy(54,23);
+cout<<"LUU DU LIEU TRUOC KHI THOAT?";
+  Normal();
+  //system("cls");   
+  int chon =0;
+  int i; 
+  for ( i=0; i< so_item_thoat ; i++)
+  { gotoxy(cot_menu_thoat, dong_menu_thoat +i);
+    cout << td[i];
+  }
+  HighLight();
+  gotoxy(cot_menu_thoat,dong_menu_thoat+chon);
+  cout << td[chon];
+  char kytu;
+do {
+  kytu = getch();
+  if (kytu==0) kytu = getch();
+  switch (kytu) {
+    case Up :if (chon+1 >1)
+  			  {
+  		              	Normal();
+              	gotoxy(cot_menu_thoat,dong_menu_thoat+chon);
+              	cout << td[chon];
+              	chon --;
+              	HighLight();
+              	gotoxy(cot_menu_thoat,dong_menu_thoat+chon);
+              	cout << td[chon];
+  				
+  			  }
+  			  break;
+  	case Down :if (chon+1 <so_item_thoat)
+  			  {
+  		        Normal();
+              	gotoxy(cot_menu_thoat,dong_menu_thoat+chon);
+              	cout << td[chon];
+              	chon ++;
+              	HighLight();
+              	gotoxy(cot_menu_thoat,dong_menu_thoat+chon);
+              	cout << td[chon];
+  				
+  			  }
+  			  break;
+  	case 13 : return chon+1;
+  	case 27: return 0;
+	  
+  }  // end switch
+  } while (1);
+}
+
 
 
 

@@ -332,10 +332,11 @@ do {
   			  }
   			  break;
   	case 13 : return chon+1;
-  	case 27: {
-  		system("cls");
-		exit(0);
-	  }
+//  	case 27: {
+//  		system("cls");
+//			exit(0);
+//			
+//			  }
   }  // end switch
   } while (1);
 }
@@ -360,6 +361,7 @@ int main()
 	
 	
 	//test
+	int thoat=0;
 	int chon;
 	do
   {
@@ -372,7 +374,6 @@ int main()
 	{
     case 1: 
     {
-    	int thoat=0;
     	int chon_dg;
     	do
     	{
@@ -466,20 +467,10 @@ int main()
 				}
 				case 7:
 				{
-					//int c;
 					ve_lai_man_hinh();
 					DeMuc("        THONG TIN DOC GIA");
-					Xuat_thong_tin_doc_gia_theo_ma_the(t); dem_dg=0;
+					Xuat_thong_tin_doc_gia_theo_ma_the(t); dem_dg=0; //dang test, chua hoan thien
 					khung_xuat_thong_tin_dg(13, 7, 28);
-//					do
-//					{
-//					if(kbhit())
-//					{
-//					c = getch();
-//					if(c==0) c=getch();
-//					if(c==27) break;
-//					}
-//					} while(1);
 					break;
 				}
 				case 0 : thoat++; break;
@@ -487,7 +478,11 @@ int main()
 			system("cls");
    			khung_vien();
    			huong_dan();
-			if(thoat != 0) break;
+			if(thoat != 0)
+			{
+				thoat=0;
+				break;
+			} 
 		}
 		while(1);
 		break;
@@ -497,23 +492,78 @@ int main()
     	int chon_ds;
     	do
     	{
-			xoa_man_hinh(3, 4, 128, 32);
-    		
-    		chon_ds = MenuDongDS(menu_ds);Normal();
+			ShowCur(0);
+    		xoa_man_hinh(3, 4, 128, 32);
+    		chon_ds = MenuDongDS(menu_ds);
+			Normal();
     		switch (chon_ds)
     		{
     			case 1:
     			{
-    				system("cls");
-    				khung_vien(); huong_dan();
-    				gotoxy(20,20);
-    				cout<<"nhap ten: ";
+    				ve_lai_man_hinh();
+    				DeMuc("           THEM DAU SACH");
+    				Them_dau_sach(ds_dau_sach);
     				break;
 				}
-				case 0 : break;
+				case 2:
+				{
+					ve_lai_man_hinh();
+					DeMuc("        CHINH SUA DAU SACH");
+					Hieu_chinh_dau_sach(ds_dau_sach);
+					break;
+				}
+				case 3:
+				{
+					ve_lai_man_hinh();
+					DeMuc("           XOA DAU SACH");
+					if (Kiem_tra_rong_ds_dau_sach(ds_dau_sach) == true)
+					{
+						thong_bao("Danh sach dau sach dang rong. Khong the xoa.");
+					}
+					else
+					{
+						Xoa_dau_sach(ds_dau_sach);
+					}
+					break;
+				}
+				case 4:
+				{
+					ve_lai_man_hinh();
+					DeMuc("         THONG TIN DAU SACH");
+					if (Kiem_tra_rong_ds_dau_sach(ds_dau_sach) == true)
+					{
+						thong_bao("Danh sach dau sach dang rong. Khong the xoa.");
+					}
+					else
+					{
+						Xuat_thong_tin_cac_dau_sach(ds_dau_sach);
+					}
+					break;
+				}
+				case 5:
+				{
+					ve_lai_man_hinh();
+					DeMuc("             TIM SACH");
+					Tim_thong_tin_sach_dua_vao_ten_sach(ds_dau_sach, ds_dms);
+					break;
+				}
+				case 6:
+				{
+					ve_lai_man_hinh();
+					DeMuc("   10 SACH DUOC MUON NHIEU NHAT");
+					Top_10_sach(ds_dau_sach);
+					break;
+				}
+				case 0 : thoat++; break;
 			}
-			xoa_man_hinh(3, 4, 128, 32);
-			break;
+			system("cls");
+   			khung_vien();
+   			huong_dan();
+			if(thoat != 0) 
+			{
+				thoat=0;
+				break;
+			}
 		}
 		while(1);
 		break;
@@ -521,57 +571,147 @@ int main()
 	case 3:
 		{
 			int chon_dms;
-    	do
-    	{
-			xoa_man_hinh(3, 4, 128, 32);
-    		
-    		chon_dms = MenuDongDMS(menu_dms);Normal();
-    		switch (chon_dms)
+    		do
     		{
+    			ShowCur(0);
+				xoa_man_hinh(3, 4, 128, 32);
+    			chon_dms = MenuDongDMS(menu_dms);
+    			Normal();
+    			switch (chon_dms)
+    			{
     			case 1:
     			{
-    				system("cls");
-    				khung_vien(); huong_dan();
-    				gotoxy(20,20);
-    				cout<<"nhap ten: ";
+    				ve_lai_man_hinh();
+    				DeMuc("      THEM SACH VAO DAU SACH");
+    				Them_sach(ds_dms, ds_dau_sach);
     				break;
 				}
-				case 0 : break;
+				case 2:
+				{
+					ve_lai_man_hinh();
+					DeMuc("        XOA SACH THUOC DAU SACH");
+					Xoa_sach(ds_dms, ds_dau_sach);
+					break;
+				}
+				case 3:
+				{
+					ve_lai_man_hinh();
+					DeMuc("   CHINH SUA SACH THUOC DAU SACH");
+					Hieu_chinh_sach(ds_dms, ds_dau_sach);
+					break;
+				}
+				case 4:
+				{
+					ve_lai_man_hinh();
+					DeMuc("   XUAT DANH SACH THEO THE LOAI");
+					Xuat_DS_Theo_Tung_The_Loai(ds_dau_sach);
+					break;
+				}
+				case 0 : thoat++; break;
+				}
+				system("cls");
+   				khung_vien();
+   				huong_dan();
+				if(thoat != 0) 
+				{
+					thoat=0;
+					break;
+				}
 			}
-			xoa_man_hinh(3, 4, 128, 32);
+			while(1);
 			break;
-		}
-		while(1);
-		break;
 		}
 	case 4:
 		{
 			int chon_mt;
     	do
     	{
+    		ShowCur(0);
 			xoa_man_hinh(3, 4, 128, 32);
-    		
-    		chon_mt = MenuDongMT(menu_mt);Normal();
+    		chon_mt = MenuDongMT(menu_mt);
+    		Normal();
     		switch (chon_mt)
     		{
     			case 1:
     			{
-    				system("cls");
-    				khung_vien(); huong_dan();
-    				gotoxy(20,20);
-    				cout<<"nhap ten: ";
+    				ve_lai_man_hinh();
+    				DeMuc("            MUON SACH");
+    				int a;
+    				gotoxy(30,9);
+					cout << "Nhap ma the doc gia: "; ShowCur(1);
+					Nhap_so(a);
+					if (Kiem_tra_trung_ma_the(t, a) == false)
+					{
+						thong_bao("Doc gia khong ton tai.");
+					}
+					else
+					{
+						Muon_sach(t, ds_dau_sach, ds_dms, a);
+					}
     				break;
+				}
+				case 2:
+				{
+					ve_lai_man_hinh();
+					DeMuc("              TRA SACH");	
+					Tra_sach(t, ds_dau_sach, ds_dms);
+					break;
 				}	
-				case 0 : break;
+				case 0 : thoat++; break;
 			}
-			xoa_man_hinh(3, 4, 128, 32);
+			system("cls");
+   				khung_vien();
+   				huong_dan();
+				if(thoat != 0) 
+				{
+					thoat=0;
+					break;
+				}
+			}
+			while(1);
 			break;
 		}
-		while(1);
-		break;
+    case so_item: 
+    	{
+    		int chon_thoat;
+    		do
+    		{
+    		ShowCur(0);
+			//xoa_man_hinh(3, 4, 128, 32);
+    		chon_thoat = MenuDongTHOAT(menu_thoat);
+    		Normal();
+    		switch (chon_thoat)
+				{
+					case 1:
+					{
+						Ghi_file_ds_doc_gia(ds_dau_sach, t, ds_dg);
+						Ghi_file_ds_dau_sach(ds_dau_sach);
+						system("cls");
+						exit(0);
+					}
+					case 2:
+					{
+						system("cls");
+						exit(0);
+					}
+					case 0:
+					{
+						thoat++; break;
+					}
+				}
+				system("cls");
+   				khung_vien();
+   				huong_dan();
+				if(thoat != 0) 
+				{
+					thoat=0;
+					break;
+				}
+			}
+			while(1);
+			break;
 		}
-     case so_item : system("cls"); return 0;
-   }
+    }
   } while (1);
 	
 	//Menu(ds_dg,t, ds_dau_sach, ds_dms);

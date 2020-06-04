@@ -156,16 +156,16 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 			cout << "THONG TIN DOC GIA";
 			//gotoxy(30,12);
 			Xuat_thong_tin_1_doc_gia(t->data);
-			gotoxy(59,19);
+			gotoxy(59,20);
 			cout << "CHINH SUA THONG TIN";
 			//cin.ignore(); 
-			gotoxy(30,20); ShowCur(1);
+			gotoxy(30,21); ShowCur(1);
 			cout << "Nhap ho: ";
 			getline(cin, t->data.Ho);
-			gotoxy(30,21);
+			gotoxy(30,22);
 			cout << "Nhap ten: ";
 			getline(cin, t->data.Ten);
-			gotoxy(30,22);
+			gotoxy(30,23);
 			cout << "Nhap gioi tinh: ";
 			do
 			{
@@ -173,18 +173,18 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 				Chuan_hoa_chu(t->data.Phai);
 				if (t->data.Phai != "Nam" && t->data.Phai != "Nu")
 				{
-					gotoxy(30,23);
+					gotoxy(30,24);
 					cout << "Gioi tinh khong hop le. Xin nhap lai: ";
 				}
 			}while (t->data.Phai != "Nam" && t->data.Phai != "Nu");
-			gotoxy(30,24);
+			gotoxy(30,25);
 			cout << "Nhap trang thai the(0/1): ";
 			do
 			{
 				cin >> t->data.Trang_thai_the;
 				if (t->data.Trang_thai_the != 0 && t->data.Trang_thai_the != 1)
 				{
-					gotoxy(30,25);
+					gotoxy(30,26);
 					cout << "Trang thai the khong hop le. Xin nhap lai: ";
 				}
 			}while (t->data.Trang_thai_the != 0 && t->data.Trang_thai_the != 1);

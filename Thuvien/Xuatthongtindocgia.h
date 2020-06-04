@@ -180,7 +180,6 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 }
 void Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, DS_MUON_TRA ds_mt, TREE t)
 {
-	int c;
 	gotoxy(20,12);
 	cout << "DANH SACH SACH DANG MUON CUA DOC GIA: " << t->data.Ho << " " << t->data.Ten << endl;
 //	gotoxy(20,14);
@@ -208,15 +207,7 @@ khung_sach_dang_muon();
 			}
 		}
 	}
-	do
-	{
-	if(kbhit())
-	{
-		c = getch();
-		if(c==0) c=getch();
-		if(c==27) break;
-	}
-	} while(1);	
+	thong_bao("                                     ");
 }
 void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, TREE t, int mathe)
 {
