@@ -80,6 +80,30 @@ void Chuan_hoa_chu(string &a)
 		}
 	}
 }
+bool Kiem_tra_nhap_ho_ten(string hoten) // Doi voi doc gia: Chi cho nhap chu cai va khoang trang. Doi voi tac gia: Co the nhap "., -, &" (VD: Robert M. Pirsig, Randy Pausch & Jeffrey Zaslow, Antoine de Saint-Exupéry,...)
+{
+	for (int i = 0; i < hoten.length(); i++)
+	{
+		if ((hoten[i] < 65 || hoten[i] > 90) && (hoten[i] < 97 && hoten[i > 122]) && (hoten[i] != 32) && (hoten[i] != 38) &&
+			(hoten[j] != 45) && (hoten[j] != 46))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+void Nhap_va_kiem_tra_bo_trong_du_lieu(string s)
+{
+	getline(cin, s);
+	if (s == "")
+	{
+		do
+		{
+			cout << "Khong duoc bo trong du lieu dmm: ";
+			getline(cin, s);
+		}while (s == "");
+	}
+}
 void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 {	
 	
@@ -89,10 +113,26 @@ void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 	cout << "Ma the: "<<dg.Ma_the<<endl; 
 	gotoxy(30, 12);
 	cout << "Nhap ho: "; ShowCur(1);cin.ignore();
-	getline(cin, dg.Ho);
+	do
+	{
+		Nhap_va_kiem_tra_bo_trong_du_lieu(dg.Ho);
+		if (Kiem_tra_nhap_ho_ten(dg.Ho) == false)
+		{
+			cout << "Nhap lai di thang mat lon: ";	
+		}	
+	}while (Kiem_tra_nhap_ho_ten(dg.Ho) == false);
+	// getline(cin, dg.Ho);
 	gotoxy(30, 14);
 	cout << "Nhap ten: ";
-	getline(cin, dg.Ten);
+	do
+	{
+		Nhap_va_kiem_tra_bo_trong_du_lieu(dg.Ten);
+		if (Kiem_tra_nhap_ho_ten(dg.Ten) == false)
+		{
+			cout << "Nhap lai di thang mat lon: ";	
+		}	
+	}while (Kiem_tra_nhap_ho_ten(dg.Ten) == false);	
+	//getline(cin, dg.Ten);
 	gotoxy(30, 16);
 	cout << "Nhap gioi tinh: ";
 	do
@@ -161,10 +201,26 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 			//cin.ignore(); 
 			gotoxy(30,21); ShowCur(1);
 			cout << "Nhap ho: ";
-			getline(cin, t->data.Ho);
+			do
+			{
+				Nhap_va_kiem_tra_bo_trong_du_lieu(t->data.Ho);
+				if (Kiem_tra_nhap_ho_ten(t->data.Ho) == false)
+				{
+					cout << "Nhap lai di thang mat lon: ";	
+				}			
+			}while (Kiem_tra_nhap_ho_ten(t->data.Ho) == false);			
+			//getline(cin, t->data.Ho);
 			gotoxy(30,22);
 			cout << "Nhap ten: ";
-			getline(cin, t->data.Ten);
+			do
+			{
+				Nhap_va_kiem_tra_bo_trong_du_lieu(t->data.Ten);
+				if (Kiem_tra_nhap_ho_ten(t->data.Ten) == false)
+				{
+					cout << "Nhap lai di thang mat lon: ";	
+				}	
+			}while (Kiem_tra_nhap_ho_ten(t->data.Ten) == false);
+			//getline(cin, t->data.Ten);
 			gotoxy(30,23);
 			cout << "Nhap gioi tinh: ";
 			do
