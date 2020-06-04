@@ -85,7 +85,7 @@ bool Kiem_tra_nhap_ho_ten(string hoten) // Doi voi doc gia: Chi cho nhap chu cai
 	for (int i = 0; i < hoten.length(); i++)
 	{
 		if ((hoten[i] < 65 || hoten[i] > 90) && (hoten[i] < 97 && hoten[i > 122]) && (hoten[i] != 32) && (hoten[i] != 38) &&
-			(hoten[j] != 45) && (hoten[j] != 46))
+			(hoten[i] != 45) && (hoten[i] != 46))
 		{
 			return false;
 		}
