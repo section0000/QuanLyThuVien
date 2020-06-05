@@ -92,14 +92,16 @@ bool Kiem_tra_nhap_ho_ten(string hoten) // Doi voi doc gia: Chi cho nhap chu cai
 	}
 	return true;
 }
-void Nhap_va_kiem_tra_bo_trong_du_lieu(string s)
+void Nhap_va_kiem_tra_bo_trong_du_lieu(string &s, int x, int y) // x,y la noi con tro quay lai de nhap
 {
 	getline(cin, s);
 	if (s == "")
 	{
 		do
 		{
-			cout << "Khong duoc bo trong du lieu dmm: ";
+			thong_bao("Khong duoc bo trong du lieu.");
+			xoa_tuy_chon(x, y, 80, 1);
+			gotoxy(x, y);
 			getline(cin, s);
 		}while (s == "");
 	}
@@ -112,13 +114,15 @@ void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 	gotoxy(30, 10);
 	cout << "Ma the: "<<dg.Ma_the<<endl; 
 	gotoxy(30, 12);
-	cout << "Nhap ho: "; ShowCur(1);cin.ignore();
+	cout << "Nhap ho: "; ShowCur(1);//cin.ignore();
 	do
 	{
-		Nhap_va_kiem_tra_bo_trong_du_lieu(dg.Ho);
+		Nhap_va_kiem_tra_bo_trong_du_lieu(dg.Ho, 39, 12);
 		if (Kiem_tra_nhap_ho_ten(dg.Ho) == false)
 		{
-			cout << "Nhap lai di thang mat lon: ";	
+			thong_bao("Ten khong hop le, xin nhap lai.");
+			xoa_tuy_chon(39, 12, 80, 1);
+			gotoxy(39, 12);	
 		}	
 	}while (Kiem_tra_nhap_ho_ten(dg.Ho) == false);
 	// getline(cin, dg.Ho);
@@ -126,36 +130,30 @@ void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 	cout << "Nhap ten: ";
 	do
 	{
-		Nhap_va_kiem_tra_bo_trong_du_lieu(dg.Ten);
+		Nhap_va_kiem_tra_bo_trong_du_lieu(dg.Ten, 40, 14);
 		if (Kiem_tra_nhap_ho_ten(dg.Ten) == false)
 		{
-			cout << "Nhap lai di thang mat lon: ";	
-		}	
+			thong_bao("Ten khong hop le, xin nhap lai.");	
+			gotoxy(40, 14);			
+		}
+		
 	}while (Kiem_tra_nhap_ho_ten(dg.Ten) == false);	
 	//getline(cin, dg.Ten);
 	gotoxy(30, 16);
 	cout << "Nhap gioi tinh: ";
 	do
 	{
+		gotoxy(46, 16);
 		getline(cin, dg.Phai);
 		Chuan_hoa_chu(dg.Phai);
 		if (dg.Phai != "Nam" && dg.Phai != "Nu")
 		{
-			gotoxy(30, 18);
-			cout << "Gioi tinh khong hop le! Xin nhap lai: ";
+			thong_bao("Gioi tinh khong hop le, xin nhap lai.");
 		}
 	}while (dg.Phai != "Nam" && dg.Phai != "Nu");
 	Chuan_hoa_chu(dg.Ho);
 	Chuan_hoa_chu(dg.Ten);	
-	thong_bao("Them thanh cong.");
-//	int c;
-//	do
-//	{
-//	if (kbhit()) c=getch();
-//	if(c==0) c=getch();
-//	if(c==27) return;
-//	} while(1);
-	
+	thong_bao("Them thanh cong.");	
 }
 // Them
 void Them_doc_gia(TREE &t, DOC_GIA dg, DS_DOC_GIA &ds_dg)
@@ -194,7 +192,6 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 		{
 			gotoxy(60,11);
 			cout << "THONG TIN DOC GIA";
-			//gotoxy(30,12);
 			Xuat_thong_tin_1_doc_gia(t->data);
 			gotoxy(59,20);
 			cout << "CHINH SUA THONG TIN";
@@ -203,10 +200,11 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 			cout << "Nhap ho: ";
 			do
 			{
-				Nhap_va_kiem_tra_bo_trong_du_lieu(t->data.Ho);
+				Nhap_va_kiem_tra_bo_trong_du_lieu(t->data.Ho, 39, 21);
 				if (Kiem_tra_nhap_ho_ten(t->data.Ho) == false)
 				{
-					cout << "Nhap lai di thang mat lon: ";	
+					thong_bao("Ten khong hop le, xin nhap lai.");	
+					gotoxy(39, 21);
 				}			
 			}while (Kiem_tra_nhap_ho_ten(t->data.Ho) == false);			
 			//getline(cin, t->data.Ho);
@@ -214,10 +212,11 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 			cout << "Nhap ten: ";
 			do
 			{
-				Nhap_va_kiem_tra_bo_trong_du_lieu(t->data.Ten);
+				Nhap_va_kiem_tra_bo_trong_du_lieu(t->data.Ten, 40, 22);
 				if (Kiem_tra_nhap_ho_ten(t->data.Ten) == false)
 				{
-					cout << "Nhap lai di thang mat lon: ";	
+					thong_bao("Ten khong hop le, xin nhap lai.");	
+					gotoxy(40, 22);
 				}	
 			}while (Kiem_tra_nhap_ho_ten(t->data.Ten) == false);
 			//getline(cin, t->data.Ten);
@@ -225,23 +224,23 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 			cout << "Nhap gioi tinh: ";
 			do
 			{
+				gotoxy(46, 23);
 				getline(cin, t->data.Phai);
 				Chuan_hoa_chu(t->data.Phai);
 				if (t->data.Phai != "Nam" && t->data.Phai != "Nu")
 				{
-					gotoxy(30,24);
-					cout << "Gioi tinh khong hop le. Xin nhap lai: ";
+					thong_bao("Gioi tinh khong hop le, xin nhap lai.");
 				}
 			}while (t->data.Phai != "Nam" && t->data.Phai != "Nu");
 			gotoxy(30,25);
 			cout << "Nhap trang thai the(0/1): ";
 			do
 			{
+				gotoxy(56, 25);
 				cin >> t->data.Trang_thai_the;
 				if (t->data.Trang_thai_the != 0 && t->data.Trang_thai_the != 1)
-				{
-					gotoxy(30,26);
-					cout << "Trang thai the khong hop le. Xin nhap lai: ";
+				{					
+					thong_bao("Trang thai the khong hop le, xin nhap lai.");
 				}
 			}while (t->data.Trang_thai_the != 0 && t->data.Trang_thai_the != 1);
 			Chuan_hoa_chu(t->data.Ho);

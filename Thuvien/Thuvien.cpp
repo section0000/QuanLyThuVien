@@ -419,7 +419,7 @@ int main()
 					DeMuc("           XOA DOC GIA");
 					int mathe;
 					gotoxy(30,9);
-					cout << "Nhap ma the doc gia: "; ShowCur(1);//cin.ignore(); 
+					cout << "Nhap ma the doc gia: "; ShowCur(1); cin.ignore(); 
 					Nhap_so(mathe);
 					if (Kiem_tra_trung_ma_the(t, mathe) == false)
 					{
@@ -438,7 +438,7 @@ int main()
 					DeMuc("   SACH DANG MUON CUA 1 DOC GIA");
 					int mathe;
 					gotoxy(30,9);
-					cout << "Nhap ma the doc gia: "; cin.ignore();
+					cout << "Nhap ma the doc gia: ";
 					Nhap_so(mathe);
 					if (Kiem_tra_trung_ma_the(t, mathe) == false)
 					{
@@ -472,8 +472,7 @@ int main()
 					DeMuc("        THONG TIN DOC GIA");
 					DOC_GIA a[ds_dg.so_luong];
 					int n = 0;
-					Xuat_thong_tin_doc_gia_theo_ma_the(t, a, ds_dg, n); //dem_dg=0; //dang test, chua hoan thien
-					//khung_xuat_thong_tin_dg(13, 7, 28);
+					Xuat_thong_tin_doc_gia_theo_ma_the(t, a, ds_dg, n);
 					break;
 				}
 				case 0 : thoat++; break;

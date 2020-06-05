@@ -135,7 +135,7 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 			string tensach;	
 			cout << "\nNhap ten dau sach can muon: ";
 			cin.ignore();
-			Nhap_va_kiem_tra_bo_trong_du_lieu(tensach);
+			Nhap_va_kiem_tra_bo_trong_du_lieu(tensach, 28, 12);
 			Chuan_hoa_chu(tensach);
 			if (Kiem_tra_ten_sach(ds_dau_sach, tensach) == false)
 			{
@@ -163,7 +163,7 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 				Nhapmasach:			
 					cout << "\n(Go exit de huy tac vu muon sach)\n";
 					cout << "Nhap ma sach can muon: ";	
-					Nhap_va_kiem_tra_bo_trong_du_lieu(masach);
+					Nhap_va_kiem_tra_bo_trong_du_lieu(masach, 28, 12);
 					if (masach == "Exit" || masach == "exit")
 					{
 						return;
@@ -247,7 +247,7 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
 			cin.ignore();
 			do
 			{
-				Nhap_va_kiem_tra_bo_trong_du_lieu(tensach);
+				Nhap_va_kiem_tra_bo_trong_du_lieu(tensach, 28, 12);
 				Chuan_hoa_chu(tensach);			
 				if (Kiem_tra_ten_sach(ds_dau_sach, tensach) == false)
 				{
@@ -320,7 +320,7 @@ void Xu_li_lam_mat_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_
 				cin.ignore();
 				do
 				{
-					Nhap_va_kiem_tra_bo_trong_du_lieu(tensach);
+					Nhap_va_kiem_tra_bo_trong_du_lieu(tensach, 28, 12);
 					Chuan_hoa_chu(tensach);			
 					if (Kiem_tra_ten_sach(ds_dau_sach, tensach) == false)
 					{

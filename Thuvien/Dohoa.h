@@ -148,59 +148,17 @@ void thong_bao(string s)
 	system("pause"); textcolor(15);
 	xoa_thong_bao();
 }
-//void khung_xuat_thong_tin_dg()
-//{
-//	gotoxy(15,12); //15 27 48 64 86 98 108 
-//	cout <<"Ma the";
-//	gotoxy(27,12);
-//	cout<<"Ho ten";
-//	gotoxy(48,12);
-//	cout<<"Gioi tinh";
-//	gotoxy(64,12);//61
-//	cout<<"Trang thai the";
-//	gotoxy(86,12);
-//	cout<<"Dang muon";
-//	gotoxy(98,12);
-//	cout<<"Da muon";
-//	gotoxy(108,12);
-//	cout<<"So ngay qua han";
-//	for (int i=0; i<110; i++) {
-//		gotoxy(14+i,11);
-//		cout<<"_";
-//		gotoxy(14+i,13);
-//		cout<<"_";	
-//		gotoxy(14+i,35);
-//		cout<<"_";	
-//	}
-//	for (int i=0; i<24; i++) {
-//		gotoxy(13,12+i);
-//		cout<<"|";
-//		gotoxy(22,12+i);
-//		cout<<"|";
-//		gotoxy(46,12+i);
-//		cout<<"|";
-//		gotoxy(58,12+i);
-//		cout<<"|";
-//		gotoxy(83,12+i);
-//		cout<<"|";
-//		gotoxy(96,12+i);
-//		cout<<"|";
-//		gotoxy(106,12+i);
-//		cout<<"|";
-//		gotoxy(124,12+i);
-//		cout<<"|";
-//	}
-//	int c;
-//	do
-//	{
-//	if(kbhit())
-//	{
-//		c = getch();
-//		if(c==0) c=getch();
-//		if(c==27) break;
-//	}
-//	} while(1);
-//}
+void xoa_tuy_chon(int x, int y, int chieu_rong, int chieu_cao)
+{
+	for(int i=0; i<chieu_rong; i++)
+	{
+		for(int j=0; j<chieu_cao; j++)
+		{
+			gotoxy(x+i, y+j);
+			cout<<" ";
+		}
+	}
+}
 void khung_xuat_thong_tin_dg(int x, int y, int chieu_cao) // cot bat dau tu 13 - hang bat dau tu 11
 {
 	gotoxy(x+2,y+1); //15 27 48 64 86 98 108 - 12

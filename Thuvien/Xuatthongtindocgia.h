@@ -105,6 +105,7 @@ void Sap_xep_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], int &n) // Xuat theo the m
 void Xuat_thong_tin_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, int n)
 {
 	Sap_xep_doc_gia_theo_ma_the(t, a, n);
+	Tinh_ngay_qua_han_cua_cac_doc_gia(t);
 	khung_xuat_thong_tin_dg(13, 7, 28);
 	int dem=0;
 	int c;
@@ -179,6 +180,7 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 	int c;
 	int dem=0;
 	khung_xuat_thong_tin_dg(13, 7, 28);
+	Tinh_ngay_qua_han_cua_cac_doc_gia(t);
 	Sap_xep_doc_gia_theo_ho_ten(t, a, n);
 	
 	for (int i = 0; i < ds_dg.so_luong; i++) // do n = ds_dg.so_luong; // dang test
