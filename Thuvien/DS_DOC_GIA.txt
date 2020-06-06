@@ -1,36 +1,9 @@
-28
+29
 1668
 Pham Bang
 Bang
 Nu
 1
-3
-NCLH1
-6
-6
-2020
-0
-0
-0
-Lao Hac
-0
-TTKB2
-6
-6
-2020
-0
-0
-0
-Bleach
-2
-AAAA1
-6
-6
-2020
-0
-0
-0
-Than Bai
 0
 3753
 Nguyen Le Kim
@@ -95,15 +68,6 @@ Chau
 Nu
 1
 0
-TTKB1
-6
-6
-2020
-6
-6
-2020
-Bleach
-1
 10211
 Ha Thi Kim
 Thanh

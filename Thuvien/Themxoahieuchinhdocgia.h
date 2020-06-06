@@ -80,7 +80,7 @@ void Chuan_hoa_chu(string &a)
 		}
 	}
 }
-bool Kiem_tra_nhap_ho_ten(string hoten) // Doi voi doc gia: Chi cho nhap chu cai va khoang trang. Doi voi tac gia: Co the nhap "., -, &" (VD: Robert M. Pirsig, Randy Pausch & Jeffrey Zaslow, Antoine de Saint-ExupÃ©ry,...)
+bool Kiem_tra_nhap_ho_ten(string hoten) // Doi voi doc gia: Chi cho nhap chu cai va khoang trang. Doi voi tac gia: Co the nhap "., -, &" (VD: Robert M. Pirsig, Randy Pausch & Jeffrey Zaslow, Antoine de Saint-Exup�ry,...)
 {
 	for (int i = 0; i < hoten.length(); i++)
 	{
@@ -133,8 +133,7 @@ void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 		Nhap_va_kiem_tra_bo_trong_du_lieu(dg.Ten, 40, 14);
 		if (Kiem_tra_nhap_ho_ten(dg.Ten) == false)
 		{
-			thong_bao("Ten khong hop le, xin nhap lai.");
-			xoa_man_hinh(40, 14, 80, 1);	
+			thong_bao("Ten khong hop le, xin nhap lai.");	
 			gotoxy(40, 14);			
 		}
 		
@@ -150,8 +149,6 @@ void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 		if (dg.Phai != "Nam" && dg.Phai != "Nu")
 		{
 			thong_bao("Gioi tinh khong hop le, xin nhap lai.");
-			xoa_man_hinh(46, 16, 80, 1);
-			gotoxy(46, 16);	
 		}
 	}while (dg.Phai != "Nam" && dg.Phai != "Nu");
 	Chuan_hoa_chu(dg.Ho);
@@ -207,8 +204,7 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 				if (Kiem_tra_nhap_ho_ten(t->data.Ho) == false)
 				{
 					thong_bao("Ten khong hop le, xin nhap lai.");	
-					xoa_man_hinh(39, 21, 80, 1);
-					gotoxy(39, 21);	
+					gotoxy(39, 21);
 				}			
 			}while (Kiem_tra_nhap_ho_ten(t->data.Ho) == false);			
 			//getline(cin, t->data.Ho);
@@ -219,8 +215,7 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 				Nhap_va_kiem_tra_bo_trong_du_lieu(t->data.Ten, 40, 22);
 				if (Kiem_tra_nhap_ho_ten(t->data.Ten) == false)
 				{
-					thong_bao("Ten khong hop le, xin nhap lai.");
-					xoa_man_hinh(40, 22, 80, 1);	
+					thong_bao("Ten khong hop le, xin nhap lai.");	
 					gotoxy(40, 22);
 				}	
 			}while (Kiem_tra_nhap_ho_ten(t->data.Ten) == false);
@@ -235,8 +230,6 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 				if (t->data.Phai != "Nam" && t->data.Phai != "Nu")
 				{
 					thong_bao("Gioi tinh khong hop le, xin nhap lai.");
-					xoa_man_hinh(62, 23, 80, 1);
-					gotoxy(62, 23);	
 				}
 			}while (t->data.Phai != "Nam" && t->data.Phai != "Nu");
 			gotoxy(30,25);
@@ -248,8 +241,6 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 				if (t->data.Trang_thai_the != 0 && t->data.Trang_thai_the != 1)
 				{					
 					thong_bao("Trang thai the khong hop le, xin nhap lai.");
-					xoa_man_hinh(82, 25, 80, 1);
-					gotoxy(82, 25);	
 				}
 			}while (t->data.Trang_thai_the != 0 && t->data.Trang_thai_the != 1);
 			Chuan_hoa_chu(t->data.Ho);
