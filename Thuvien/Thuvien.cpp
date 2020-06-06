@@ -598,7 +598,7 @@ int main()
 				case 2:
 				{
 					ve_lai_man_hinh();
-					DeMuc("        XOA SACH THUOC DAU SACH");
+					DeMuc("     XOA SACH THUOC DAU SACH");
 					Xoa_sach(ds_dms, ds_dau_sach);
 					break;
 				}
@@ -656,9 +656,60 @@ int main()
 				{
 					ve_lai_man_hinh();
 					DeMuc("              TRA SACH");	
-					Tra_sach(t, ds_dau_sach, ds_dms);
+					//Tra_sach(t, ds_dau_sach, ds_dms);
+					int mathe;
+					gotoxy(30, 9);
+					cout << "Nhap ma the doc gia: "; ShowCur(1);
+					Nhap_so(mathe);
+					if (Kiem_tra_trung_ma_the(t, mathe) == false)
+					{
+						thong_bao("Doc gia khong co trong thu vien.");
+					}
+					else
+					{
+						Xu_li_tra_sach(t, ds_dau_sach, ds_dms, mathe);			
+					}
 					break;
 				}	
+				case 3:
+				{
+					ve_lai_man_hinh();
+					DeMuc("           LAM MAT SACH");
+					//Xu_li_lam_mat_sach(t, ds_dau_sach, ds_dms, a);	
+					//cout << "Xac nhan lam mat.\n";
+					int mathe;
+					gotoxy(30, 9);
+					cout << "Nhap ma the doc gia: "; ShowCur(1);
+					Nhap_so(mathe);
+					if (Kiem_tra_trung_ma_the(t, mathe) == false)
+					{
+						thong_bao("Doc gia khong co trong thu vien.");
+					}
+					else
+					{
+						Xu_li_lam_mat_sach(t, ds_dau_sach, ds_dms, mathe);
+						thong_bao("Xac nhan lam mat.");			
+					}		
+					break;
+				}
+				case 4:
+				{
+					ve_lai_man_hinh();
+					DeMuc("             DEN SACH");
+					int mathe;
+					gotoxy(30, 9);
+					cout << "Nhap ma the doc gia: "; ShowCur(1);
+					Nhap_so(mathe);
+					if (Kiem_tra_trung_ma_the(t, mathe) == false)
+					{
+						thong_bao("Doc gia khong co trong thu vien.");
+					}
+					else
+					{
+						Xu_li_tra_sach(t, ds_dau_sach, ds_dms, mathe);			
+					}
+					break;
+				}
 				case 0 : thoat++; break;
 			}
 			system("cls");

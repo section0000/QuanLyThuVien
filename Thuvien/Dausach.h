@@ -328,24 +328,31 @@ void Xuat_thong_tin_1_dau_sach_theo_hang(DAU_SACH *dau_sach, int dong_bat_dau, i
 	gotoxy(121, dong_bat_dau+dem);
 	cout << dau_sach->So_lan_muon;  
 }
-void Xuat_dms_cua_1_dau_sach(DS_DANH_MUC_SACH ds_dms)
+void Xuat_dms_cua_1_dau_sach(DS_DANH_MUC_SACH ds_dms, int dong_bat_dau)
 {
+	int dem=0;
 	for (NODE_DANH_MUC_SACH *k = ds_dms.pHead; k != NULL; k = k->pNext)
 	{
-		cout << "Ma sach: " << k->data.Ma_sach << endl;
+		gotoxy(30, dong_bat_dau+dem);
+		cout << k->data.Ma_sach << endl;
+		gotoxy(39, dong_bat_dau+dem);
+		cout << k->data.Vi_tri << endl << endl;
 		if (k->data.Trang_thai == 0)
 		{
-			cout << "Trang thai: " << k->data.Trang_thai << " (Cho muon duoc)" << endl;
+			gotoxy(82, dong_bat_dau+dem);
+			cout << k->data.Trang_thai << " (Cho muon duoc)" << endl;
 		}
 		else if (k->data.Trang_thai == 1)
 		{
-			cout << "Trang thai: " << k->data.Trang_thai << " (Da co nguoi muon)" << endl;
+			gotoxy(82, dong_bat_dau+dem);
+			cout << k->data.Trang_thai << " (Da co nguoi muon)" << endl;
 		}
 		else
 		{
-			cout << "Trang thai: " << k->data.Trang_thai << " (Sach da thanh ly)" << endl;
+			gotoxy(82, dong_bat_dau+dem);
+			cout << k->data.Trang_thai << " (Sach da thanh ly)" << endl;
 		}
-		cout << "Vi tri: " << k->data.Vi_tri << endl << endl;	
+		dem++;		
 	}
 }
 void Xuat_thong_tin_cac_dau_sach(DS_DAU_SACH ds_dau_sach)
@@ -367,7 +374,7 @@ void Xuat_thong_tin_cac_dau_sach(DS_DAU_SACH ds_dau_sach)
 					if (c==77 && i<ds_dau_sach.so_luong-1)
 					{
 						dem=-1; 
-						xoa_man_hinh(7, 10, 128, 37);
+						xoa_man_hinh(5, 7, 128, 30);
 						break;
 					}
 					if (c==75 && i>24) 
@@ -376,7 +383,7 @@ void Xuat_thong_tin_cac_dau_sach(DS_DAU_SACH ds_dau_sach)
 						//i=0;
 						if(i<50 && dem<=24) i=-1;
 						else if(i>49) i=i-50; 
-						xoa_man_hinh(7, 10, 128, 37);
+						xoa_man_hinh(5, 7, 128, 30);
 						break;
 					}
 					if (c==27) 
@@ -577,11 +584,16 @@ void Xoa_sach(DS_DANH_MUC_SACH &ds_dms, DS_DAU_SACH ds_dau_sach)
 	{
 		if (ds_dau_sach.list[i]->ISBN == isbn)
 		{
-			cout << "\tDANH MUC SACH TUONG UNG\n";
-			Xuat_dms_cua_1_dau_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach);
+			gotoxy(30, 10);
+			cout << "Ten sach: " << ds_dau_sach.list[i]->Ten_sach;
+			gotoxy(60, 12);
+			cout << "DANH MUC SACH";
+			khung_xuat_dms(27, 13, 20);
+			Xuat_dms_cua_1_dau_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, 16);
 			string a;
+			gotoxy(30, 35);
 			cout << "Nhap ma sach: ";
-			Nhap_va_kiem_tra_bo_trong_du_lieu(a,12 ,12);
+			Nhap_va_kiem_tra_bo_trong_du_lieu(a, 44, 35);
 			if (Kiem_tra_trung_ma_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, a) == false)
 			{
 				thong_bao("Sach khong ton tai.");
@@ -618,16 +630,19 @@ void Hieu_chinh_sach(DS_DANH_MUC_SACH &ds_dms, DS_DAU_SACH ds_dau_sach)
 	{
 		if (ds_dau_sach.list[i]->ISBN == isbn)
 		{
-			cout << "\tTHONG TIN SACH\n";
-			Xuat_thong_tin_1_dau_sach(ds_dau_sach.list[i]);
-			cout << "\tDANH MUC SACH TUONG UNG\n";
-			Xuat_dms_cua_1_dau_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach);
+			gotoxy(30, 10);
+			cout<<"Ten sach: " << ds_dau_sach.list[i]->Ten_sach;
+			gotoxy(60, 12);
+			cout << "DANH MUC SACH";
+			khung_xuat_dms(27, 13, 20);
+			Xuat_dms_cua_1_dau_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, 16);
 			string a;
+			gotoxy(30, 35);
 			cout << "Nhap ma sach: ";
-			Nhap_va_kiem_tra_bo_trong_du_lieu(a, 23, 23);
+			Nhap_va_kiem_tra_bo_trong_du_lieu(a, 44, 35);
 			if (Kiem_tra_trung_ma_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, a) == false)
 			{
-				cout << "Sach khong ton tai.\n";
+				thong_bao("Sach khong ton tai.");
 				return;
 			}
 			for (NODE_DANH_MUC_SACH *k = ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.pHead; k != NULL; k = k->pNext)
@@ -636,35 +651,49 @@ void Hieu_chinh_sach(DS_DANH_MUC_SACH &ds_dms, DS_DAU_SACH ds_dau_sach)
 				{
 					//cout << "Nhap lai ma moi: ";
 					//getline(cin, k->data.Ma_sach);
-					cout << "Nhap trang thai sach: ";
+					xoa_man_hinh(27, 12, 85, 25);
+					gotoxy(30, 12);
+					cout<<"0: Cho muon duoc";
+					gotoxy(30, 13);
+					cout<<"1: Da co nguoi muon";
+					gotoxy(30, 14);
+					cout<<"2: Sach da thanh ly";
+					gotoxy(30, 16);
+					cout << "Nhap trang thai sach(0/1/2): ";
 					do
 					{
 						cin >> k->data.Trang_thai;
-						if (k->data.Trang_thai == 0)
+						if (k->data.Trang_thai != 0 && k->data.Trang_thai != 1 && k->data.Trang_thai != 2)
 						{
-							cout << "=> Cho muon duoc.\n";
-							break;
+							thong_bao("Ma sach khong hop le, xin nhap lai.");
+							gotoxy(59, 16);
+//							gotoxy(30, 13);
+//							cout << "=> Cho muon duoc.\n";
+//							break;
 						}
-						else if (k->data.Trang_thai == 1)
-						{
-							cout << "=> Da co nguoi muon.\n";
-							break;
-						}
-						else if (k->data.Trang_thai == 2)
-						{
-							cout << "=> Sach da thanh ly.\n";
-							break;
-						}
-						else
-						{
-							cout << "Ma sach khong hop le. Xin nhap lai.\n";
-							cout << "Nhap lai ma sach: ";
-						}
+//						else if (k->data.Trang_thai == 1)
+//						{
+//							gotoxy(30, 13);
+//							cout << "=> Da co nguoi muon.\n";
+//							break;
+//						}
+//						else if (k->data.Trang_thai == 2)
+//						{
+//							gotoxy(30, 13);
+//							cout << "=> Sach da thanh ly.\n";
+//							break;
+//						}
+//						else
+//						{
+//							thong_bao("Ma sach khong hop le, xin nhap lai.");
+//							gotoxy(52, 12);
+//						}
 					}while (k->data.Trang_thai != 0 && k->data.Trang_thai != 1 && k->data.Trang_thai != 2);
+					gotoxy(30, 18);
 					cout << "Nhap vi tri: ";
 					cin.ignore();
-					Nhap_va_kiem_tra_bo_trong_du_lieu(k->data.Vi_tri, 30, 20);
-					cout << "Hieu chinh thanh cong.\n";
+					Nhap_va_kiem_tra_bo_trong_du_lieu(k->data.Vi_tri, 43, 18);
+					thong_bao("Hieu chinh thanh cong.");
 					return;
 				}
 			}
@@ -721,10 +750,10 @@ void Xuat_DS_Theo_Tung_The_Loai(DS_DAU_SACH ds)
         return;
     }
     Sap_Xep_Dau_Sach_Theo_Ten(ds);
-    string the_loai[100]; // Tao 1 mang chua toi da 100 the loai 
-    int soluong[100]; // So luong sach cua tung the loai
-	int h = 0; // So luong the loai hien co    
-	the_loai[0] = ds.list[0]->The_loai; // The loai dau tien = the loai cua dau sach dau tien trong danh sach dau sach 
+    string the_loai[100]; 					// Tao 1 mang chua toi da 100 the loai 
+    int soluong[100]; 						// So luong sach cua tung the loai
+	int h = 0; 								// So luong the loai hien co    
+	the_loai[0] = ds.list[0]->The_loai; 	// The loai dau tien = the loai cua dau sach dau tien trong danh sach dau sach 
     h=1;  
     for(int i=1; i<ds.so_luong; i++)
     {
@@ -747,7 +776,7 @@ void Xuat_DS_Theo_Tung_The_Loai(DS_DAU_SACH ds)
             	dem_ds++;
         	}
 
-        if(dem_hang>24 || dem_ds==ds.so_luong-1)
+        if(dem_hang==25 || dem_ds==ds.so_luong)
         {
         	do
 			{
@@ -757,7 +786,7 @@ void Xuat_DS_Theo_Tung_The_Loai(DS_DAU_SACH ds)
 					if (c==77 && dem_ds<ds.so_luong)
 					{
 						dem_hang=0; 
-						xoa_man_hinh(7, 10, 128, 37);
+						xoa_man_hinh(5, 7, 128, 30);
 						break;
 					}
 					if (c==75 && dem_ds>25) 
@@ -765,8 +794,8 @@ void Xuat_DS_Theo_Tung_The_Loai(DS_DAU_SACH ds)
 						dem_hang=0;
 						dem_ds=0;
 						i=0;
-						j=0;
-						xoa_man_hinh(7, 10, 128, 37);
+						j=-1;
+						xoa_man_hinh(5, 7, 128, 30);
 						break;
 					}
 					if (c==27) 
@@ -776,8 +805,8 @@ void Xuat_DS_Theo_Tung_The_Loai(DS_DAU_SACH ds)
 					}
 				} 
 			} while(1);
-			khung_xuat_thong_tin_ds(5, 7, 28);
-			if(c==27) return;		
+			if(c==27) return;
+			khung_xuat_thong_tin_ds(5, 7, 28);		
 		}
 	
 		}

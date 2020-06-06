@@ -123,7 +123,7 @@ void Xuat_thong_tin_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 					if (c==77 && i<ds_dg.so_luong-1)
 					{
 						dem=-1; 
-						xoa_man_hinh(15, 10, 128, 34);
+						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
 					if (c==75 && i>25) 
@@ -132,7 +132,7 @@ void Xuat_thong_tin_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 						//i=0;
 						if(i<50 && dem<=24) i=-1;
 						else if(i>49) i=i-50; 
-						xoa_man_hinh(15, 10, 128, 34);
+						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
 					if (c==27) 
@@ -197,7 +197,7 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 					if (c==77 && i<ds_dg.so_luong-1)
 					{
 						dem=-1; 
-						xoa_man_hinh(15, 10, 128, 34);
+						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
 					if (c==75 && i>25) 
@@ -206,7 +206,7 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 						//i=0;
 						if(i<50 && dem<=24) i=-1;
 						else if(i>49) i=i-50; 
-						xoa_man_hinh(15, 10, 128, 34);
+						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
 					if (c==27) 
@@ -235,7 +235,7 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 }
 void Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, DS_MUON_TRA ds_mt, TREE t)
 {
-	gotoxy(20,12);
+	gotoxy(20,11);
 	cout << "DANH SACH SACH DANG MUON CUA DOC GIA: " << t->data.Ho << " " << t->data.Ten << endl;
 //	gotoxy(20,14);
 //	cout<<"Ma sach \tNgay muon \tTen sach \t\t\t\tTrang thai sach";
@@ -248,21 +248,20 @@ khung_sach_dang_muon();
 			string tensachtam;
 			tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
 			dem++;
-			gotoxy(20,15+dem);
+			gotoxy(20,14+dem);
 	cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< tensachtam;
 			if (k->data.Trang_thai == 0)
 			{
-				gotoxy(96,15+dem);
+				gotoxy(96,14+dem);
 				cout << k->data.Trang_thai << " (Dang muon)";	
 			}
 			else if (k->data.Trang_thai == 2)
 			{
-				gotoxy(96,15+dem);
+				gotoxy(96,14+dem);
 				cout << k->data.Trang_thai << " (Da lam mat)";	
 			}
 		}
 	}
-	thong_bao("                                     ");
 }
 void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, TREE t, int mathe)
 {
@@ -277,6 +276,7 @@ void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, TRE
 				return;
 			}
 			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
+			thong_bao("                                     ");
 		}
 		Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->pRight, mathe);
 	}
@@ -337,7 +337,7 @@ void Xuat_danh_sach_doc_gia_qua_han_theo_thoi_gian_giam_dan(TREE t, DS_DOC_GIA d
 					if (c==77 && i<ds_dg.so_luong-1)
 					{
 						dem=-1; 
-						xoa_man_hinh(15, 10, 128, 34);
+						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
 					if (c==75 && i>25) 
@@ -346,7 +346,7 @@ void Xuat_danh_sach_doc_gia_qua_han_theo_thoi_gian_giam_dan(TREE t, DS_DOC_GIA d
 						//i=0;
 						if(i<50 && i>25) i=0;
 						else i=i-50; 
-						xoa_man_hinh(15, 10, 128, 34);
+						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
 //					if (c==27) 

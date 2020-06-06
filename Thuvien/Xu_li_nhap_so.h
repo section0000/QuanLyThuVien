@@ -22,7 +22,7 @@ void Nhap_so(int &n)
 		if (retype == true)
 		{
 			ShowCur(1);
-			xoa_tuy_chon(30, 9, 90, 1);
+			xoa_man_hinh(30, 9, 90, 1);
 			gotoxy(30, 9);
 			cout << "Nhap ma the doc gia: ";
 			gotoxy(51, 9);
@@ -37,7 +37,7 @@ void Nhap_so(int &n)
 //        		cout << "Nhap lai: ";
 				thong_bao("Khong duoc bo trong du lieu."); 
 				ShowCur(1);
-				xoa_tuy_chon(30, 9, 90, 1);
+				xoa_man_hinh(30, 9, 90, 1);
 				gotoxy(30, 9);
 				cout << "Nhap ma the doc gia: ";
 				gotoxy(51, 9);
@@ -99,7 +99,7 @@ void Nhap_so(int &n)
         {
         	// Thong bao loi
         	thong_bao("Ma so khong hop le.");
-        	xoa_tuy_chon(30, 9, 90, 1);
+        	xoa_man_hinh(30, 9, 90, 1);
 			gotoxy(30, 9);
 			cout << "Nhap ma the doc gia: ";
 			gotoxy(51, 9);

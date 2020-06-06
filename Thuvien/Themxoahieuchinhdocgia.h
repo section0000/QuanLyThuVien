@@ -100,7 +100,7 @@ void Nhap_va_kiem_tra_bo_trong_du_lieu(string &s, int x, int y) // x,y la noi co
 		do
 		{
 			thong_bao("Khong duoc bo trong du lieu.");
-			xoa_tuy_chon(x, y, 80, 1);
+			xoa_man_hinh(x, y, 80, 1);
 			gotoxy(x, y);
 			getline(cin, s);
 		}while (s == "");
@@ -121,7 +121,7 @@ void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 		if (Kiem_tra_nhap_ho_ten(dg.Ho) == false)
 		{
 			thong_bao("Ten khong hop le, xin nhap lai.");
-			xoa_tuy_chon(39, 12, 80, 1);
+			xoa_man_hinh(39, 12, 80, 1);
 			gotoxy(39, 12);	
 		}	
 	}while (Kiem_tra_nhap_ho_ten(dg.Ho) == false);

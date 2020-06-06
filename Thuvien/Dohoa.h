@@ -1,6 +1,5 @@
 #ifndef Dohoa
 #define Dohoa
-
 #include <graphics.h>
 //#include <string>
 //#include <iostream>
@@ -61,15 +60,16 @@ int whereY()
 	return -1;
 }
 void xoa_man_hinh(int x, int y, int rong, int cao)
-  {
-  	for(int i=x; i<=rong; i++) 
-  	{
-		for(int j=y; j<=cao; j++) 
+{
+	for(int i=0; i<rong; i++)
+	{
+		for(int j=0; j<cao; j++)
 		{
-			gotoxy(i,j); cout<<" ";	
-		}	
+			gotoxy(x+i, y+j);
+			cout<<" ";
+		}
 	}
-  }
+}
 void khung_vien()
 {
 	for (int i=0; i<=133; i++)
@@ -135,7 +135,7 @@ void xoa_thong_bao()
 {
 	for (int i=2; i<120; i++)
 	{
-		gotoxy(i, 36);
+		gotoxy(i, 37);
 		cout<<" ";
 	}
 }
@@ -143,22 +143,22 @@ void thong_bao(string s)
 {
 	//ShowCur(0);
 	xoa_thong_bao();
-	gotoxy(3, 36); textcolor(10); 
+	gotoxy(3, 37); textcolor(10); 
 	cout<<"THONG BAO: "<<s<<" "; 
 	system("pause"); textcolor(15);
 	xoa_thong_bao();
 }
-void xoa_tuy_chon(int x, int y, int chieu_rong, int chieu_cao)
-{
-	for(int i=0; i<chieu_rong; i++)
-	{
-		for(int j=0; j<chieu_cao; j++)
-		{
-			gotoxy(x+i, y+j);
-			cout<<" ";
-		}
-	}
-}
+//void xoa_tuy_chon(int x, int y, int chieu_rong, int chieu_cao)
+//{
+//	for(int i=0; i<chieu_rong; i++)
+//	{
+//		for(int j=0; j<chieu_cao; j++)
+//		{
+//			gotoxy(x+i, y+j);
+//			cout<<" ";
+//		}
+//	}
+//}
 void khung_xuat_thong_tin_dg(int x, int y, int chieu_cao) // cot bat dau tu 13 - hang bat dau tu 11
 {
 	gotoxy(x+2,y+1); //15 27 48 64 86 98 108 - 12
@@ -214,26 +214,26 @@ void khung_xuat_thong_tin_dg(int x, int y, int chieu_cao) // cot bat dau tu 13 -
 }
 void khung_sach_dang_muon()
 {
-	gotoxy(20,14);
+	gotoxy(20,13);
 	cout<<"Ma sach \tNgay muon \tTen sach \t\t\t\t\tTrang thai sach";	
 	for (int i=0; i<93; i++) { 
-		gotoxy(19+i,13);
+		gotoxy(19+i,12);
 		cout<<"_";
-		gotoxy(19+i,15);
+		gotoxy(19+i,14);
 		cout<<"_";	
-		gotoxy(19+i,19);
+		gotoxy(19+i,18);
 		cout<<"_";	
 	}
 	for (int i=0; i<6; i++) { 
-		gotoxy(18,14+i); 
+		gotoxy(18,13+i); 
 		cout<<"|";
-		gotoxy(28,14+i); 
+		gotoxy(28,13+i); 
 		cout<<"|";
-		gotoxy(43,14+i); 
+		gotoxy(43,13+i); 
 		cout<<"|";
-		gotoxy(94,14+i); 
+		gotoxy(94,13+i); 
 		cout<<"|";
-		gotoxy(112,14+i);
+		gotoxy(112,13+i);
 		cout<<"|";
 	}
 }
@@ -280,7 +280,33 @@ void khung_xuat_thong_tin_ds(int x, int y, int chieu_cao) // cot bat dau tu 10 -
 		cout<<"|";
 	}
 }
-
+void khung_xuat_dms(int x, int y, int chieu_cao)
+{
+	gotoxy(x+2,y+1);
+	cout <<"Ma sach";
+	gotoxy(x+27,y+1);
+	cout<<"Vi tri";
+	gotoxy(x+60,y+1);
+	cout<<"Trang thai";
+	for (int i=0; i<79; i++) { 
+		gotoxy(x+1+i,y);
+		cout<<"_";
+		gotoxy(x+1+i,y+2);
+		cout<<"_";	
+		gotoxy(x+1+i,y+chieu_cao);
+		cout<<"_";	
+	}
+	for (int i=0; i<chieu_cao; i++) { 
+		gotoxy(x,y+1+i);
+		cout<<"|";
+		gotoxy(x+10,y+1+i);
+		cout<<"|";
+		gotoxy(x+50,y+1+i);
+		cout<<"|";
+		gotoxy(x+80,y+1+i);
+		cout<<"|";
+	}
+}
 
 
 
@@ -469,11 +495,13 @@ do {
   } while (1);
 }
 //menu muon tra
-const int so_item_mt = 2;
+const int so_item_mt =4;
 const int dong_menu_mt =8;
 const int cot_menu_mt = 51 ;
 char menu_mt [so_item_mt][50] = {"             MUON SACH            ",
-				  			     "             TRA SACH             "};
+				  			     "             TRA SACH             ",
+				  			     "           LAM MAT SACH           ",
+				  			     "             DEN SACH             "};
 int MenuDongMT(char td [so_item_mt][50]){
 	DeMuc("          MUON TRA SACH          ");
 	khung_menu();
