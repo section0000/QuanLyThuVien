@@ -85,7 +85,6 @@ void Chuyen_doc_gia_sang_mang(TREE t, DOC_GIA a[], int &n)
 		Chuyen_doc_gia_sang_mang(t->pRight, a, n);
 	}
 }
-//int dem_dg=0;
 void Sap_xep_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], int &n) // Xuat theo the ma the tang dan
 {
     Chuyen_doc_gia_sang_mang(t, a, n);
@@ -104,47 +103,50 @@ void Sap_xep_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], int &n) // Xuat theo the m
 }
 void Xuat_thong_tin_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, int n)
 {
-	Sap_xep_doc_gia_theo_ma_the(t, a, n);
+	huong_dan_xem_danh_sach();
 	Tinh_ngay_qua_han_cua_cac_doc_gia(t);
+	Sap_xep_doc_gia_theo_ma_the(t, a, n);
 	khung_xuat_thong_tin_dg(13, 7, 28);
-	int dem=0;
+	int dem=0; //dem so hang danh sach xuat ra
 	int c;
-	for (int i = 0; i < ds_dg.so_luong; i++) // do n = ds_dg.so_luong; // dang test
+	for (int i = 0; i < ds_dg.so_luong; i++) 
 	{	
 		Xuat_thong_tin_1_doc_gia_theo_hang(a[i], 10, dem);
 		if(dem==24 || i==ds_dg.so_luong-1) 
 		{
 			do
 			{
-				
 				if(kbhit()) {
 					 c=getch();
 					 if (c==0) c=getch();
-					if (c==77 && i<ds_dg.so_luong-1)
+					if (c==77 && i<ds_dg.so_luong-1) // neu chua xuat danh sach ra het thi cho phep bam mui ten qua phai
 					{
 						dem=-1; 
 						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
-					if (c==75 && i>25) 
+					if (c==75 && i>24) // quay ve trang truoc do
 					{
 						dem=-1;
-						//i=0;
-						if(i<50 && dem<=24) i=-1;
-						else if(i>49) i=i-50; 
+						if(i<50 && dem<=24) 
+							i=-1;
+						else if(i>49) 
+							i=i-((i%25)+26); 
 						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
 					if (c==27) 
 					{
-						dem=-1; break;
+						break;
 					}
-					//break;
 				}
-				
 			} while(1);
 			khung_xuat_thong_tin_dg(13, 7, 28);
-			if(c==27) return;
+			if(c==27) 
+			{
+				huong_dan();
+				return;
+			}
 		}
 		dem++;
 	}
@@ -179,18 +181,17 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 {
 	int c;
 	int dem=0;
+	huong_dan_xem_danh_sach();
 	khung_xuat_thong_tin_dg(13, 7, 28);
 	Tinh_ngay_qua_han_cua_cac_doc_gia(t);
 	Sap_xep_doc_gia_theo_ho_ten(t, a, n);
-	
-	for (int i = 0; i < ds_dg.so_luong; i++) // do n = ds_dg.so_luong; // dang test
+	for (int i = 0; i < ds_dg.so_luong; i++)
 	{	
 		Xuat_thong_tin_1_doc_gia_theo_hang(a[i], 10, dem);
 		if(dem==24 || i==ds_dg.so_luong-1) 
 		{
 			do
 			{
-				
 				if(kbhit()) {
 					 c=getch();
 					 if (c==0) c=getch();
@@ -200,46 +201,37 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
-					if (c==75 && i>25) 
+					if (c==75 && i>24) 
 					{
 						dem=-1;
-						//i=0;
-						if(i<50 && dem<=24) i=-1;
-						else if(i>49) i=i-50; 
+						if(i<50 && dem<=24) 
+							i=-1;
+						else if(i>49) 
+							i=i-((i%25)+26); 
 						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
 					if (c==27) 
 					{
-						dem=-1; break;
+						break;
 					}
-					//break;
 				}
-				
 			} while(1);
 			khung_xuat_thong_tin_dg(13, 7, 28);
-			if(c==27) return;
+			if(c==27) 
+			{
+				huong_dan();
+				return;
+			}
 		}
 		dem++;
 	}
-	
-//	do
-//	{
-//	if(kbhit())
-//	{
-//		c = getch();
-//		if(c==0) c=getch();
-//		if(c==27) break;
-//	}
-//	} while(1);	
 }
 void Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, DS_MUON_TRA ds_mt, TREE t)
 {
 	gotoxy(20,11);
 	cout << "DANH SACH SACH DANG MUON CUA DOC GIA: " << t->data.Ho << " " << t->data.Ten << endl;
-//	gotoxy(20,14);
-//	cout<<"Ma sach \tNgay muon \tTen sach \t\t\t\tTrang thai sach";
-khung_sach_dang_muon();
+	khung_sach_dang_muon();
 	int dem=0;
 	for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
 	{
@@ -317,6 +309,7 @@ void Xuat_danh_sach_doc_gia_qua_han_theo_thoi_gian_giam_dan(TREE t, DS_DOC_GIA d
 {
 	int c;
 	int dem=0;
+	huong_dan_xem_danh_sach();
 	khung_xuat_thong_tin_dg(13, 7, 28);
 	Tinh_ngay_qua_han_cua_cac_doc_gia(t);
 	int n = 0;
@@ -326,50 +319,45 @@ void Xuat_danh_sach_doc_gia_qua_han_theo_thoi_gian_giam_dan(TREE t, DS_DOC_GIA d
 	for (int i = 0; i < n; i++)
 	{
 		Xuat_thong_tin_1_doc_gia_theo_hang(a[i], 10, dem);
-		if(dem==24 || i==ds_dg.so_luong-1) 
+		if(dem==24 || i==n-1) 
 		{
 			do
 			{
-				
 				if(kbhit()) {
 					 c=getch();
 					 if (c==0) c=getch();
-					if (c==77 && i<ds_dg.so_luong-1)
+					if (c==77 && i<n-1)
 					{
 						dem=-1; 
 						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
-					if (c==75 && i>25) 
+					if (c==75 && i>24) 
 					{
 						dem=-1;
-						//i=0;
-						if(i<50 && i>25) i=0;
-						else i=i-50; 
+						if(i<50 && dem<=24) 
+							i=-1;
+						else if(i>49) 
+							i=i-((i%25)+26); 
 						xoa_man_hinh(13, 7, 120, 30);
 						break;
 					}
-//					if (c==27) 
-//					{
-//						dem=-1; break;
-//					}
-					//break;
+					if (c==27) 
+					{
+					 	break;
+					}
 				}
 				
 			} while(1);
 			khung_xuat_thong_tin_dg(13, 7, 28);
+			if(c==27) 
+			{
+				huong_dan_xem_danh_sach();
+				return;
+			}
 		}
 		dem++;
 	}
 	delete []a;
-	do
-	{
-	if(kbhit())
-	{
-		c = getch();
-		if(c==0) c=getch();
-		if(c==27) break;
-	}
-	} while(1);	
 }
 #endif

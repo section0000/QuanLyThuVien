@@ -1,4 +1,4 @@
-26
+28
 Phong Van
 VTDT
 Ma Vinh Thanh - Dan Thanh
@@ -345,7 +345,7 @@ Hang 2, Ngan 10
 NCLH2
 0
 Hang 2, Ngan 10
-Conan
+Tham Tu Lung Danh Conan
 APTX
 Gosho Aoyama
 Trinh Tham
@@ -393,3 +393,31 @@ Test
 2000
 0
 0
+Harry Potter
+HRPT
+J. K. Rowling
+Huyen Bi
+10000
+1997
+0
+0
+Sherlock Holmes
+SLHS
+Arthur Conan Doyle
+Trinh Tham
+3000
+1887
+1
+4
+SLHS0
+0
+hang 2, ngan 3
+SLHS1
+1
+hang 2, ngan 3
+SLHS2
+0
+hang 2, ngan 4
+SLHS3
+0
+hang 2, ngan 4

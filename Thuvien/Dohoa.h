@@ -15,18 +15,6 @@ void gotoxy(int x, int y)
 	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleCursorPosition(hConsoleOutput, Cursor_an_Pos);
 }
-//void SetColor(WORD color)
-//{
-//	HANDLE hConsoleOutput;
-//	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-//	CONSOLE_SCREEN_BUFFER_INFO screen_buffer_info;
-//	GetConsoleScreenBufferInfo(hConsoleOutput, &screen_buffer_info);
-//	WORD wAttributes = screen_buffer_info.wAttributes;
-//	color &= 0x000f;
-//	wAttributes &= 0xfff0;
-//	wAttributes |= color;
-//	SetConsoleTextAttribute(hConsoleOutput, wAttributes);
-//}
 void textcolor(int x)
 {
 	HANDLE mau;
@@ -109,8 +97,21 @@ void khung_menu()
 }
 void huong_dan()
 {
+	xoa_man_hinh(2, 39, 100, 1);
 	gotoxy(2, 39);
 	cout<<"Mui ten len xuong: Dieu khien thanh sang | Enter: Chon | Esc: Thoat";
+}
+void huong_dan_muon_sach()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Mui ten trai phai: Chuyen trang | Enter: Tiep tuc";
+}
+void huong_dan_xem_danh_sach()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Mui ten trai phai: Chuyen trang | Esc: Thoat";
 }
 void Normal () {
 	SetColor(15);
@@ -149,17 +150,6 @@ void thong_bao(string s)
 	system("pause"); textcolor(15);
 	xoa_thong_bao();
 }
-//void xoa_tuy_chon(int x, int y, int chieu_rong, int chieu_cao)
-//{
-//	for(int i=0; i<chieu_rong; i++)
-//	{
-//		for(int j=0; j<chieu_cao; j++)
-//		{
-//			gotoxy(x+i, y+j);
-//			cout<<" ";
-//		}
-//	}
-//}
 void khung_xuat_thong_tin_dg(int x, int y, int chieu_cao) // cot bat dau tu 13 - hang bat dau tu 11
 {
 	gotoxy(x+2,y+1); //15 27 48 64 86 98 108 - 12
@@ -202,16 +192,6 @@ void khung_xuat_thong_tin_dg(int x, int y, int chieu_cao) // cot bat dau tu 13 -
 		gotoxy(x+111,y+1+i);
 		cout<<"|";
 	}
-//	int c;
-//	do
-//	{
-//	if(kbhit())
-//	{
-//		c = getch();
-//		if(c==0) c=getch();
-//		if(c==27) break;
-//	}
-//	} while(1);
 }
 void khung_sach_dang_muon()
 {
@@ -309,11 +289,6 @@ void khung_xuat_dms(int x, int y, int chieu_cao)
 	}
 }
 
-
-
-
-
-
 const int Up = 72;
 const int Down = 80;
 //menu doc gia
@@ -331,8 +306,7 @@ int MenuDongDG(char td [so_item_dg][50]){
 	DeMuc("             DOC GIA              ");
 	khung_menu();
 	
-  Normal();
-  //system("cls");   
+  Normal();  
   int chon =0;
   int i; 
   for ( i=0; i< so_item_dg ; i++)
@@ -382,10 +356,10 @@ const int so_item_ds = 7;
 const int dong_menu_ds =8;
 const int cot_menu_ds = 51 ;
 char menu_ds [so_item_ds][50] = {"           THEM DAU SACH          ",
-			                  	 "        CHINH SUA DAU SACH        ",
-			                   	 "           XOA DAU SACH           ",
-			                  	 "      XUAT THONG TIN DAU SACH     ",
-								 "             TIM SACH             ",
+			                  	 "           XOA DAU SACH           ",
+			                   	 "        CHINH SUA DAU SACH        ",
+			                  	 "             TIM SACH             ",
+								 "      XUAT THONG TIN DAU SACH     ",
 								 "    XUAT DAU SACH THEO THE LOAI   ",
 								 " 10 DAU SACH DUOC MUON NHIEU NHAT "};
 int MenuDongDS(char td [so_item_ds][50]){
@@ -393,7 +367,6 @@ int MenuDongDS(char td [so_item_ds][50]){
 	khung_menu();
 	
   Normal();
-  //system("cls");   
   int chon =0;
   int i; 
   for ( i=0; i< so_item_ds ; i++)
@@ -449,8 +422,7 @@ int MenuDongDMS(char td [so_item_dms][50]){
 	DeMuc("          DANH MUC SACH           ");
 	khung_menu();
 	
-  Normal();
-  //system("cls");   
+  Normal();  
   int chon =0;
   int i; 
   for ( i=0; i< so_item_dms ; i++)
@@ -508,7 +480,6 @@ int MenuDongMT(char td [so_item_mt][50]){
 	khung_menu();
 	
   Normal();
-  //system("cls");   
   int chon =0;
   int i; 
   for ( i=0; i< so_item_mt ; i++)
@@ -561,12 +532,9 @@ const int cot_menu_thoat = 63 ;
 char menu_thoat [so_item_thoat][50] = {"   CO    ",
 				  			           "  KHONG  "};
 int MenuDongTHOAT(char td [so_item_thoat][50]){
-	//DeMuc("          MUON TRA SACH          ");
-	//khung_menu();
 gotoxy(54,23);
 cout<<"LUU DU LIEU TRUOC KHI THOAT?";
   Normal();
-  //system("cls");   
   int chon =0;
   int i; 
   for ( i=0; i< so_item_thoat ; i++)

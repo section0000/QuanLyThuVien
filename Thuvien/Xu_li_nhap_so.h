@@ -4,7 +4,7 @@
 #include<ctype.h>  // De lay ham isdigit()
 #include<sstream>  // De convert string sang int
 
-void Nhap_so(int &n)
+void Nhap_so(int &n, int x, int y) // x, y la toa do con tro quay ve de nhap lai sau khi thong bao
 {
 	string user_string_num = "";
 	
@@ -18,30 +18,21 @@ void Nhap_so(int &n)
 
     do
     {
-    	// cout << "Nhap so: " // Test chuong trinh thoi
 		if (retype == true)
 		{
 			ShowCur(1);
-			xoa_man_hinh(30, 9, 90, 1);
-			gotoxy(30, 9);
-			cout << "Nhap ma the doc gia: ";
-			gotoxy(51, 9);
-			//cout << "Nhap lai: ";
+			xoa_man_hinh(x, y, 80, 1);
+			gotoxy(x, y);
 		}
         do
         {
         	getline(cin, user_string_num);
         	if (user_string_num == "") // Kiem tra truong hop bo trong du lieu
         	{
-//        		cout << "=> Khong duoc bo trong du lieu.\n";
-//        		cout << "Nhap lai: ";
 				thong_bao("Khong duoc bo trong du lieu."); 
 				ShowCur(1);
-				xoa_man_hinh(30, 9, 90, 1);
-				gotoxy(30, 9);
-				cout << "Nhap ma the doc gia: ";
-				gotoxy(51, 9);
-				//cout << "Nhap lai: ";
+				xoa_man_hinh(x, y, 80, 1);
+				gotoxy(x, y);
 			}
 		}while (user_string_num == "");
 		for (int i = 0; i < user_string_num.size(); i++)
@@ -98,11 +89,9 @@ void Nhap_so(int &n)
         else
         {
         	// Thong bao loi
-        	thong_bao("Ma so khong hop le.");
-        	xoa_man_hinh(30, 9, 90, 1);
-			gotoxy(30, 9);
-			cout << "Nhap ma the doc gia: ";
-			gotoxy(51, 9);
+        	thong_bao("So khong hop le.");
+        	xoa_man_hinh(x, y, 80, 1);
+			gotoxy(x, y);
 //            cout << endl
 //                 << "So khong duoc phep chua khoang trang.\n"
 //                 << "So khong duoc phep chua chu cai.\n"
