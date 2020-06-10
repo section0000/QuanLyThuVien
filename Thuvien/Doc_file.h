@@ -110,6 +110,10 @@ void Load_file_dau_sach(DS_DAU_SACH &ds_dau_sach)
 				Them_vao_cuoi_danh_sach_dms(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, k);	// Them danh muc sach vao trong dau sach
 				ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.so_luong++;
 			}
+			if (sosachthuocdausach > 0)
+			{
+				ds_dau_sach.list[i]->Check = true;
+			}
 			ds_dau_sach.so_luong++;
 		}
 	}
