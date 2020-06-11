@@ -10,6 +10,7 @@ void Luu_1_doc_gia(DS_DAU_SACH ds_dau_sach, TREE t, ofstream &Fileout)
 	Fileout << t->data.Ten << endl;
 	Fileout << t->data.Phai << endl;
 	Fileout << t->data.Trang_thai_the << endl;
+	Fileout << t->data.ds_muon_tra_cua_doc_gia.so_luong << endl;
 	// Ghi danh sach sach dang muon
 	Fileout << t->data.So_luong_sach_dang_muon << endl;
 	for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
