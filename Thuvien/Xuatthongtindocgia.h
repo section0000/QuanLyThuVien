@@ -88,18 +88,56 @@ void Chuyen_doc_gia_sang_mang(TREE t, DOC_GIA a[], int &n)
 void Sap_xep_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], int &n) // Xuat theo the ma the tang dan
 {
     Chuyen_doc_gia_sang_mang(t, a, n);
-	for (int i = 0; i < n-1; i++)
+	struct Element_Stack	// Khai bao cau truc stack
 	{
-		for (int j = i + 1; j <= n-1; j++)
-		{
-			if (a[i].Ma_the > a[j].Ma_the)
-			{
-				DOC_GIA t = a[i];
-				a[i] = a[j];
-				a[j] = t;
-			}
-		}
-	}
+    	int left, right;
+  	};
+ 	Element_Stack Stack[MA_THE_MAX];	// So luong phan tu toi da cua stack
+  	int sp = 0;	// Con tro cua stack
+  	int i, j, left, right;
+	DOC_GIA pivot;	
+  	Stack[0].left = 0 ;   	// Chi so phan tu dau tien cua stack
+  	Stack[0].right = n-1;  	// Chi so phan tu cuoi cung cua stack
+  	do
+  	{ // Lay left, right tu stack ra
+    	left = Stack[sp].left; 
+		right = Stack[sp].right;
+    	sp--;	// Xoa 1 day phan tu khoi stack
+    	do
+    	{  // Phan doan day con a[left],..., a[right] thanh 2 day a[left],...,(pivot),...,a[right]
+			pivot = a[(left + right) / 2];  // Chon phan tu chinh giua cua day can sap xep lam pivot
+        	i = left; 
+			j = right;
+			do
+      		{  
+				while (a[i].Ma_the < pivot.Ma_the) 
+				{
+					i++; // Tim phan tu left dau tien >= pivot	
+				} 
+				while (a[j].Ma_the > pivot.Ma_the) 
+				{
+					j--; // Tim phan tu right dau tien <= pivot	
+				}
+				if (i <= j) // Doi cho 2 phan tu left right
+				{ 
+					DOC_GIA t = a[i];
+  					a[i] = a[j];
+  					a[j] = t;
+  					// Tang giam left, right de thuc hien tiep viec doi cho
+  					i++;  
+					j--;
+				}
+      		} while(i <= j);
+      		if (i < right)  // Phan thu 3 co tu 2 phan tu tro len
+      		{ 
+			  	// Dua vao stack chi so dau va chi so cuoi cua phan thu 3
+				sp++;
+				Stack[sp].left = i;
+				Stack[sp].right = right;
+      		}
+      		right = j ;  // Chuan bi vi tri de thiet lap phan co gia tri nho hon pivot
+    	}while(left < right);
+  }while(sp != -1);  // Ket thuc khi Stack rong
 }
 void Xuat_thong_tin_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, int n)
 {
@@ -164,18 +202,56 @@ string Noi_ho_ten(string ten, string ho)
 void Sap_xep_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], int &n)
 {
 	Chuyen_doc_gia_sang_mang(t, a, n);
-	for (int i = 0; i < n-1; i++)
+	struct Element_Stack	// Khai bao cau truc stack
 	{
-		for (int j = i + 1; j <= n-1; j++)
-		{
-			if (Noi_ho_ten(a[i].Ten, a[i].Ho) > Noi_ho_ten(a[j].Ten, a[j].Ho))
-			{
-				DOC_GIA t = a[i];
-				a[i] = a[j];
-				a[j] = t;
-			}
-		}
-	}
+    	int left, right;
+  	};
+ 	Element_Stack Stack[MA_THE_MAX];	// So luong phan tu toi da cua stack
+  	int sp = 0;	// Con tro cua stack
+  	int i, j, left, right;
+	DOC_GIA pivot;	
+  	Stack[0].left = 0 ;   	// Chi so phan tu dau tien cua stack
+  	Stack[0].right = n-1;  	// Chi so phan tu cuoi cung cua stack
+  	do
+  	{ // Lay left, right tu stack ra
+    	left = Stack[sp].left; 
+		right = Stack[sp].right;
+    	sp--;	// Xoa 1 day phan tu khoi stack
+    	do
+    	{  // Phan doan day con a[left],..., a[right] thanh 2 day a[left],...,(pivot),...,a[right]
+			pivot = a[(left + right) / 2];  // Chon phan tu chinh giua cua day can sap xep lam pivot
+        	i = left; 
+			j = right;
+			do
+      		{  
+				while (Noi_ho_ten(a[i].Ten, a[i].Ho) < Noi_ho_ten(pivot.Ten, pivot.Ho)) 
+				{
+					i++; // Tim phan tu left dau tien >= pivot	
+				} 
+				while (Noi_ho_ten(a[j].Ten, a[j].Ho) > Noi_ho_ten(pivot.Ten, pivot.Ho)) 
+				{
+					j--; // Tim phan tu right dau tien <= pivot	
+				}
+				if (i <= j) // Doi cho 2 phan tu left right
+				{ 
+					DOC_GIA t = a[i];
+  					a[i] = a[j];
+  					a[j] = t;
+  					// Tang giam left, right de thuc hien tiep viec doi cho
+  					i++;  
+					j--;
+				}
+      		} while(i <= j);
+      		if (i < right)  // Phan thu 3 co tu 2 phan tu tro len
+      		{ 
+			  	// Dua vao stack chi so dau va chi so cuoi cua phan thu 3
+				sp++;
+				Stack[sp].left = i;
+				Stack[sp].right = right;
+      		}
+      		right = j ;  // Chuan bi vi tri de thiet lap phan co gia tri nho hon pivot
+    	}while(left < right);
+  }while(sp != -1);  // Ket thuc khi Stack rong
 }
 void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, int n)
 {

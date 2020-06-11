@@ -80,7 +80,7 @@ void Chuan_hoa_chu(string &a)
 		}
 	}
 }
-bool Kiem_tra_nhap_ho_ten(string hoten) // Doi voi doc gia: Chi cho nhap chu cai va khoang trang. Doi voi tac gia: Co the nhap "., -, &" (VD: Robert M. Pirsig, Randy Pausch & Jeffrey Zaslow, Antoine de Saint-Exupéry,...)
+bool Kiem_tra_nhap_ho_ten(string hoten) // Chi cho nhap chu cai, khoang trang, va mot so ki tu dac biet nhu "., -, &" (VD: Robert M. Pirsig, Randy Pausch & Jeffrey Zaslow, Antoine de Saint-ExupÃ©ry,...)
 {
 	for (int i = 0; i < hoten.length(); i++)
 	{
