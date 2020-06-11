@@ -40,6 +40,7 @@ void Load_file_doc_gia(TREE &t, DS_DOC_GIA &ds_dg)
 			getline(Filein, dg.Ten);
 			getline(Filein, dg.Phai);
 			Filein >> dg.Trang_thai_the;
+			Filein >> dg.ds_muon_tra_cua_doc_gia.so_luong;
 			Them_doc_gia(t, dg, ds_dg); // Them doc gia vao cay
 			p = Tim_kiem_doc_gia(t, dg.Ma_the); // Lay thong tin doc gia do ra va doc thong tin tiep theo
 			p->data.Trang_thai_the = dg.Trang_thai_the;
@@ -63,7 +64,7 @@ void Load_file_doc_gia(TREE &t, DS_DOC_GIA &ds_dg)
 				NODE_MUON_TRA *muontra = Khoi_tao_node_mt(mt);
 				Them_vao_cuoi_danh_sach_mt(p->data.ds_muon_tra_cua_doc_gia, muontra);
 				p->data.So_luong_sach_dang_muon++;
-				p->data.ds_muon_tra_cua_doc_gia.so_luong++;
+				//p->data.ds_muon_tra_cua_doc_gia.so_luong++;
 			}
 		}
 	}
