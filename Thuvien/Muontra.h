@@ -89,19 +89,6 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 				cout << "Doc gia hien van chua muon sach nao.";
 			}
 			// Kiem tra so luong sach dang muon cua doc gia
-			/*int soluong = 0;
-			for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
-			{
-				if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2) // Dang muon hoac lam mat sach ma chua den <=> Chua tra sach
-				{
-					soluong++;
-					if (soluong == 3)
-					{
-						cout << "Doc gia chi duoc muon toi da 3 cuon sach.\n";
-						return;
-					}
-				}
-			}*/
 			if (t->data.So_luong_sach_dang_muon == 3) // Dang muon hoac lam mat sach ma chua den <=> Chua tra sach
 			{
 				gotoxy(30, 20);
@@ -175,7 +162,7 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 					cout << "DANH MUC SACH";
 					khung_xuat_dms(27, 13, 20);
 					Xuat_dms_cua_1_dau_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, 16);
-					if(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.so_luong == 0) //kiem tra dms cua dau sach co rong hay khong
+					if(ds_dau_sach.list[i]->Check == false) //kiem tra dms cua dau sach co rong hay khong
 					{
 						thong_bao("Dau sach hien khong co sach nao.");
 						return;
@@ -227,15 +214,6 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 								NGAY_THANG ngaymuon;
 								Lay_ngay_gio_he_thong(ngaymuon); // Lay ngay hien tai lam ngay muon
 								mt.Ngay_muon = ngaymuon;
-								/*// Test truong hop muon qua 7 ngay
-								cout << "\tNHAP NGAY MUON\n";
-								cout << "Nhap ngay: ";
-								cin >> ngaymuon.Ngay;
-								cout << "Nhap thang: ";
-								cin >> ngaymuon.Thang;
-								cout << "Nhap nam: ";
-								cin >> ngaymuon.Nam;
-								mt.Ngay_muon = ngaymuon;*/
 								NODE_MUON_TRA *p = Khoi_tao_node_mt(mt);
 								Them_vao_cuoi_danh_sach_mt(t->data.ds_muon_tra_cua_doc_gia, p);
 								t->data.So_luong_sach_dang_muon++;
@@ -269,17 +247,23 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
 			}
 			NGAY_THANG ngaytra;	// Dung de luu ngay tra
 			string tensach;
-			gotoxy(30, 20);	
+			gotoxy(30, 20);
+			cout<<"Go 'exit' de thoat.";
+			gotoxy(30, 21);	
 			cout << "Nhap ten sach can tra: ";
 			do
 			{
-				Nhap_va_kiem_tra_bo_trong_du_lieu(tensach, 53, 20);
+				Nhap_va_kiem_tra_bo_trong_du_lieu(tensach, 53, 21);
+				if(tensach == "exit" || tensach == "Exit")
+				{
+					return;
+				}
 				Chuan_hoa_chu(tensach);			
 				if (Kiem_tra_ten_sach(ds_dau_sach, tensach) == false)
 				{
 				thong_bao("Sai ten sach. Xin nhap lai.");
-				xoa_man_hinh(53, 20, 80, 1);
-				gotoxy(53, 20);
+				xoa_man_hinh(53, 21, 80, 1);
+				gotoxy(53, 21);
 				}				
 			}while (Kiem_tra_ten_sach(ds_dau_sach, tensach) == false);
 			// Duyet danh sach de tim ra dau sach co ten giong voi sach can tra
@@ -381,81 +365,5 @@ void Xu_li_lam_mat_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_
 		Xu_li_lam_mat_sach(t->pRight, ds_dau_sach, ds_dms, mathe);
 	}
 }	
-//void Tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms)
-//{
-//	int luachon;
-//	while(true)
-//	{
-//		system("cls");
-//		cout << "\t\tTRA SACH\n";
-//		cout << "\t1.Tra sach.\n";
-//		cout << "\t2.Lam mat sach.\n";
-//		cout << "\t3.Den sach.\n";
-//		cout << "\t0.Ket thuc.\n";
-//		cout << "=============================\n";
-//		cout << "Nhap lua chon: ";
-//		do
-//		{
-//			cin >> luachon;
-//			if (luachon < 0 || luachon > 3)
-//			{
-//				cout << "Lua chon khong hop le. Xin nhap lai.\n";
-//				cout << "Nhap lai lua chon: ";
-//			}
-//		}while (luachon < 0 || luachon > 3);
-//		if (luachon == 1)
-//		{		
-//			int a;
-//			cout << "\nNhap ma the doc gia: ";
-//			cin >> a;
-//			if (Kiem_tra_trung_ma_the(t, a) == false)
-//			{
-//				cout << "Doc gia khong co trong thu vien.\n";
-//				system("pause");
-//			}
-//			else
-//			{
-//				Xu_li_tra_sach(t, ds_dau_sach, ds_dms, a);			
-//				system("pause");	
-//			}
-//		}
-//		else if (luachon == 2)
-//		{
-//			int a;
-//			cout << "\nNhap ma the doc gia: ";
-//			cin >> a;
-//			if (Kiem_tra_trung_ma_the(t, a) == false)
-//			{
-//				cout << "Doc gia khong co trong thu vien.\n";
-//				system("pause");
-//			}
-//			else
-//			{
-//				Xu_li_lam_mat_sach(t, ds_dau_sach, ds_dms, a);	
-//				cout << "Xac nhan lam mat.\n";		
-//				system("pause");	
-//			}			
-//		}
-//		else if (luachon == 3)
-//		{
-//			int a;
-//			cout << "\nNhap ma the doc gia: ";
-//			cin >> a;
-//			if (Kiem_tra_trung_ma_the(t, a) == false)
-//			{
-//				cout << "Doc gia khong co trong thu vien.\n";
-//				system("pause");
-//			}
-//			else
-//			{
-//				Xu_li_tra_sach(t, ds_dau_sach, ds_dms, a);		
-//				system("pause");	
-//			}			
-//		}
-//		else
-//		{
-//			break;
-//		}
-//	}	
-//}
+
 #endif

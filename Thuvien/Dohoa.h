@@ -1,9 +1,6 @@
 #ifndef Dohoa
 #define Dohoa
-
 #include <graphics.h>
-//#include <string>
-//#include <iostream>
 #include<iomanip>
 #include <conio.h>
 using namespace std;
@@ -291,6 +288,61 @@ void khung_xuat_dms(int x, int y, int chieu_cao)
 
 const int Up = 72;
 const int Down = 80;
+const int so_item = 5;
+const int dong =8;
+const int cot = 54 ;
+
+char menu_chinh [so_item][50] = {"           DOC GIA          ",
+								 "           DAU SACH         ",
+			                     "        DANH MUC SACH       ",
+			                     "        MUON TRA SACH       ",
+			                     "            THOAT           "};
+int MenuDong(char td [so_item][50]){
+	DeMuc("               MENU               ");
+	khung_menu();
+  Normal();
+  int chon =0;
+  int i; 
+  for ( i=0; i< so_item ; i++)
+  { gotoxy(cot, dong +i);
+    cout << td[i];
+  }
+  HighLight();
+  gotoxy(cot,dong+chon);
+  cout << td[chon];
+  char kytu;
+do {
+  kytu = getch();
+  if (kytu==0) kytu = getch();
+  switch (kytu) {
+    case Up :if (chon+1 >1)
+  			  {
+  		              	Normal();
+              	gotoxy(cot,dong+chon);
+              	cout << td[chon];
+              	chon --;
+              	HighLight();
+              	gotoxy(cot,dong+chon);
+              	cout << td[chon];
+  				
+  			  }
+  			  break;
+  	case Down :if (chon+1 <so_item)
+  			  {
+  		        Normal();
+              	gotoxy(cot,dong+chon);
+              	cout << td[chon];
+              	chon ++;
+              	HighLight();
+              	gotoxy(cot,dong+chon);
+              	cout << td[chon];
+  				
+  			  }
+  			  break;
+  	case 13 : return chon+1;
+  }  // end switch
+  } while (1);
+}
 //menu doc gia
 const int so_item_dg = 7;
 const int dong_menu_dg =8;

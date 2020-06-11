@@ -1,4 +1,4 @@
-28
+27
 Phong Van
 VTDT
 Ma Vinh Thanh - Dan Thanh
@@ -351,47 +351,81 @@ Gosho Aoyama
 Trinh Tham
 4869
 1994
+393
+4
+APTX0
 0
+hang 1, ngan 5
+APTX1
 0
+hang 1, ngan 5
+APTX2
+0
+hang 1, ngan 4
+APTX3
+0
+hang 1, ngan 4
 Doraemon
 DREM
 Fujiko F. Fujio
 Thieu Nhi
 3000
 1969
+245
+5
+DREM0
+2
+hang 10, ngan 5
+DREM1
+1
+hang 10, ngan 6
+DREM2
 0
+hang 10, ngan 7
+DREM3
 0
+hang 10, ngan 8
+DREM4
+0
+hang 10, ngan 9
 Mat Biec
 PMQA
 Nguyen Nhat Anh
 Tieu Thuyet
 234
 1990
+120
+3
+PMQA0
 0
+hang 8, ngan 1
+PMQA1
 0
+hang 8, ngan 2
+PMQA2
+0
+hang 8, ngan 3
 Cho Toi Xin Mot Ve Di Tuoi Tho
 SDOI
 Nguyen Nhat Anh
 Thieu Nhi
 218
 2008
+150
+2
+SDOI0
 0
+hang 3, ngan 8
+SDOI1
 0
+hang 3, ngan 9
 Tieng Goi Noi Hoang Da
 OIJG
 Jack London
 Phieu Luu
 202
 1903
-0
-0
-Test
-TEST
-Test
-Test
-1
-2000
-0
+69
 0
 Harry Potter
 HRPT
@@ -399,7 +433,7 @@ J. K. Rowling
 Huyen Bi
 10000
 1997
-0
+250
 0
 Sherlock Holmes
 SLHS
@@ -407,17 +441,26 @@ Arthur Conan Doyle
 Trinh Tham
 3000
 1887
-1
-4
-SLHS0
+100
+7
+HRPT0
 0
-hang 2, ngan 3
-SLHS1
-1
-hang 2, ngan 3
-SLHS2
+hang 1, ngan 1
+HRPT1
 0
-hang 2, ngan 4
-SLHS3
+hang 1, ngan 2
+HRPT2
 0
-hang 2, ngan 4
+hang 1, ngan 3
+HRPT3
+0
+hang 1, ngan 4
+HRPT4
+0
+hang 1, ngan 5
+HRPT5
+0
+hang 1, ngan 6
+HRPT6
+0
+hang 1, ngan 7

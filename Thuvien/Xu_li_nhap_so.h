@@ -78,13 +78,6 @@ void Nhap_so(int &n, int x, int y) // x, y la toa do con tro quay ve de nhap lai
             // Khi nay str_stream_object da chua noi dung cua user_string_num, ta can phai dua no vao user_converted_num
             str_stream_object >> user_converted_num;
             is_num_bool = true; // Dung de ra khoi vong lap
-            // Hien thi thong bao convert thanh cong (Co the bo qua phan nay)
-//            cout << endl
-//                 << user_string_num << "(user_string_num) "
-//                 << "la mot so!"  << endl
-//                 << user_converted_num << "(user_converted_num) "
-//                 << "la mot so!"  << endl
-//                 << endl;
         }
         else
         {
@@ -92,12 +85,6 @@ void Nhap_so(int &n, int x, int y) // x, y la toa do con tro quay ve de nhap lai
         	thong_bao("So khong hop le.");
         	xoa_man_hinh(x, y, 80, 1);
 			gotoxy(x, y);
-//            cout << endl
-//                 << "So khong duoc phep chua khoang trang.\n"
-//                 << "So khong duoc phep chua chu cai.\n"
-//                 << "So khong duoc phep chua cac bieu tuong.\n"
-//                 << "So khong the la so thap phan.\n" 
-//                 << endl;
           	// 	 Clear va ingore:
             // "When an input error is made, the stream "breaks," cin returns false, and the program stops. It's very important 
 			// to guard against such errors as we did in the program. But what if we want to recover from the error,
