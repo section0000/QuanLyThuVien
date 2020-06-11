@@ -153,9 +153,9 @@ void khung_xuat_thong_tin_dg(int x, int y, int chieu_cao) // cot bat dau tu 13 -
 	cout <<"Ma the";
 	gotoxy(x+14,y+1);
 	cout<<"Ho ten";
-	gotoxy(x+35,y+1);
+	gotoxy(x+40,y+1);
 	cout<<"Gioi tinh";
-	gotoxy(x+51,y+1);//61
+	gotoxy(x+54,y+1);//61
 	cout<<"Trang thai the";
 	gotoxy(x+73,y+1);
 	cout<<"Dang muon";
@@ -176,11 +176,11 @@ void khung_xuat_thong_tin_dg(int x, int y, int chieu_cao) // cot bat dau tu 13 -
 		cout<<"|";
 		gotoxy(x+9,y+1+i);
 		cout<<"|";
-		gotoxy(x+33,y+1+i);
+		gotoxy(x+38,y+1+i);
 		cout<<"|";
-		gotoxy(x+45,y+1+i);
+		gotoxy(x+50,y+1+i);
 		cout<<"|";
-		gotoxy(x+70,y+1+i);
+		gotoxy(x+71,y+1+i);
 		cout<<"|";
 		gotoxy(x+83,y+1+i);
 		cout<<"|";

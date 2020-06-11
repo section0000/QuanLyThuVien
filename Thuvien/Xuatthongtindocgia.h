@@ -49,16 +49,16 @@ void Xuat_thong_tin_1_doc_gia_theo_hang(DOC_GIA dg, int dong_bat_dau, int dem)
 	cout<<dg.Ma_the;
 	gotoxy(24,dong_bat_dau+dem);
 	cout<<dg.Ho<<" "<< dg.Ten;
-	gotoxy(51,dong_bat_dau+dem);
+	gotoxy(56,dong_bat_dau+dem);
 	cout<<dg.Phai;
 	if (dg.Trang_thai_the == 0)
 	{
-		gotoxy(62,dong_bat_dau+dem);
+		gotoxy(65,dong_bat_dau+dem);
 		cout << dg.Trang_thai_the << " (Bi khoa)";
 	}
 	else
 	{
-		gotoxy(62,dong_bat_dau+dem);
+		gotoxy(65,dong_bat_dau+dem);
 		cout << dg.Trang_thai_the << " (Dang hoat dong)";
 	}
 	gotoxy(90,dong_bat_dau+dem);
