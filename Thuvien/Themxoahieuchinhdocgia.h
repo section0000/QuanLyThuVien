@@ -94,7 +94,9 @@ bool Kiem_tra_nhap_ho_ten(string hoten) // Chi cho nhap chu cai, khoang trang, v
 }
 void Nhap_va_kiem_tra_bo_trong_du_lieu(string &s, int x, int y) // x,y la noi con tro quay lai de nhap
 {
+Nhapdulieu:
 	getline(cin, s);
+	int dem = 0;
 	if (s == "")
 	{
 		do
@@ -104,6 +106,20 @@ void Nhap_va_kiem_tra_bo_trong_du_lieu(string &s, int x, int y) // x,y la noi co
 			gotoxy(x, y);
 			getline(cin, s);
 		}while (s == "");
+	}
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (s[i] == ' ')
+		{
+			dem++;
+		}
+	}
+	if (dem == s.length())
+	{
+		thong_bao("Ten khong hop le. Xin nhap lai.");
+		xoa_man_hinh(x, y, 80, 1);
+		gotoxy(x,y);
+		goto Nhapdulieu;
 	}
 }
 void Nhap_doc_gia(TREE t, DOC_GIA &dg)
