@@ -91,7 +91,7 @@ void Nhap_so(int &n, int x, int y) // x, y la toa do con tro quay ve de nhap lai
 			// rather than have the program stop? There are two steps to recovering from an error:
 			// 1. Clear the error with cin.clear().
 			// 2. Remove the incorrect characters from the stream. One way to do this is with cin.ignore()" 
-            cin.clear(); // Hieu nom na la reset lai trang thai cua stream tu bad -> good
+           // cin.clear(); // Hieu nom na la reset lai trang thai cua stream tu bad -> good
             // Ham ignore co 2 tham so: 1 la cho biet can bo qua bao nhieu ki tu, 2 la xac dinh ki tu cuoi cung can bo qua (Giong nhu diem dau va diem cuoi)
         //cin.ignore(numeric_limits<streamsize>::max(), '\n'); // numeric_limits<streamsize>::max(): Gia tri lon nhat cua mot stream (max)
             													 // Noi cach khac: y nghia cua no trong ham ignore nay la 
