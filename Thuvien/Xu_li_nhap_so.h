@@ -21,7 +21,7 @@ void Nhap_so(int &n, int x, int y) // x, y la toa do con tro quay ve de nhap lai
 		if (retype == true)
 		{
 			ShowCur(1);
-			xoa_man_hinh(x, y, 80, 1);
+			xoa_man_hinh(x, y, 70, 1);
 			gotoxy(x, y);
 		}
         do
@@ -31,7 +31,7 @@ void Nhap_so(int &n, int x, int y) // x, y la toa do con tro quay ve de nhap lai
         	{
 				thong_bao("Khong duoc bo trong du lieu."); 
 				ShowCur(1);
-				xoa_man_hinh(x, y, 80, 1);
+				xoa_man_hinh(x, y, 70, 1);
 				gotoxy(x, y);
 			}
 		}while (user_string_num == "");
@@ -83,7 +83,7 @@ void Nhap_so(int &n, int x, int y) // x, y la toa do con tro quay ve de nhap lai
         {
         	// Thong bao loi
         	thong_bao("So khong hop le.");
-        	xoa_man_hinh(x, y, 80, 1);
+        	xoa_man_hinh(x, y, 70, 1);
 			gotoxy(x, y);
           	// 	 Clear va ingore:
             // "When an input error is made, the stream "breaks," cin returns false, and the program stops. It's very important 

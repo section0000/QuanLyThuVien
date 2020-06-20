@@ -82,30 +82,30 @@ int main()
     		{
     			case 1:
     			{
-    			ve_lai_man_hinh();
-    			DeMuc("           THEM DOC GIA");
-    			DOC_GIA dg;
-				Nhap_doc_gia(t,dg);
-				Them_doc_gia(t,dg,ds_dg);
+    				ve_lai_man_hinh();
+    				DeMuc("           THEM DOC GIA");
+    				DOC_GIA dg;
+					Nhap_doc_gia(t,dg);
+					Them_doc_gia(t,dg,ds_dg);
     				break;
 				}
 				case 2:
 				{
-				ve_lai_man_hinh();
-				DeMuc("   CHINH SUA THONG TIN DOC GIA");
-				int n;
-				gotoxy(30,9);
-				cout << "Nhap ma the doc gia: "; ShowCur(1);
-				Nhap_so(n, 51, 9);
-				if (Kiem_tra_trung_ma_the(t, n) == false)
-				{
-					thong_bao("Doc gia khong co trong thu vien.");
-				}
-				else
-				{
-					Chinh_sua_thong_tin_doc_gia(t, n);
-				}
-				break;
+					ve_lai_man_hinh();
+					DeMuc("   CHINH SUA THONG TIN DOC GIA");
+					int n;
+					gotoxy(30,9);
+					cout << "Nhap ma the doc gia: "; ShowCur(1);
+					Nhap_so(n, 51, 9);
+					if (Kiem_tra_trung_ma_the(t, n) == false)
+					{
+						thong_bao("Doc gia khong co trong thu vien.");
+					}
+					else
+					{
+						Chinh_sua_thong_tin_doc_gia(t, n);
+					}
+					break;
 				}
 				case 3:
 				{
@@ -235,7 +235,7 @@ int main()
 					DeMuc("         THONG TIN DAU SACH");
 					if (Kiem_tra_rong_ds_dau_sach(ds_dau_sach) == true)
 					{
-						thong_bao("Danh sach dau sach dang rong. Khong the xoa.");
+						thong_bao("Thu vien chua co sach nao.");
 					}
 					else
 					{
@@ -320,7 +320,7 @@ int main()
 		}
 	case 4:
 		{
-			int chon_mt;
+		int chon_mt;
     	do
     	{
     		ShowCur(0);

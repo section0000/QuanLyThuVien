@@ -147,6 +147,18 @@ void Xuat_thong_tin_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 	khung_xuat_thong_tin_dg(13, 7, 28);
 	int dem=0; //dem so hang danh sach xuat ra
 	int c;
+	int page;
+	int current_page = 1;
+	if (ds_dg.so_luong%25 == 0)
+	{
+		page = ds_dg.so_luong/25;
+	}
+	else
+	{
+		page = ds_dg.so_luong/25 + 1;
+	}
+	gotoxy(114, 36);
+	cout << "Trang " << current_page << " / " << page;
 	for (int i = 0; i < ds_dg.so_luong; i++) 
 	{	
 		Xuat_thong_tin_1_doc_gia_theo_hang(a[i], 10, dem);
@@ -159,18 +171,22 @@ void Xuat_thong_tin_doc_gia_theo_ma_the(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 					 if (c==0) c=getch();
 					if (c==77 && i<ds_dg.so_luong-1) // neu chua xuat danh sach ra het thi cho phep bam mui ten qua phai
 					{
-						dem=-1; 
-						xoa_man_hinh(13, 7, 120, 30);
+						dem=-1;
+						gotoxy(120, 36);
+						cout<< ++current_page;
+						xoa_man_hinh(13, 7, 120, 29);
 						break;
 					}
 					if (c==75 && i>24) // quay ve trang truoc do
 					{
 						dem=-1;
+						gotoxy(120, 36);
+						cout<< --current_page;
 						if(i<50 && dem<=24) 
 							i=-1;
 						else if(i>49) 
 							i=i-((i%25)+26); 
-						xoa_man_hinh(13, 7, 120, 30);
+						xoa_man_hinh(13, 7, 120, 29);
 						break;
 					}
 					if (c==27) 
@@ -261,6 +277,18 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 	khung_xuat_thong_tin_dg(13, 7, 28);
 	Tinh_ngay_qua_han_cua_cac_doc_gia(t);
 	Sap_xep_doc_gia_theo_ho_ten(t, a, n);
+	int page;
+	int current_page = 1;
+	if (ds_dg.so_luong%25 == 0)
+	{
+		page = ds_dg.so_luong/25;
+	}
+	else
+	{
+		page = ds_dg.so_luong/25 + 1;
+	}
+	gotoxy(114, 36);
+	cout << "Trang " << current_page << " / " << page;
 	for (int i = 0; i < ds_dg.so_luong; i++)
 	{	
 		Xuat_thong_tin_1_doc_gia_theo_hang(a[i], 10, dem);
@@ -273,18 +301,22 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 					 if (c==0) c=getch();
 					if (c==77 && i<ds_dg.so_luong-1)
 					{
-						dem=-1; 
-						xoa_man_hinh(13, 7, 120, 30);
+						dem=-1;
+						gotoxy(120, 36);
+						cout << ++current_page;
+						xoa_man_hinh(13, 7, 120, 29);
 						break;
 					}
 					if (c==75 && i>24) 
 					{
 						dem=-1;
+						gotoxy(120, 36);
+						cout << --current_page;
 						if(i<50 && dem<=24) 
 							i=-1;
 						else if(i>49) 
 							i=i-((i%25)+26); 
-						xoa_man_hinh(13, 7, 120, 30);
+						xoa_man_hinh(13, 7, 120, 29);
 						break;
 					}
 					if (c==27) 
@@ -391,7 +423,18 @@ void Xuat_danh_sach_doc_gia_qua_han_theo_thoi_gian_giam_dan(TREE t, DS_DOC_GIA d
 	int n = 0;
 	DOC_GIA *a = new DOC_GIA[ds_dg.so_luong];
 	Sap_xep_doc_gia_qua_han_theo_thoi_gian_giam_dan(t, a, n);
-	
+	int page;
+	int current_page = 1;
+	if (n%25 == 0)
+	{
+		page = n/25;
+	}
+	else
+	{
+		page = n/25 + 1;
+	}
+	gotoxy(114, 36);
+	cout << "Trang " << current_page << " / " << page;
 	for (int i = 0; i < n; i++)
 	{
 		Xuat_thong_tin_1_doc_gia_theo_hang(a[i], 10, dem);
@@ -405,17 +448,21 @@ void Xuat_danh_sach_doc_gia_qua_han_theo_thoi_gian_giam_dan(TREE t, DS_DOC_GIA d
 					if (c==77 && i<n-1)
 					{
 						dem=-1; 
-						xoa_man_hinh(13, 7, 120, 30);
+						gotoxy(120, 36);
+						cout<< ++current_page;
+						xoa_man_hinh(13, 7, 120, 29);
 						break;
 					}
 					if (c==75 && i>24) 
 					{
 						dem=-1;
+						gotoxy(120, 36);
+						cout<< --current_page;
 						if(i<50 && dem<=24) 
 							i=-1;
 						else if(i>49) 
 							i=i-((i%25)+26); 
-						xoa_man_hinh(13, 7, 120, 30);
+						xoa_man_hinh(13, 7, 120, 29);
 						break;
 					}
 					if (c==27) 
