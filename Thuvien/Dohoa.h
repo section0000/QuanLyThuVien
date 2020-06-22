@@ -147,15 +147,15 @@ void thong_bao(string s)
 	system("pause"); textcolor(15);
 	xoa_thong_bao();
 }
-void khung_xuat_thong_tin_dg(int x, int y, int chieu_cao) // cot bat dau tu 13 - hang bat dau tu 11
+void khung_xuat_thong_tin_dg(int x, int y, int chieu_cao) 
 {
-	gotoxy(x+2,y+1); //15 27 48 64 86 98 108 - 12
+	gotoxy(x+2,y+1);
 	cout <<"Ma the";
 	gotoxy(x+14,y+1);
 	cout<<"Ho ten";
 	gotoxy(x+40,y+1);
 	cout<<"Gioi tinh";
-	gotoxy(x+54,y+1);//61
+	gotoxy(x+54,y+1);
 	cout<<"Trang thai the";
 	gotoxy(x+73,y+1);
 	cout<<"Dang muon";
@@ -171,23 +171,23 @@ void khung_xuat_thong_tin_dg(int x, int y, int chieu_cao) // cot bat dau tu 13 -
 		gotoxy(x+1+i,y+chieu_cao);
 		cout<<"_";	
 	}
-	for (int i=0; i<chieu_cao; i++) { //cao 24
-		gotoxy(x,y+1+i); //13 22 46 58 83 96 106 124
-		cout<<"|";
+	for (int i=0; i<chieu_cao; i++) {
+		gotoxy(x,y+1+i);
+		cout<<char(179);
 		gotoxy(x+9,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+38,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+50,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+71,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+83,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+93,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+111,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 	}
 }
 void khung_sach_dang_muon()
@@ -204,18 +204,18 @@ void khung_sach_dang_muon()
 	}
 	for (int i=0; i<6; i++) { 
 		gotoxy(18,13+i); 
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(28,13+i); 
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(43,13+i); 
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(94,13+i); 
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(112,13+i);
-		cout<<"|";
+		cout<<char(179);
 	}
 }
-void khung_xuat_thong_tin_ds(int x, int y, int chieu_cao) // cot bat dau tu 10 - hang bat dau tu 9
+void khung_xuat_thong_tin_ds(int x, int y, int chieu_cao) 
 {
 	gotoxy(x+3,y+1);
 	cout <<"ISBN";
@@ -239,23 +239,23 @@ void khung_xuat_thong_tin_ds(int x, int y, int chieu_cao) // cot bat dau tu 10 -
 		gotoxy(x+1+i,y+chieu_cao);
 		cout<<"_";	
 	}
-	for (int i=0; i<chieu_cao; i++) { //cao 24
-		gotoxy(x,y+1+i); //13 22 46 58 83 96 106 124
-		cout<<"|";
+	for (int i=0; i<chieu_cao; i++) { 
+		gotoxy(x,y+1+i); 
+		cout<<char(179);
 		gotoxy(x+9,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+44,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+55,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+82,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+97,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+111,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+123,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 	}
 }
 void khung_xuat_dms(int x, int y, int chieu_cao)
@@ -276,13 +276,13 @@ void khung_xuat_dms(int x, int y, int chieu_cao)
 	}
 	for (int i=0; i<chieu_cao; i++) { 
 		gotoxy(x,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+10,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+50,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 		gotoxy(x+80,y+1+i);
-		cout<<"|";
+		cout<<char(179);
 	}
 }
 
