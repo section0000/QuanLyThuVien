@@ -1,7 +1,7 @@
 #include<iostream>
 #include<time.h>
 #include<algorithm>
-#include <mylib.h>
+#include "mylib.h"
 #include "Data.h"
 #include "Themxoahieuchinhdocgia.h" 
 #include "Xuatthongtindocgia.h"
@@ -93,17 +93,35 @@ int main()
 				{
 					ve_lai_man_hinh();
 					DeMuc("   CHINH SUA THONG TIN DOC GIA");
-					int n;
+					huong_dan_xem_danh_sach_sach_dang_muon_doc_gia();
 					gotoxy(30,9);
-					cout << "Nhap ma the doc gia: "; ShowCur(1);
-					Nhap_so(n, 51, 9);
-					if (Kiem_tra_trung_ma_the(t, n) == false)
+					cout << "Nhap ma the doc gia: ";
+					while (true)
 					{
-						thong_bao("Doc gia khong co trong thu vien.");
-					}
-					else
-					{
-						Chinh_sua_thong_tin_doc_gia(t, n);
+						if (kbhit())
+						{
+							char key = getch();
+							if (key == 13)
+							{
+								int n;
+								ShowCur(1);
+								Nhap_so(n, 51, 9);
+								if (Kiem_tra_trung_ma_the(t, n) == false)
+								{
+									thong_bao("Doc gia khong co trong thu vien.");
+									break;
+								}
+								else
+								{
+									Chinh_sua_thong_tin_doc_gia(t, n);
+									break;
+								}
+							}
+							else if (key == 27)
+							{
+								break;
+							}
+						}
 					}
 					break;
 				}
@@ -111,17 +129,35 @@ int main()
 				{
 					ve_lai_man_hinh();
 					DeMuc("           XOA DOC GIA");
-					int mathe;
+					huong_dan_xoa_doc_gia_1();
 					gotoxy(30,9);
-					cout << "Nhap ma the doc gia: "; ShowCur(1); 
-					Nhap_so(mathe, 51, 9);
-					if (Kiem_tra_trung_ma_the(t, mathe) == false)
+					cout << "Nhap ma the doc gia: ";
+					while (true)
 					{
-						thong_bao("Doc gia khong co trong thu vien.");
-					}
-					else
-					{
-						Xoa_node_bat_ki(t,mathe, ds_dg);
+						if (kbhit())
+						{
+							char key = getch();
+							if (key == 13)
+							{
+								int mathe;
+ 								ShowCur(1); 
+								Nhap_so(mathe, 51, 9);
+								if (Kiem_tra_trung_ma_the(t, mathe) == false)
+								{
+									thong_bao("Doc gia khong co trong thu vien.");
+									break;
+								}
+								else
+								{	
+									Xoa_node_bat_ki(t,mathe, ds_dg, ds_dau_sach);
+									break;
+								}	
+							}
+							else if (key == 27)
+							{
+								break;
+							}
+						}
 					}
 					break;
 				}
@@ -129,18 +165,37 @@ int main()
 				{
 					ShowCur(1);
 					ve_lai_man_hinh();
+					huong_dan_xem_danh_sach_sach_dang_muon_doc_gia();
 					DeMuc("   SACH DANG MUON CUA 1 DOC GIA");
-					int mathe;
 					gotoxy(30,9);
 					cout << "Nhap ma the doc gia: ";
-					Nhap_so(mathe, 51, 9);
-					if (Kiem_tra_trung_ma_the(t, mathe) == false)
+					ShowCur(0);
+					while (true)
 					{
-						thong_bao("Doc gia khong co trong thu vien.");
-					}
-					else
-					{
-						Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t, mathe);
+						if (kbhit())
+						{
+							char key = getch();
+							if (key == 13)
+							{
+								int mathe;
+								ShowCur(1);
+								Nhap_so(mathe, 51, 9);
+								if (Kiem_tra_trung_ma_the(t, mathe) == false)
+								{
+									thong_bao("Doc gia khong co trong thu vien.");
+									break;
+								}
+								else
+								{
+									Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t, mathe);
+									break;
+								}
+							}
+							else if (key == 27)
+							{
+								break;
+							}
+						}
 					}
 					break;		
 				}
@@ -332,19 +387,36 @@ int main()
     			case 1:
     			{
     				ve_lai_man_hinh();
+    				huong_dan_xem_danh_sach_sach_dang_muon_doc_gia();
     				DeMuc("            MUON SACH");
-    				int a;
     				gotoxy(30,9);
-					cout << "Nhap ma the doc gia: "; ShowCur(1);
-					Nhap_so(a, 51, 9);
-					if (Kiem_tra_trung_ma_the(t, a) == false)
-					{
-						thong_bao("Doc gia khong ton tai.");
-					}
-					else
-					{
-						Muon_sach(t, ds_dau_sach, ds_dms, a);
-						huong_dan();
+					cout << "Nhap ma the doc gia: "; 
+    				while (true)
+    				{
+    					if (kbhit())
+    					{
+    						char key = getch();
+    						if (key == 13)
+    						{
+    							int a;
+								ShowCur(1);
+								Nhap_so(a, 51, 9);
+								if (Kiem_tra_trung_ma_the(t, a) == false)
+								{
+									thong_bao("Doc gia khong ton tai.");
+									break;
+								}
+								else
+								{
+									Muon_sach(t, ds_dau_sach, ds_dms, a);
+									break;
+								}			
+							}
+							else if (key == 27)
+							{
+								break;
+							}
+						}
 					}
     				break;
 				}
@@ -352,53 +424,109 @@ int main()
 				{
 					ve_lai_man_hinh();
 					DeMuc("              TRA SACH");
-					int mathe;
+					huong_dan_xem_danh_sach_sach_dang_muon_doc_gia();
 					gotoxy(30, 9);
-					cout << "Nhap ma the doc gia: "; ShowCur(1);
-					Nhap_so(mathe, 51, 9);
-					if (Kiem_tra_trung_ma_the(t, mathe) == false)
+					cout << "Nhap ma the doc gia: ";
+					while (true)
 					{
-						thong_bao("Doc gia khong co trong thu vien.");
-					}
-					else
-					{
-						Xu_li_tra_sach(t, ds_dau_sach, ds_dms, mathe);			
-					}
+						if (kbhit())
+						{
+							char key = getch();
+							{
+								if (key == 13)
+								{
+									ShowCur(1);
+									int mathe;
+									Nhap_so(mathe, 51, 9);
+									if (Kiem_tra_trung_ma_the(t, mathe) == false)
+									{
+										thong_bao("Doc gia khong co trong thu vien.");
+										break;
+									}
+									else
+									{
+										Xu_li_tra_sach(t, ds_dau_sach, ds_dms, mathe);			
+										break;
+									}			
+								}
+								else if (key == 27)
+								{
+									break;	
+								}	
+							}	
+						}	
+					} 
 					break;
 				}	
 				case 3:
 				{
 					ve_lai_man_hinh();
 					DeMuc("           LAM MAT SACH");
-					int mathe;
+					huong_dan_xem_danh_sach_sach_dang_muon_doc_gia();
 					gotoxy(30, 9);
-					cout << "Nhap ma the doc gia: "; ShowCur(1);
-					Nhap_so(mathe, 51, 9);
-					if (Kiem_tra_trung_ma_the(t, mathe) == false)
+					cout << "Nhap ma the doc gia: "; 
+					while (true)
 					{
-						thong_bao("Doc gia khong co trong thu vien.");
-					}
-					else
-					{
-						Xu_li_lam_mat_sach(t, ds_dau_sach, ds_dms, mathe);
-					}		
+						if (kbhit())
+						{
+							char key = getch();
+							if (key == 13)
+							{
+								ShowCur(1);
+								int mathe;
+								Nhap_so(mathe, 51, 9);
+								if (Kiem_tra_trung_ma_the(t, mathe) == false)
+								{
+									thong_bao("Doc gia khong co trong thu vien.");
+									break;
+								}
+								else
+								{
+									Xu_li_lam_mat_sach(t, ds_dau_sach, ds_dms, mathe);
+									break;
+								}	
+							}
+							else if (key == 27)
+							{
+								break;
+							}
+						}
+					}	
 					break;
 				}
 				case 4:
 				{
 					ve_lai_man_hinh();
 					DeMuc("             DEN SACH");
-					int mathe;
+					huong_dan_xem_danh_sach_sach_dang_muon_doc_gia();
 					gotoxy(30, 9);
-					cout << "Nhap ma the doc gia: "; ShowCur(1);
-					Nhap_so(mathe, 51, 9);
-					if (Kiem_tra_trung_ma_the(t, mathe) == false)
+					cout << "Nhap ma the doc gia: "; 
+					while (true)
 					{
-						thong_bao("Doc gia khong co trong thu vien.");
-					}
-					else
-					{
-						Xu_li_tra_sach(t, ds_dau_sach, ds_dms, mathe);			
+						if (kbhit())
+						{
+							char key = getch();
+							if (key == 13)
+							{
+								ShowCur(1);
+								int mathe;
+								Nhap_so(mathe, 51, 9);
+								if (Kiem_tra_trung_ma_the(t, mathe) == false)
+								{
+									thong_bao("Doc gia khong co trong thu vien.");
+									break;
+								}
+								else
+								{
+									Xu_li_tra_sach(t, ds_dau_sach, ds_dms, mathe);			
+									break;
+								}
+							}
+							else if (key == 27)
+							{
+								break;
+							}
+						}
 					}
 					break;
 				}
