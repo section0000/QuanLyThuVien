@@ -170,6 +170,12 @@ void huong_dan_xem_danh_sach()
 	gotoxy(2, 39);
 	cout<<"Mui ten trai phai: Chuyen trang | Esc: Thoat";
 }
+void huong_dan_tra_sach()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Mui ten len xuong: Di chuyen thanh sang | Enter: Chon | Esc: Thoat";
+}
 void Normal () {
 	SetColor(15);
 	SetBGColor(0);
