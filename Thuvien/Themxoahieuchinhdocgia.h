@@ -127,7 +127,8 @@ void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 {	
 	huong_dan_nhap_doc_gia();
 	gotoxy(30, 10);
-	cout << "Ma the: "<<endl; 
+	cout << "Ma the: "<<endl;
+	dg.Ma_the = Tao_ma_the(t);
 	gotoxy(30, 12);
 	cout << "Nhap ho: "; 
 	gotoxy(30, 14);
@@ -144,7 +145,6 @@ void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 				ShowCur(1);
 				do
 				{
-					dg.Ma_the = Tao_ma_the(t);
 					gotoxy(30,10);
 					cout << "Ma the: " << dg.Ma_the;
 					gotoxy(39, 12);
