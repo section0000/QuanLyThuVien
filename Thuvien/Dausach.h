@@ -1008,18 +1008,6 @@ void Xuat_DS_Theo_Tung_The_Loai(DS_DAU_SACH ds)
 		}
     }
 }
-bool so_sanh_2_dau_sach(string ds_can_tim, string ds)
-{
-	char* c1 = new char[ds_can_tim.size()];
-	copy(ds_can_tim.begin(), ds_can_tim.end(), c1);
-	c1[ds_can_tim.size()] = '\0';
-	char* c2 = new char[ds.size()];
-	copy(ds.begin(), ds.end(), c2);
-	c2[ds.size()] = '\0';
-	
-	if(strstr(c2, c1) != NULL) return true;
-	return false;
-}
 void Tim_thong_tin_sach_dua_vao_ten_sach(DS_DAU_SACH ds_dau_sach, DS_DANH_MUC_SACH ds_dms)
 {
 	huong_dan_nhap_dau_sach();
@@ -1039,18 +1027,20 @@ void Tim_thong_tin_sach_dua_vao_ten_sach(DS_DAU_SACH ds_dau_sach, DS_DANH_MUC_SA
 				Chuan_hoa_chu(a);
 				gotoxy(60,10);
 				cout << "THONG TIN SACH";
-				khung_xuat_thong_tin_ds(5, 11, 22);
-				int dem = 0;
+				khung_xuat_thong_tin_ds(5, 11, 4);
 				int i = 0;
 				for (; i < ds_dau_sach.so_luong; i++)
 				{
-					if (so_sanh_2_dau_sach(a, ds_dau_sach.list[i]->Ten_sach)) //ds_dau_sach.list[i]->Ten_sach == a
+					if (ds_dau_sach.list[i]->Ten_sach == a)
 					{
-						Xuat_thong_tin_1_dau_sach_theo_hang(ds_dau_sach.list[i], 14, dem);
-						dem++;
+						Xuat_thong_tin_1_dau_sach_theo_hang(ds_dau_sach.list[i], 14, 0);
+						gotoxy(60, 17);
+						cout << "DANH MUC SACH";
+						khung_xuat_dms(27, 18, 16);
+						Xuat_dms_cua_1_dau_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, 21);
 					}
 				}
-				if (dem == 0)
+				if (i == ds_dau_sach.so_luong-1)
 				{
 					thong_bao("Dau sach khong ton tai.");
 					return;

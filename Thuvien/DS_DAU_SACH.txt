@@ -113,10 +113,10 @@ Tite Kubo
 Phieu Luu
 4242
 2004
-298
+299
 3
 TTKB0
-0
+1
 Hang 1, Ngan 8
 TTKB1
 0
@@ -249,13 +249,13 @@ Vuong Tinh
 Hai
 2000
 1989
-302
+303
 3
 AAAA0
 0
 Hang 2, Ngan 5
 AAAA1
-0
+1
 Hang 2, Ngan 5
 AAAA2
 0
