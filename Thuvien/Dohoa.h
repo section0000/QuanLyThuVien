@@ -98,11 +98,71 @@ void huong_dan()
 	gotoxy(2, 39);
 	cout<<"Mui ten len xuong: Dieu khien thanh sang | Enter: Chon | Esc: Thoat";
 }
+void huong_dan_nhap_doc_gia()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Tien hanh nhap lieu | Esc: Thoat";	
+}
+void huong_dan_chinh_sua_doc_gia()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Tien hanh chinh sua | Esc: Thoat";	
+}
+void huong_dan_xoa_doc_gia_1()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Tien hanh nhap ma the de xoa | Esc: Thoat";
+}
+void huong_dan_xoa_doc_gia_2()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Xoa | Esc: Thoat";
+}
+void huong_dan_xem_danh_sach_sach_dang_muon_doc_gia()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Tien hanh nhap ma the doc gia | Esc: Thoat";
+}
+void huong_dan_nhap_dau_sach()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Tien hanh nhap thong tin sach | Esc: Thoat";
+}
+void huong_dan_chinh_sua_sach()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Tien hanh chinh sua thong tin sach | Esc: Thoat";
+}
+void huong_dan_them_sach_vao_dau_sach()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Tien hanh them | Esc: Thoat";
+}
 void huong_dan_muon_sach()
 {
 	xoa_man_hinh(2, 39, 100, 1);
 	gotoxy(2, 39);
 	cout<<"Mui ten trai phai: Chuyen trang | Enter: Tiep tuc";
+}
+void huong_dan_muon_sach_2()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Tien hanh nhap ten sach | Esc: Huy tac vu";
+}
+void huong_dan_muon_sach_3()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Tien hanh nhap ma sach | Esc: Huy tac vu";
 }
 void huong_dan_xem_danh_sach()
 {
