@@ -225,6 +225,7 @@ void Xoa_dau_sach(DS_DAU_SACH &ds_dau_sach)
 						char key2 = getch();
 						if (key2 == 13)
 						{
+							ShowCur(1);
 							int vitri = Kiem_tra_dau_sach(ds_dau_sach, a);
 							if (vitri < 0)
 							{
