@@ -302,7 +302,7 @@ int main()
 				{
 					ve_lai_man_hinh();
 					DeMuc("   XUAT DANH SACH THEO THE LOAI");
-					huong_dan_xem_danh_sach();
+					huong_dan_xem_theo_the_loai();
 					Xuat_DS_Theo_Tung_The_Loai(ds_dau_sach);
 					break;
 				}

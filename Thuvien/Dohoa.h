@@ -1,6 +1,5 @@
 #ifndef Dohoa
 #define Dohoa
-#include <graphics.h>
 #include<iomanip>
 #include <conio.h>
 using namespace std;
@@ -150,15 +149,15 @@ void huong_dan_muon_sach()
 {
 	xoa_man_hinh(2, 39, 100, 1);
 	gotoxy(2, 39);
-	cout<<"Mui ten trai phai: Chuyen trang | Enter: Tiep tuc";
+	cout<<"Mui ten trai phai: Chuyen trang | Mui ten len xuong: Di chuyen thanh sang | Enter: Chon | Esc: Thoat";
 }
-void huong_dan_muon_sach_2()
+void huong_dan_top_10()
 {
 	xoa_man_hinh(2, 39, 100, 1);
 	gotoxy(2, 39);
-	cout<<"Enter: Tien hanh nhap ten sach | Esc: Huy tac vu";
+	cout<<"Mui ten len xuong: Di chuyen thanh sang | Enter: Xem chi tiet | Esc: Thoat";
 }
-void huong_dan_muon_sach_3()
+void huong_dan_muon_sach_2()
 {
 	xoa_man_hinh(2, 39, 100, 1);
 	gotoxy(2, 39);
@@ -168,13 +167,19 @@ void huong_dan_xem_danh_sach()
 {
 	xoa_man_hinh(2, 39, 100, 1);
 	gotoxy(2, 39);
-	cout<<"Mui ten trai phai: Chuyen trang | Esc: Thoat";
+	cout<<"Mui ten trai phai: Chuyen trang | Mui ten len xuong: Di chuyen thanh sang | Enter: Xem chi tiet | Esc: Thoat";
 }
 void huong_dan_tra_sach()
 {
 	xoa_man_hinh(2, 39, 100, 1);
 	gotoxy(2, 39);
 	cout<<"Mui ten len xuong: Di chuyen thanh sang | Enter: Chon | Esc: Thoat";
+}
+void huong_dan_xem_theo_the_loai()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Mui ten trai phai: Chuyen trang | Esc: Thoat";
 }
 void Normal () {
 	SetColor(15);

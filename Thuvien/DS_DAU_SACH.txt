@@ -249,7 +249,7 @@ Vuong Tinh
 Hai
 2000
 1989
-303
+304
 3
 AAAA0
 0
@@ -434,14 +434,6 @@ Huyen Bi
 10000
 1997
 250
-0
-Sherlock Holmes
-SLHS
-Arthur Conan Doyle
-Trinh Tham
-3000
-1887
-100
 7
 HRPT0
 0
@@ -464,3 +456,14 @@ hang 1, ngan 6
 HRPT6
 0
 hang 1, ngan 7
+Sherlock Holmes
+SLHS
+Arthur Conan Doyle
+Trinh Tham
+3000
+1887
+100
+1
+SLHS7
+0
+hang 2, ngan 3
