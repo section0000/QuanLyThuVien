@@ -66,6 +66,7 @@ void Xoa_cuoi_danh_sach_mt(DS_MUON_TRA &ds_mt)
 	{
 		NODE_MUON_TRA *p = ds_mt.pTail;
 		ds_mt.pTail = ds_mt.pTail->pBack;
+		ds_mt.pTail->pNext = NULL;
 		delete p;
 	}
 }
