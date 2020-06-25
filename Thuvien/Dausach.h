@@ -644,34 +644,54 @@ void Them_sach(DS_DANH_MUC_SACH &ds_dms, DS_DAU_SACH ds_dau_sach)
 							{
 								char key2 = getch();
 								if (key2 == 13)
-								{
+								{									
 									ShowCur(1);
-									int stt = ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.so_luong;
-									DANH_MUC_SACH dms;
-									// Danh ma tu dong
-									// masach = ISBN + stt. VD: AAAA1, AAAA2, AAAA3,...
-									string masach = ds_dau_sach.list[i]->ISBN + to_string(stt); // to_string: Chuyen kieu int thanh string. Neu Dev-C++ khong dung duoc: Tools -> Compiler options...-> Settings -> Code Generation -> Language Standard -> Doi thanh ISO C++11 hoac GNU C++11
-									// Neu ma trung thi tu dong tang len
-									while (Kiem_tra_trung_ma_sach(ds_dms, masach) == true)
+									gotoxy(30,20);
+									textcolor(11);
+									int n;
+									cout << "Nhap so luong sach can them: ";
+									Normal();
+									Nhap_so(n, 59, 20);
+									for (int j = 0; j < n; j++)
 									{
-										stt++;
-										masach = ds_dau_sach.list[i]->ISBN + to_string(stt);
+										int stt = ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.so_luong;
+										DANH_MUC_SACH dms;
+										// Danh ma tu dong
+										// masach = ISBN + stt. VD: AAAA1, AAAA2, AAAA3,...
+										string masach = ds_dau_sach.list[i]->ISBN + to_string(stt); // to_string: Chuyen kieu int thanh string. Neu Dev-C++ khong dung duoc: Tools -> Compiler options...-> Settings -> Code Generation -> Language Standard -> Doi thanh ISO C++11 hoac GNU C++11
+										// Neu ma trung thi tu dong tang len
+										while (Kiem_tra_trung_ma_sach(ds_dms, masach) == true)
+										{
+											stt++;
+											masach = ds_dau_sach.list[i]->ISBN + to_string(stt);
+										}
+										dms.Ma_sach = masach;
+										gotoxy(30, 24);
+										cout << "Ma sach: " << dms.Ma_sach;
+										dms.Trang_thai = 0;
+										gotoxy(30,26);
+										cout << "Trang thai: " << dms.Trang_thai << " (Cho muon duoc)";
+										gotoxy(30, 28);
+										cout << "Nhap vi tri: ";
+										Nhap_va_kiem_tra_bo_trong_du_lieu(dms.Vi_tri, 43, 28);
+										NODE_DANH_MUC_SACH *p = Khoi_tao_node(dms);
+										Them_vao_cuoi_danh_sach_dms(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, p);
+										ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.so_luong++;
+										ds_dau_sach.list[i]->Check = true; // <=> Dau sach nay hien tai da co sach => Khong duoc xoa 
+										gotoxy(30,21);
+										textcolor(11);
+										cout << "So sach da them";
+										gotoxy(57,21);
+										cout << ": ";
+										Normal();
+										cout << j + 1;
+										thong_bao("Them thanh cong.");
+										xoa_man_hinh(42, 28, 20, 1);									
+										if (j == n-1)
+										{
+											return;
+										}
 									}
-									dms.Ma_sach = masach;
-									gotoxy(30, 24);
-									cout << "Ma sach: " << dms.Ma_sach;
-									dms.Trang_thai = 0;
-									gotoxy(30,26);
-									cout << "Trang thai: " << dms.Trang_thai << " (Cho muon duoc)";
-									gotoxy(30, 28);
-									cout << "Nhap vi tri: ";
-									Nhap_va_kiem_tra_bo_trong_du_lieu(dms.Vi_tri, 43, 21);
-									NODE_DANH_MUC_SACH *p = Khoi_tao_node(dms);
-									Them_vao_cuoi_danh_sach_dms(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, p);
-									ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.so_luong++;
-									ds_dau_sach.list[i]->Check = true; // <=> Dau sach nay hien tai da co sach => Khong duoc xoa 
-									thong_bao("Them thanh cong.");
-									return;
 								}
 								else if (key2 == 27)
 								{
@@ -725,7 +745,6 @@ void Xoa_sach(DS_DANH_MUC_SACH &ds_dms, DS_DAU_SACH ds_dau_sach)
 						gotoxy(30, 35);
 						cout << "Nhap ma sach: ";
 						ShowCur(0);
-						Nhapmasach:
 						while (true)
 						{
 							if (kbhit())
@@ -742,6 +761,14 @@ void Xoa_sach(DS_DANH_MUC_SACH &ds_dms, DS_DAU_SACH ds_dau_sach)
 									}		
 									else
 									{
+										for (NODE_DANH_MUC_SACH *k = ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.pHead; k != NULL; k = k->pNext)
+										{
+											if (k->data.Ma_sach == a && k->data.Trang_thai == 1)
+											{
+												thong_bao("Sach hien da co nguoi muon. Khong the xoa.");
+												return;
+											}
+										}
 										Xoa_1_sach_theo_ma_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, a);
 										ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.so_luong--;
 										if (ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.so_luong == 0)
