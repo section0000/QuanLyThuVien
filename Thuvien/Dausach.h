@@ -1070,7 +1070,7 @@ void Hieu_chinh_sach2(DS_DANH_MUC_SACH &ds_dms, DS_DAU_SACH ds_dau_sach)
 									}
 									for (NODE_DANH_MUC_SACH *k = ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.pHead; k != NULL; k = k->pNext)
 									{
-										if (Kiem_tra_trung_ma_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, a) == true)
+										if (k->data.Ma_sach == a)
 										{
 											xoa_man_hinh(27, 12, 85, 25);
 											gotoxy(30,9);
