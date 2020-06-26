@@ -695,7 +695,8 @@ void Them_sach(DS_DANH_MUC_SACH &ds_dms, DS_DAU_SACH ds_dau_sach)
 						textcolor(14);
 						cout << "THONG TIN SACH\n";
 						Normal();
-						Xuat_thong_tin_1_dau_sach(ds_dau_sach.list[i]);
+						khung_xuat_thong_tin_ds(5, 13, 4);
+						Xuat_thong_tin_1_dau_sach_theo_hang(ds_dau_sach.list[i], 16, 0);
 						huong_dan_them_sach_vao_dau_sach();
 						ShowCur(0);
 						while (true)
