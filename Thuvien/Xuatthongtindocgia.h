@@ -319,14 +319,14 @@ void Xuat_thong_tin_doc_gia_theo_ho_ten(TREE t, DOC_GIA a[], DS_DOC_GIA ds_dg, i
 						xoa_man_hinh(13, 7, 120, 29);
 						break;
 					}
-					if (c==27) 
+					if (c==27 || c==13) 
 					{
 						break;
 					}
 				}
 			} while(1);
 			khung_xuat_thong_tin_dg(13, 7, 28);
-			if(c==27) 
+			if(c==27 || c==13) 
 			{
 				huong_dan();
 				return;

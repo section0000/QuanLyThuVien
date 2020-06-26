@@ -92,7 +92,12 @@ int main()
 				case 2:
 				{
 					ve_lai_man_hinh();
+					
 					DeMuc("   CHINH SUA THONG TIN DOC GIA");
+					DOC_GIA a[ds_dg.so_luong];
+					int k = 0;
+					Xuat_thong_tin_doc_gia_theo_ho_ten(t, a, ds_dg, k);
+					xoa_man_hinh(2, 7, 130, 30);
 					huong_dan_xem_danh_sach_sach_dang_muon_doc_gia();
 					gotoxy(30,9);
 					cout << "Nhap ma the doc gia: ";
@@ -356,7 +361,7 @@ int main()
 				{
 					ve_lai_man_hinh();
 					DeMuc("   CHINH SUA SACH THUOC DAU SACH");
-					Hieu_chinh_sach(ds_dms, ds_dau_sach);
+					Hieu_chinh_sach2(ds_dms, ds_dau_sach);
 					break;
 				}
 				case 0 : thoat++; break;

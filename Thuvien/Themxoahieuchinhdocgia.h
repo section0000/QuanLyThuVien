@@ -123,6 +123,28 @@ Nhapdulieu:
 		goto Nhapdulieu;
 	}
 }
+void Nhap_va_kiem_tra_bo_trong_du_lieu_chinh_sua(string &s, int x, int y) // x,y la noi con tro quay lai de nhap
+{
+Nhapdulieu:
+	getline(cin, s);
+	int dem = 0;
+	if (s == "") 
+	 return;
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (s[i] == ' ')
+		{
+			dem++;
+		}
+	}
+	if (dem == s.length())
+	{
+		thong_bao("Ten khong hop le. Xin nhap lai.");
+		xoa_man_hinh(x, y, 70, 1);
+		gotoxy(x,y);
+		goto Nhapdulieu;
+	}
+}
 void Nhap_doc_gia(TREE t, DOC_GIA &dg)
 {	
 	huong_dan_nhap_doc_gia();
@@ -228,18 +250,20 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 			huong_dan_chinh_sua_doc_gia();
 			gotoxy(60,11);
 			cout << "THONG TIN DOC GIA";
-			Xuat_thong_tin_1_doc_gia(t->data);
+			khung_xuat_thong_tin_dg(13, 13, 4);
+			Tinh_ngay_qua_han_cua_cac_doc_gia(t);
+			Xuat_thong_tin_1_doc_gia_theo_hang(t->data, 16, 0);
 			gotoxy(59,20);
 			cout << "CHINH SUA THONG TIN";
 			ShowCur(0);
 			gotoxy(30,21);
-			cout << "Nhap ho: ";
+			cout << "Nhap ho moi: "<<t->data.Ho;
 			gotoxy(30,22);
-			cout << "Nhap ten: ";
+			cout << "Nhap ten moi: "<<t->data.Ten;
 			gotoxy(30,23);
-			cout << "Nhap gioi tinh: ";
+			cout << "Nhap gioi tinh moi: "<<t->data.Phai;
 			gotoxy(30,25);
-			cout << "Nhap trang thai the(0/1): ";
+			cout << "Nhap trang thai the moi(0/1): "<<t->data.Trang_thai_the;
 			while (true)
 			{
 				if (kbhit())
@@ -247,52 +271,79 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 					char key = getch();
 					if (key == 13)
 					{
+						huong_dan_chinh_sua();
 						ShowCur(1);
+						string temp = t->data.Ho;
 						do
 						{
-							gotoxy(39, 21);
-							Nhap_va_kiem_tra_bo_trong_du_lieu(t->data.Ho, 39, 21);
+							xoa_man_hinh(43, 21, 60, 1);
+							gotoxy(43, 21);
+							Nhap_va_kiem_tra_bo_trong_du_lieu_chinh_sua(t->data.Ho, 43, 21);
 							if (Kiem_tra_nhap_ho_ten(t->data.Ho) == false)
 							{
 								thong_bao("Ten khong hop le, xin nhap lai.");
-								xoa_man_hinh(39, 21, 80, 1);	
-								gotoxy(39, 21);
+								xoa_man_hinh(43, 21, 80, 1);	
+								gotoxy(43, 21);
 							}			
 						}while (Kiem_tra_nhap_ho_ten(t->data.Ho) == false);	
+						if (t->data.Ho == "")
+						{
+							t->data.Ho = temp;
+						}
+						gotoxy(43, 21);
+						cout<<t->data.Ho;
+						temp = t->data.Ten;
 						do
 						{
-							gotoxy(40, 22);
-							Nhap_va_kiem_tra_bo_trong_du_lieu(t->data.Ten, 40, 22);
+							xoa_man_hinh(44, 22, 60, 1);
+							gotoxy(44, 22);
+							Nhap_va_kiem_tra_bo_trong_du_lieu_chinh_sua(t->data.Ten, 44, 22);
 							if (Kiem_tra_nhap_ho_ten(t->data.Ten) == false)
 							{
 								thong_bao("Ten khong hop le, xin nhap lai.");
-								xoa_man_hinh(40, 22, 80, 1);	
-								gotoxy(40, 22);
+								xoa_man_hinh(44, 22, 80, 1);	
+								gotoxy(44, 22);
 							}	
-						}while (Kiem_tra_nhap_ho_ten(t->data.Ten) == false);		
+						}while (Kiem_tra_nhap_ho_ten(t->data.Ten) == false);
+						if (t->data.Ten == "")
+						{
+							t->data.Ten = temp;
+						}
+						gotoxy(44, 22);
+						cout<<t->data.Ten;	
+						temp = t->data.Phai;
 						do		
 						{
-							gotoxy(46, 23);
+							xoa_man_hinh(50, 23, 80, 1);
+							gotoxy(50, 23);
 							getline(cin, t->data.Phai);
+							if (t->data.Phai == "") 
+							{
+								t->data.Phai = temp;
+								break;
+							}
 							Chuan_hoa_chu(t->data.Phai);
 							if (t->data.Phai != "Nam" && t->data.Phai != "Nu")
 							{
 								thong_bao("Gioi tinh khong hop le, xin nhap lai.");
-								xoa_man_hinh(46, 23, 80, 1);
+								xoa_man_hinh(50, 23, 80, 1);
 							}
 						}while (t->data.Phai != "Nam" && t->data.Phai != "Nu");	
+						gotoxy(50, 23);
+						cout<<t->data.Phai;
 						do
 						{
-							gotoxy(56, 25);
-							Nhap_so(t->data.Trang_thai_the, 56, 25);
+							xoa_man_hinh(60, 25, 70, 1);
+							gotoxy(60, 25);
+							Nhap_so(t->data.Trang_thai_the, 60, 25);
 							if (t->data.Trang_thai_the != 0 && t->data.Trang_thai_the != 1)
 							{					
 								thong_bao("Trang thai the khong hop le, xin nhap lai.");
-								xoa_man_hinh(56, 25, 70, 1);
+								xoa_man_hinh(60, 25, 70, 1);
 							}
 						}while (t->data.Trang_thai_the != 0 && t->data.Trang_thai_the != 1);
 						Chuan_hoa_chu(t->data.Ho);
-						Chuan_hoa_chu(t->data.Ten); // cin.ignore();
+						Chuan_hoa_chu(t->data.Ten);
 						thong_bao("Hieu chinh thanh cong.");	
 						return;
 					}

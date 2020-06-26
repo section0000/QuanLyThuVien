@@ -441,7 +441,7 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
 			kytu = getch();
   			if (kytu==0) kytu = getch();
   			switch (kytu) {
-    		case Up :if (chon+1 > 1)
+    		case 72 :if (chon+1 > 1)
   			{
   		        Normal();
               	Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
@@ -479,7 +479,7 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
   			  	}
   			}
   			break;
-  			case Down :if (chon+1 <t->data.So_luong_sach_dang_muon)
+  			case 80 :if (chon+1 <t->data.So_luong_sach_dang_muon)
   			{
   		        Normal();
               	Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
@@ -665,7 +665,7 @@ void Xu_li_lam_mat_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_
 			kytu = getch();
   			if (kytu==0) kytu = getch();
   			switch (kytu) {
-    		case Up :if (chon+1 > 1)
+    		case 72 :if (chon+1 > 1)
   			{
   		        Normal();
               	Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
@@ -703,7 +703,7 @@ void Xu_li_lam_mat_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_
   			  	}
   			}
   			break;
-  			case Down :if (chon+1 <t->data.So_luong_sach_dang_muon)
+  			case 80 :if (chon+1 <t->data.So_luong_sach_dang_muon)
   			{
   		        Normal();
               	Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);

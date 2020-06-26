@@ -1,10 +1,13 @@
 #ifndef Data
 #define Data
 #include<string>
+#define MAX_DAU_SACH  1000
+#define MA_THE_MIN  1
+#define MA_THE_MAX  40000
 	using namespace std;
-const int MAX_DAU_SACH = 1000;
-const int MA_THE_MIN = 1;
-const int MA_THE_MAX = 40000;
+//const int MAX_DAU_SACH = 1000;
+//const int MA_THE_MIN = 1;
+//const int MA_THE_MAX = 40000;
 // Danh muc sach
 struct danh_muc_sach
 {
@@ -45,7 +48,7 @@ struct dau_sach
 typedef struct dau_sach DAU_SACH;
 struct ds_dau_sach
 {
-	DAU_SACH *list[MAX_DAU_SACH];
+	DAU_SACH *list[MAX_DAU_SACH+1];
 	int so_luong = 0;	
 };
 typedef struct ds_dau_sach DS_DAU_SACH;

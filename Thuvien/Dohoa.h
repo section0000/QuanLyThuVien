@@ -181,6 +181,12 @@ void huong_dan_xem_theo_the_loai()
 	gotoxy(2, 39);
 	cout<<"Mui ten trai phai: Chuyen trang | Esc: Thoat";
 }
+void huong_dan_chinh_sua()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Chuyen den chinh sua phan tiep theo";
+}
 void Normal () {
 	SetColor(15);
 	SetBGColor(0);
@@ -357,8 +363,6 @@ void khung_xuat_dms(int x, int y, int chieu_cao)
 	}
 }
 
-const int Up = 72;
-const int Down = 80;
 const int so_item = 5;
 const int dong =8;
 const int cot = 54 ;
@@ -386,7 +390,7 @@ do {
   kytu = getch();
   if (kytu==0) kytu = getch();
   switch (kytu) {
-    case Up :if (chon+1 >1)
+    case 72 :if (chon+1 >1)
   			  {
   		              	Normal();
               	gotoxy(cot,dong+chon);
@@ -398,7 +402,7 @@ do {
   				
   			  }
   			  break;
-  	case Down :if (chon+1 <so_item)
+  	case 80 :if (chon+1 <so_item)
   			  {
   		        Normal();
               	gotoxy(cot,dong+chon);
@@ -444,7 +448,7 @@ do {
   kytu = getch();
   if (kytu==0) kytu = getch();
   switch (kytu) {
-    case Up :if (chon+1 >1)
+    case 72 :if (chon+1 >1)
   			  {
   		              	Normal();
               	gotoxy(cot_menu_dg,dong_menu_dg+chon);
@@ -456,7 +460,7 @@ do {
   				
   			  }
   			  break;
-  	case Down :if (chon+1 <so_item_dg)
+  	case 80 :if (chon+1 <so_item_dg)
   			  {
   		        Normal();
               	gotoxy(cot_menu_dg,dong_menu_dg+chon);
@@ -504,7 +508,7 @@ do {
   kytu = getch();
   if (kytu==0) kytu = getch();
   switch (kytu) {
-    case Up :if (chon+1 >1)
+    case 72 :if (chon+1 >1)
   			  {
   		              	Normal();
               	gotoxy(cot_menu_ds,dong_menu_ds+chon);
@@ -516,7 +520,7 @@ do {
   				
   			  }
   			  break;
-  	case Down :if (chon+1 <so_item_ds)
+  	case 80 :if (chon+1 <so_item_ds)
   			  {
   		        Normal();
               	gotoxy(cot_menu_ds,dong_menu_ds+chon);
@@ -560,7 +564,7 @@ do {
   kytu = getch();
   if (kytu==0) kytu = getch();
   switch (kytu) {
-    case Up :if (chon+1 >1)
+    case 72 :if (chon+1 >1)
   			  {
   		              	Normal();
               	gotoxy(cot_menu_dms,dong_menu_dms+chon);
@@ -572,7 +576,7 @@ do {
   				
   			  }
   			  break;
-  	case Down :if (chon+1 <so_item_dms)
+  	case 80 :if (chon+1 <so_item_dms)
   			  {
   		        Normal();
               	gotoxy(cot_menu_dms,dong_menu_dms+chon);
@@ -617,7 +621,7 @@ do {
   kytu = getch();
   if (kytu==0) kytu = getch();
   switch (kytu) {
-    case Up :if (chon+1 >1)
+    case 72 :if (chon+1 >1)
   			  {
   		              	Normal();
               	gotoxy(cot_menu_mt,dong_menu_mt+chon);
@@ -629,7 +633,7 @@ do {
   				
   			  }
   			  break;
-  	case Down :if (chon+1 <so_item_mt)
+  	case 80 :if (chon+1 <so_item_mt)
   			  {
   		        Normal();
               	gotoxy(cot_menu_mt,dong_menu_mt+chon);
@@ -672,7 +676,7 @@ do {
   kytu = getch();
   if (kytu==0) kytu = getch();
   switch (kytu) {
-    case Up :if (chon+1 >1)
+    case 72 :if (chon+1 >1)
   			  {
   		              	Normal();
               	gotoxy(cot_menu_thoat,dong_menu_thoat+chon);
@@ -684,7 +688,7 @@ do {
   				
   			  }
   			  break;
-  	case Down :if (chon+1 <so_item_thoat)
+  	case 80 :if (chon+1 <so_item_thoat)
   			  {
   		        Normal();
               	gotoxy(cot_menu_thoat,dong_menu_thoat+chon);
