@@ -9,6 +9,7 @@
 int Lay_nam_he_thong();
 void Xuat_ngay_thang(NGAY_THANG date);
 void Lay_ngay_gio_he_thong(NGAY_THANG &date);
+int Khoang_cach_giua_2_ngay(NGAY_THANG date1);
 const int NAM_MAX = Lay_nam_he_thong();
 
 bool Nam_nhuan(int nam)
@@ -131,7 +132,14 @@ void Nhap_ngay_thang(NGAY_THANG &date, int x, int y)
 							xoa_man_hinh(x-4, y+2, 20, 1);
 							xoa_man_hinh(x-6, y+3, 20, 1);
 						}
-					}while (Ngay_hop_le(ngaytam) == 0);
+						if (Khoang_cach_giua_2_ngay(ngaytam) < 0)
+						{
+							thong_bao("Ngay thang khong the lon ngay hien tai. Xin kiem tra lai.");
+							xoa_man_hinh(x-5, y+1, 20, 1);
+							xoa_man_hinh(x-4, y+2, 20, 1);
+							xoa_man_hinh(x-6, y+3, 20, 1);
+						}
+					}while (Ngay_hop_le(ngaytam) == 0 || Khoang_cach_giua_2_ngay(ngaytam) < 0);
 					xoa_man_hinh(x, y, 20, 1);
 					gotoxy(x, y);
 					Xuat_ngay_thang(ngaytam);
