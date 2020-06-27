@@ -259,21 +259,21 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 									if (ds_dau_sach.list[i]->Ten_sach == tensach)
 									{
 										xoa_man_hinh(5, 7, 128, 30);
-										gotoxy(30, 10);
+										gotoxy(30, 7);
 										cout<<"Ten sach: " << ds_dau_sach.list[i]->Ten_sach;
-										gotoxy(60, 12);
+										gotoxy(60, 9);
 										cout << "DANH MUC SACH";
-										khung_xuat_dms(27, 13, 20);
-										Xuat_dms_cua_1_dau_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, 16);
+										khung_xuat_dms(27, 10, 20);
+										Xuat_dms_cua_1_dau_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, 13);
 										if(ds_dau_sach.list[i]->Check == false) //kiem tra dms cua dau sach co rong hay khong
 										{
 											thong_bao("Dau sach hien khong co sach nao.");
 											break;
 										}
 										huong_dan_muon_sach_2();
-										gotoxy(30, 35); 
+										gotoxy(30, 32); 
 										cout << "Nhap ma sach can muon: ";
-										gotoxy(31, 36);
+										gotoxy(31, 33);
 										cout << "(Go exit de thoat)";
 										ShowCur(0);
 										while (true)
@@ -283,13 +283,13 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 												char key2 = getch();
 												if (key2 == 13)
 												{
-													gotoxy(31, 36);
+													gotoxy(31, 33);
 													cout << "(Go exit de thoat)";			
 													ShowCur(1);
 													string masach; 
 												Nhapmasach:	
-													gotoxy(53, 35);
-													Nhap_va_kiem_tra_bo_trong_du_lieu(masach, 53, 35);	
+													gotoxy(53, 32);
+													Nhap_va_kiem_tra_bo_trong_du_lieu(masach, 53, 32);	
 													if (masach == "Exit" || masach == "exit")
 													{
 														ShowCur(0);
@@ -298,8 +298,8 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 													if (Kiem_tra_trung_ma_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, masach) == false)
 													{		
 														thong_bao("Ma sach khong ton tai.");
-														xoa_man_hinh(53, 35, 80, 1);
-														gotoxy(53,35);
+														xoa_man_hinh(53, 32, 80, 1);
+														gotoxy(53,32);
 														goto Nhapmasach; // Quay ve nhap lai ma sach
 													}	
 													// Duyet ds danh muc sach cua dau sach do de tim ra sach co ma muon muon
@@ -311,13 +311,13 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 															if (g->data.Trang_thai == 1)
 															{
 																thong_bao("Sach da co nguoi muon. Xin chon sach khac.");
-																xoa_man_hinh(53, 35, 80, 1);
+																xoa_man_hinh(53, 32, 80, 1);
 																goto Nhapmasach;
 															}
 															else if (g->data.Trang_thai == 2)
 															{
 																thong_bao("Sach da thanh ly. Xin chon sach khac.");
-																xoa_man_hinh(53, 35, 80, 1);
+																xoa_man_hinh(53, 32, 80, 1);
 																goto Nhapmasach;
 															}
 															else if (g->data.Trang_thai == 0) // Duoc phep muon
@@ -331,7 +331,10 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 																mt.Ma_sach = masach;
 																mt.Trang_thai = 0;
 																NGAY_THANG ngaymuon;
-																Lay_ngay_gio_he_thong(ngaymuon); // Lay ngay hien tai lam ngay muon
+																gotoxy(80, 32);
+																cout << "Ngay muon: ";
+																Nhap_ngay_thang(ngaymuon, 91, 32);
+																//Lay_ngay_gio_he_thong(ngaymuon); // Lay ngay hien tai lam ngay muon
 																mt.Ngay_muon = ngaymuon;
 																NODE_MUON_TRA *p = Khoi_tao_node_mt(mt);
 																Them_vao_cuoi_danh_sach_mt(t->data.ds_muon_tra_cua_doc_gia, p);
@@ -340,6 +343,11 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 																ds_dau_sach.list[i]->So_lan_muon++;
 																thong_bao("Muon thanh cong.");
 																ShowCur(0);
+																int ngayquahan = Ngay_qua_han(t->data.ds_muon_tra_cua_doc_gia);
+																if (ngayquahan > 7)
+																{
+																	return;
+																}
 																if (t->data.So_luong_sach_dang_muon == 3) return;
 																break;	
 															}
@@ -574,8 +582,11 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
 								if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2) // 0 la dang muon, 2 la lam mat sach. Lam mat sach thi khi den sach <=> Tra sach 
 								{
 									k->data.Trang_thai = 1; // Sua trang thai muon tra lai la 1 (Da tra)
-									Lay_ngay_gio_he_thong(ngaytra);
-									k->data.Ngay_tra = ngaytra; // Lay ngay hien tai lam ngay tra. Khong ro la nen cho nhap ngay hay lay luon ngay hien tai?
+									ShowCur(1);
+									gotoxy(30, 22);
+									cout << "Ngay tra: ";
+									Nhap_ngay_thang(k->data.Ngay_tra, 41, 22);
+									// k->data.Ngay_tra = ngaytra; // Lay ngay hien tai lam ngay tra. Khong ro la nen cho nhap ngay hay lay luon ngay hien tai?
 									tam = k->data.Ma_sach; 
 									t->data.So_luong_sach_dang_muon--;
 									// Nen xoa hay khong? Xoa: du lieu duoc giai phong => Du da hon ve bo nho. Khong xoa: co the lay lai du lieu va lam them phan "Lich su muon sach"
@@ -594,9 +605,6 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
 						}
 					}
 				}
-				gotoxy(30, 22);
-				cout << "Ngay tra: ";
-				Xuat_ngay_thang(ngaytra);
 				thong_bao("Xac nhan da tra.");
 				chon = 0;
 				xoa_man_hinh(18 ,12, 95, 15);
