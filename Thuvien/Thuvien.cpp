@@ -456,6 +456,7 @@ int main()
 								}
 								else if (key == 27)
 								{
+									Normal();
 									break;	
 								}	
 							}	

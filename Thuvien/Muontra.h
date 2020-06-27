@@ -197,7 +197,7 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 			gotoxy(114, 36);
 			cout << "Trang " << current_page << " / " << page;
 			khung_xuat_thong_tin_ds(5, 7, 28);
-			int thoat=0;
+			int thoat = 0;
 			for (int i = 0; i < ds_dau_sach.so_luong; i++)
 			{
 				vitri=0;
@@ -268,7 +268,7 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 										if(ds_dau_sach.list[i]->Check == false) //kiem tra dms cua dau sach co rong hay khong
 										{
 											thong_bao("Dau sach hien khong co sach nao.");
-											return;
+											break;
 										}
 										huong_dan_muon_sach_2();
 										gotoxy(30, 35); 
@@ -292,7 +292,8 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 													Nhap_va_kiem_tra_bo_trong_du_lieu(masach, 53, 35);	
 													if (masach == "Exit" || masach == "exit")
 													{
-														return;
+														ShowCur(0);
+														break;
 													}					
 													if (Kiem_tra_trung_ma_sach(ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach, masach) == false)
 													{		
@@ -302,6 +303,7 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 														goto Nhapmasach; // Quay ve nhap lai ma sach
 													}	
 													// Duyet ds danh muc sach cua dau sach do de tim ra sach co ma muon muon
+													int tam = t->data.So_luong_sach_dang_muon;
 													for (NODE_DANH_MUC_SACH *g = ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.pHead; g != NULL; g = g->pNext)
 													{
 														if (g->data.Ma_sach == masach)
@@ -337,18 +339,20 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 																t->data.ds_muon_tra_cua_doc_gia.so_luong++; // De cho biet tong so sach da muon, biet them thong tin la chinh chu co hay khong cung khong anh huong
 																ds_dau_sach.list[i]->So_lan_muon++;
 																thong_bao("Muon thanh cong.");
-																return;	
+																ShowCur(0);
+																if (t->data.So_luong_sach_dang_muon == 3) return;
+																break;	
 															}
 														}
 													}
+													if(tam < t->data.So_luong_sach_dang_muon) break;
 												}	
 												else if (key2 == 27)
 												{
-													return;
+													break;
 												}
 											}	
 										}	
-		
 									}
 								}
 								break;
@@ -362,7 +366,7 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 								break;
 							case 27: Normal(); return;
 						}
-					} while(c!=77 && c!=75);
+					} while(c!=77 && c!=75 && c!=13);
 					if (c==77 && i<ds_dau_sach.so_luong-1)
 					{
 						Normal();
@@ -384,6 +388,20 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 						else if(i>49) 
 							i=i-((i%25)+26); 
 						xoa_man_hinh(5, 7, 128, 29);
+					}
+					else if (c==13)
+					{
+						Normal();
+						chon=0;
+						dem=-1;
+						current_page=1;
+						if(i<50 && dem<=24) 
+							i=-1;
+						else if(i>49) 
+							i=i-((i%25)+26); 
+						xoa_man_hinh(5, 7, 128, 30);
+						gotoxy(114, 36);
+						cout << "Trang 1 / " << page;
 					}
 					khung_xuat_thong_tin_ds(5, 7, 28);
 				}
