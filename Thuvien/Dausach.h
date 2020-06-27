@@ -329,7 +329,10 @@ void Xoa_dau_sach(DS_DAU_SACH &ds_dau_sach)
 											ds_dau_sach.list[i]->Check = ds_dau_sach.list[i+1]->Check;
 										}	
 										// B2: Giai phong 
-										DAU_SACH *tam = ds_dau_sach.list[ds_dau_sach.so_luong-1];
+										// DAU_SACH *tam = ds_dau_sach.list[ds_dau_sach.so_luong-1];
+										delete ds_dau_sach.list[ds_dau_sach.so_luong-1];
+										// Tranh truong hop con tro bi treo
+										ds_dau_sach.list[ds_dau_sach.so_luong-1] = NULL;
 										// Giam so luong
 										ds_dau_sach.so_luong--;
 										thong_bao("Xoa thanh cong.");
