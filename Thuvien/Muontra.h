@@ -410,6 +410,7 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 						xoa_man_hinh(5, 7, 128, 30);
 						gotoxy(114, 36);
 						cout << "Trang 1 / " << page;
+						huong_dan_muon_sach();
 					}
 					khung_xuat_thong_tin_ds(5, 7, 28);
 				}
