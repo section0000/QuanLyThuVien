@@ -586,7 +586,17 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
 									ShowCur(1);
 									gotoxy(30, 22);
 									cout << "Ngay tra: ";
-									Nhap_ngay_thang(k->data.Ngay_tra, 41, 22);
+									do
+									{
+										Nhap_ngay_thang(k->data.Ngay_tra, 41, 22);
+										if (Tinh_ngay(k->data.Ngay_tra) - Tinh_ngay(k->data.Ngay_muon) < 0)
+										{
+											thong_bao("Ngay tra khong the nho hon ngay muon. Xin kiem tra lai.");	
+											xoa_man_hinh(41-5, 22+1, 20, 1);
+											xoa_man_hinh(41-4, 22+2, 20, 1);
+											xoa_man_hinh(41-6, 22+3, 20, 1);
+										}	
+									}while (Tinh_ngay(k->data.Ngay_tra) - Tinh_ngay(k->data.Ngay_muon) < 0);
 									// k->data.Ngay_tra = ngaytra; // Lay ngay hien tai lam ngay tra. Khong ro la nen cho nhap ngay hay lay luon ngay hien tai?
 									tam = k->data.Ma_sach; 
 									t->data.So_luong_sach_dang_muon--;
