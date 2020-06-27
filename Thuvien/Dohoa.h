@@ -207,6 +207,12 @@ void huong_dan_chinh_sua()
 	gotoxy(2, 39);
 	cout<<"Enter: Chuyen den chinh sua phan tiep theo";
 }
+void huong_dan_nhap_ngay_thang()
+{
+	xoa_man_hinh(2, 39, 100, 1);
+	gotoxy(2, 39);
+	cout<<"Enter: Xac nhan | F10: Chinh sua ngay thang";
+}
 void Normal () {
 	SetColor(15);
 	SetBGColor(0);
