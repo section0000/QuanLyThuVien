@@ -362,7 +362,7 @@ int main()
 				{
 					ve_lai_man_hinh();
 					DeMuc("   CHINH SUA SACH THUOC DAU SACH");
-					Hieu_chinh_sach2(ds_dms, ds_dau_sach);
+					Hieu_chinh_sach(ds_dms, ds_dau_sach);
 					break;
 				}
 				case 0 : thoat++; break;
