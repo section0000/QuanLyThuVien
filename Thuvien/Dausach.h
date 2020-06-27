@@ -4,7 +4,7 @@
 #include "Themxoahieuchinhdocgia.h" 
 #include "Ngaythang.h"
 #include "Xu_li_nhap_so.h"
-void Xuat_thong_tin_1_dau_sach(DAU_SACH *dau_sach);
+// void Xuat_thong_tin_1_dau_sach(DAU_SACH *dau_sach);
 void Xuat_dms_cua_1_dau_sach(DS_DANH_MUC_SACH ds_dms, int dong_bat_dau);
 	using namespace std;
 // Dau sach
