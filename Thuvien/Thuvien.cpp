@@ -57,6 +57,7 @@ int main()
 
 	Load_file_doc_gia(t, ds_dg);
 	Load_file_dau_sach(ds_dau_sach);
+	Tinh_ngay_qua_han_cua_cac_doc_gia(t);
 	system("cls");
 	int thoat=0;
 	int chon;
