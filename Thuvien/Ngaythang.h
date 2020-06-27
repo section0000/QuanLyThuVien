@@ -1,8 +1,17 @@
 #ifndef Ngaythang
 #define Ngaythang
 #include "Data.h"
+#include "Dohoa.h"
+#include "Xu_li_nhap_so.h"
 #include<ctime>
-/*bool Nam_nhuan(int nam)
+#define NAM_MIN 1800
+
+int Lay_nam_he_thong();
+void Xuat_ngay_thang(NGAY_THANG date);
+void Lay_ngay_gio_he_thong(NGAY_THANG &date);
+const int NAM_MAX = Lay_nam_he_thong();
+
+bool Nam_nhuan(int nam)
 {
     if (nam % 400 == 0)
 	{
@@ -13,7 +22,128 @@
     	return true;
 	}
     return false; 	
-}*/
+}
+int Ngay_hop_le(NGAY_THANG date) // 0: ngay sai, 1: thang sai, 2: nam sai, 3: hop le
+{
+	/*if (date.Nam > NAM_MAX || date.Nam < NAM_MIN)
+	{
+		return 2;
+	}
+	if (date.Thang < 1 || date.Thang > 12)
+	{
+		return 1;
+	}
+	if (date.Ngay < 1 || date.Ngay > 31)
+	{
+		return 0;
+	}*/
+	if (date.Thang == 2)
+	{
+		if (Nam_nhuan(date.Nam) == true)
+		{
+			if (date.Ngay > 29)
+			{
+				return 0;
+			}
+		}
+		else 
+		{
+			if (date.Ngay > 28)
+			{
+				return 0;
+			}
+		}
+	}
+	if ((date.Thang == 4 || date.Thang == 6 || date.Thang == 9 || date.Thang == 11) && date.Ngay > 30)
+	{
+		return 0;
+	}
+	return 3;
+}
+void Nhap_ngay_thang(NGAY_THANG &date, int x, int y)
+{
+	
+	Lay_ngay_gio_he_thong(date);
+	huong_dan_nhap_ngay_thang();
+	gotoxy(x, y);
+	Xuat_ngay_thang(date);
+	while (true)
+	{
+		if (kbhit())
+		{
+			char key = getch();
+			if (key == 13)
+			{
+				return;
+			}
+			else if (key == 0)
+			{
+				key = getch();
+				if (key == 68)
+				{
+					NGAY_THANG ngaytam;
+					// ngaytam.Ngay = date.Ngay;
+					// ngaytam.Thang = date.Thang;
+					// ngaytam.Nam = date.Nam;	
+					do
+					{
+						gotoxy(x-11, y+1);
+						cout << "Ngay: ";
+						gotoxy(x-11, y+2);
+						cout << "Thang: ";
+						gotoxy(x-11, y+3);
+						cout << "Nam: ";
+						ShowCur(1);
+						do
+						{
+							gotoxy(x-5, y+1);
+							Nhap_ngay(ngaytam.Ngay, x-5, y+1);
+							if (ngaytam.Ngay < 1 || ngaytam.Ngay > 31)
+							{
+								thong_bao("Ngay khong hop le. Xin nhap lai.");
+								xoa_man_hinh(x-5, y+1, 20, 1);
+							}
+						}while (ngaytam.Ngay < 1 || ngaytam.Ngay > 31);
+						do
+						{
+							gotoxy(x-4, y+2);
+							Nhap_thang(ngaytam.Thang, x-4, y+2);	
+							if (ngaytam.Thang < 1 || ngaytam.Thang > 12)
+							{
+								thong_bao("Thang khong hop le. Xin nhap lai.");
+								xoa_man_hinh(x-4, y+2, 20, 1);
+							}
+						}while (ngaytam.Thang < 1 || ngaytam.Thang > 12);
+						do
+						{
+							gotoxy(x-6, y+3);
+							Nhap_nam(ngaytam.Nam, x-6, y+3);
+							if (ngaytam.Nam > NAM_MAX || ngaytam.Nam < NAM_MIN)
+							{
+								thong_bao("Nam khong hop le. Xin nhap lai.");
+								xoa_man_hinh(x-6, y+3, 20, 1);
+							}
+						}while (ngaytam.Nam > NAM_MAX || ngaytam.Nam < NAM_MIN);
+						if (Ngay_hop_le(ngaytam) == 0)
+						{
+							thong_bao("Ngay thang khong chinh xac. Xin nhap lai.");
+							xoa_man_hinh(x-5, y+1, 20, 1);
+							xoa_man_hinh(x-4, y+2, 20, 1);
+							xoa_man_hinh(x-6, y+3, 20, 1);
+						}
+					}while (Ngay_hop_le(ngaytam) == 0);
+					xoa_man_hinh(x, y, 20, 1);
+					gotoxy(x, y);
+					Xuat_ngay_thang(ngaytam);
+					date.Ngay = ngaytam.Ngay;
+					date.Thang = ngaytam.Thang;
+					date.Nam = ngaytam.Nam;
+					return;
+				}
+			}
+		}
+	}
+}
 void Xuat_ngay_thang(NGAY_THANG date)
 {
 	cout << date.Ngay << "/" << date.Thang << "/" << date.Nam;
