@@ -562,7 +562,7 @@ void Hieu_chinh_dau_sach(DS_DAU_SACH &ds_dau_sach)
 											ds_dau_sach.list[chon]->The_loai = temp;
 										}
 										gotoxy(49, 28);
-										cout<<ds_dau_sach.list[i]->The_loai;
+										cout<<ds_dau_sach.list[chon]->The_loai;
 										Chuan_hoa_chu(ds_dau_sach.list[chon]->Tac_gia);
 										Chuan_hoa_chu(ds_dau_sach.list[chon]->Ten_sach);
 										Chuan_hoa_chu(ds_dau_sach.list[chon]->The_loai);
