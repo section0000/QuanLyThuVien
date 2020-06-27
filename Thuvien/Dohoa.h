@@ -2,6 +2,25 @@
 #define Dohoa
 #include<iomanip>
 #include <conio.h>
+#define so_item  5
+#define dong  8
+#define cot  54 
+#define so_item_dg  7
+#define dong_menu_dg 8
+#define cot_menu_dg  51 
+#define so_item_ds  7
+#define dong_menu_ds  8
+#define cot_menu_ds  51
+#define so_item_dms  3
+#define dong_menu_dms  8
+#define cot_menu_dms  51 
+#define so_item_mt  4
+#define dong_menu_mt  8
+#define cot_menu_mt  51 
+#define so_item_thoat  2
+#define dong_menu_thoat 25
+#define cot_menu_thoat  63 
+
 using namespace std;
 
 void gotoxy(int x, int y)
@@ -123,7 +142,7 @@ void huong_dan_xoa_doc_gia_2()
 }
 void huong_dan_xem_danh_sach_sach_dang_muon_doc_gia()
 {
-	xoa_man_hinh(2, 39, 100, 1);
+	xoa_man_hinh(2, 39, 110, 1);
 	gotoxy(2, 39);
 	cout<<"Enter: Tien hanh nhap ma the doc gia | Esc: Thoat";
 }
@@ -167,8 +186,9 @@ void huong_dan_xem_danh_sach()
 {
 	xoa_man_hinh(2, 39, 100, 1);
 	gotoxy(2, 39);
-	cout<<"Mui ten trai phai: Chuyen trang | Mui ten len xuong: Di chuyen thanh sang | Enter: Xem chi tiet | Esc: Thoat";
+	cout<<"Mui ten trai phai: Chuyen trang | Mui ten len xuong: Di chuyen thanh sang | Enter: Chon | Esc: Thoat";
 }
+
 void huong_dan_tra_sach()
 {
 	xoa_man_hinh(2, 39, 100, 1);
@@ -363,10 +383,8 @@ void khung_xuat_dms(int x, int y, int chieu_cao)
 	}
 }
 
-const int so_item = 5;
-const int dong =8;
-const int cot = 54 ;
 
+//menu chinh
 char menu_chinh [so_item][50] = {"           DOC GIA          ",
 								 "           DAU SACH         ",
 			                     "        DANH MUC SACH       ",
@@ -419,9 +437,6 @@ do {
   } while (1);
 }
 //menu doc gia
-const int so_item_dg = 7;
-const int dong_menu_dg =8;
-const int cot_menu_dg = 51 ;
 char menu_dg [so_item_dg][50] = {"           THEM DOC GIA           ",
 			                  	 "         CHINH SUA DOC GIA        ",
 			                   	 "            XOA DOC GIA           ",
@@ -479,9 +494,6 @@ do {
   } while (1);
 }
 //menu dau sach
-const int so_item_ds = 7;
-const int dong_menu_ds =8;
-const int cot_menu_ds = 51 ;
 char menu_ds [so_item_ds][50] = {"           THEM DAU SACH          ",
 			                  	 "           XOA DAU SACH           ",
 			                   	 "        CHINH SUA DAU SACH        ",
@@ -538,10 +550,7 @@ do {
   }  // end switch
   } while (1);
 }
-//menu danh muc sach
-const int so_item_dms = 3;
-const int dong_menu_dms =8;
-const int cot_menu_dms = 51 ;
+//menu danh muc sach;
 char menu_dms [so_item_dms][50] = {"     THEM SACH VAO 1 DAU SACH     ",
 				  			 	   "     XOA SACH THUOC 1 DAU SACH    ",
 						 	  	   "  CHINH SUA SACH THUOC 1 DAU SACH "};
@@ -595,9 +604,6 @@ do {
   } while (1);
 }
 //menu muon tra
-const int so_item_mt =4;
-const int dong_menu_mt =8;
-const int cot_menu_mt = 51 ;
 char menu_mt [so_item_mt][50] = {"             MUON SACH            ",
 				  			     "             TRA SACH             ",
 				  			     "           LAM MAT SACH           ",
@@ -653,9 +659,6 @@ do {
 }
 
 //menu thoat
-const int so_item_thoat = 2;
-const int dong_menu_thoat =25;
-const int cot_menu_thoat = 63 ;
 char menu_thoat [so_item_thoat][50] = {"   CO    ",
 				  			           "  KHONG  "};
 int MenuDongTHOAT(char td [so_item_thoat][50]){

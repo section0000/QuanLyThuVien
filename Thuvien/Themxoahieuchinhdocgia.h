@@ -393,7 +393,10 @@ void Xoa_node_bat_ki(TREE &t, int mathe, DS_DOC_GIA &ds_dg, DS_DAU_SACH ds_dau_s
         {
         	gotoxy(60,11);
 			cout << "THONG TIN DOC GIA";
-        	Xuat_thong_tin_1_doc_gia(t->data);
+        	//Xuat_thong_tin_1_doc_gia(t->data);
+        	khung_xuat_thong_tin_dg(13, 13, 4);
+			Tinh_ngay_qua_han_cua_cac_doc_gia(t);
+			Xuat_thong_tin_1_doc_gia_theo_hang(t->data, 16, 0);
         	gotoxy(20,22);
 			cout<<"Ma sach \tNgay muon \tTen sach \t\t\t\t\tTrang thai sach";	
 			for (int i=0; i<93; i++) 
@@ -408,15 +411,15 @@ void Xoa_node_bat_ki(TREE &t, int mathe, DS_DOC_GIA &ds_dg, DS_DAU_SACH ds_dau_s
 			for (int i=0; i<6; i++) 
 			{ 
 				gotoxy(18,22+i); 
-				cout<<"|";
+				cout<<char(179);
 				gotoxy(28,22+i); 
-				cout<<"|";
+				cout<<char(179);
 				gotoxy(43,22+i); 
-				cout<<"|";
+				cout<<char(179);
 				gotoxy(94,22+i); 
-				cout<<"|";
+				cout<<char(179);
 				gotoxy(112,22+i);
-				cout<<"|";
+				cout<<char(179);
 			}
 			gotoxy(40,20);
 			cout << "DANH SACH SACH DANG MUON CUA DOC GIA: " << t->data.Ho << " " << t->data.Ten << endl;
@@ -453,6 +456,7 @@ void Xoa_node_bat_ki(TREE &t, int mathe, DS_DOC_GIA &ds_dg, DS_DAU_SACH ds_dau_s
 			textcolor(11);
 			ShowCur(1);
 			cout << "XAC NHAN XOA?";
+			Normal();
 			while (true)
 			{
 				if (kbhit())

@@ -5,9 +5,7 @@
 #define MA_THE_MIN  1
 #define MA_THE_MAX  40000
 	using namespace std;
-//const int MAX_DAU_SACH = 1000;
-//const int MA_THE_MIN = 1;
-//const int MA_THE_MAX = 40000;
+
 // Danh muc sach
 struct danh_muc_sach
 {

@@ -13,36 +13,6 @@ void Tinh_ngay_qua_han_cua_cac_doc_gia(TREE &t)
 		Tinh_ngay_qua_han_cua_cac_doc_gia(t->pRight);
 	}
 }
-void Xuat_thong_tin_1_doc_gia(DOC_GIA dg)
-{
-	gotoxy(30,12);
-	cout << "Ma the: " << dg.Ma_the;
-	gotoxy(30,13);
-	cout << "Ho ten: " << dg.Ho << " " << dg.Ten;
-	gotoxy(30,14);
-	cout << "Gioi tinh: " << dg.Phai;
-	if (dg.Trang_thai_the == 0)
-	{
-		gotoxy(30,15);
-		cout << "Trang thai the: " << dg.Trang_thai_the << " (Bi khoa)";
-	}
-	else
-	{
-		gotoxy(30,15);
-		cout << "Trang thai the: " << dg.Trang_thai_the << " (Dang hoat dong)";
-	}
-	gotoxy(30,16);
-	cout << "So luong sach dang muon: " << dg.So_luong_sach_dang_muon;
-	dg.So_ngay_qua_han = Ngay_qua_han(dg.ds_muon_tra_cua_doc_gia);
-	if (dg.So_ngay_qua_han < 0)
-	{
-		dg.So_ngay_qua_han = 0;
-	}
-	gotoxy(30,17);
-	cout << "So ngay qua han: " << dg.So_ngay_qua_han;
-	gotoxy(30,18);
-	cout << "Tong so sach da muon: " << dg.ds_muon_tra_cua_doc_gia.so_luong << endl << endl;
-}
 void Xuat_thong_tin_1_doc_gia_theo_hang(DOC_GIA dg, int dong_bat_dau, int dem)
 {
 	gotoxy(15,dong_bat_dau+dem);
