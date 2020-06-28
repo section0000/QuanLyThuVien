@@ -335,8 +335,15 @@ void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, TRE
 {
 	if (t != NULL)
 	{
-		Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->pLeft, mathe);
-		if (t->data.Ma_the == mathe)
+		if (mathe < t->data.Ma_the)
+		{
+			Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->pLeft, mathe);
+		}
+		else if (mathe > t->data.Ma_the)
+		{
+			Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->pRight, mathe);
+		}
+		else
 		{
 			if (t->data.ds_muon_tra_cua_doc_gia.so_luong == 0)
 			{
@@ -344,9 +351,8 @@ void Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(DS_DAU_SACH ds_dau_sach, TRE
 				return;
 			}
 			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
-			thong_bao("                                     ");
+			thong_bao("                                     ");	
 		}
-		Liet_ke_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->pRight, mathe);
 	}
 }
 void Chuyen_doc_gia_qua_han_sang_mang(TREE t, DOC_GIA a[], int &n)
