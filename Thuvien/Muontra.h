@@ -130,8 +130,15 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 	ShowCur(0);
 	if (t != NULL) // Duyet cay
 	{
-		Muon_sach(t->pLeft, ds_dau_sach, ds_dms, mathe); 
-		if (t->data.Ma_the == mathe)
+		if (mathe < t->data.Ma_the)
+		{
+			Muon_sach(t->pLeft, ds_dau_sach, ds_dms, mathe);
+		}
+		else if (mathe > t->data.Ma_the)
+		{
+			Muon_sach(t->pRight, ds_dau_sach, ds_dms, mathe); 
+		}
+		else
 		{
 			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
 			if (t->data.So_luong_sach_dang_muon == 0)
@@ -417,18 +424,24 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 				dem++;
 			}
 		}
-		Muon_sach(t->pRight, ds_dau_sach, ds_dms, mathe);
 	}
 }
 void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int mathe)
 {
 	ShowCur(0);
-	huong_dan_tra_sach();
 	if (t != NULL) // Duyet cay
 	{
-		Xu_li_tra_sach(t->pLeft, ds_dau_sach, ds_dms, mathe);
-		if (t->data.Ma_the == mathe)
+		if (mathe < t->data.Ma_the)
 		{
+			Xu_li_tra_sach(t->pLeft, ds_dau_sach, ds_dms, mathe);
+		}
+		else if (mathe > t->data.Ma_the)
+		{
+			Xu_li_tra_sach(t->pRight, ds_dau_sach, ds_dms, mathe); 
+		}
+		else
+		{
+			huong_dan_tra_sach();
 			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
 			if (t->data.So_luong_sach_dang_muon == 0)
 			{
@@ -463,205 +476,209 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
 				}
 			}
 			do {
-			int kytu;
-			int flag;
-			kytu = getch();
-  			if (kytu==0) kytu = getch();
-  			switch (kytu) {
-    		case 72 :if (chon+1 > 1)
-  			{
-  		        Normal();
-              	Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
-              	chon--;
-              	dem = 0;
-              	flag = 0;
-              	for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
-				{
-					if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
+				int kytu;
+				int flag;
+				kytu = getch();
+	  			if (kytu==0) kytu = getch();
+	  			switch (kytu) {
+	    		case 72 :if (chon+1 > 1)
+	  			{
+	  		        Normal();
+	              	Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
+	              	chon--;
+	              	dem = 0;
+	              	flag = 0;
+	              	for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
 					{
-						if (flag == chon)
+						if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
 						{
-							SetColor(27);
-							string tensachtam;
-							tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
-							dem++;
-							gotoxy(20,14+dem);
-							cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< tensachtam;
-							if (k->data.Trang_thai == 0)
+							if (flag == chon)
 							{
-								gotoxy(96,14+dem);
-								cout << k->data.Trang_thai << " (Dang muon)";	
-							}
-							else if (k->data.Trang_thai == 2)
-							{
-								gotoxy(96,14+dem);
-								cout << k->data.Trang_thai << " (Da lam mat)";	
-							}
-							Normal();
-							break;
-						} 
-			 			flag++;
-			 			dem++;
-					}
-  			  	}
-  			}
-  			break;
-  			case 80 :if (chon+1 <t->data.So_luong_sach_dang_muon)
-  			{
-  		        Normal();
-              	Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
-              	chon++;
-              	dem = 0;
-              	flag = 0;
-              	for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
-				{
-					if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
-					{
-						if (flag == chon)
-						{
-							SetColor(27);
-							string tensachtam;
-							tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
-							dem++;
-							gotoxy(20,14+dem);
-							cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< tensachtam;
-							if (k->data.Trang_thai == 0)
-							{
-								gotoxy(96,14+dem);
-								cout << k->data.Trang_thai << " (Dang muon)";	
-							}
-							else if (k->data.Trang_thai == 2)
-							{
-								gotoxy(96,14+dem);
-								cout << k->data.Trang_thai << " (Da lam mat)";	
-							}
-							Normal();
-							break;
-						} 
-			 			flag++;
-			 			dem++;
-					}
-  			  	}	
-  			}
-  			break;
-  			case 13 : 
-  			{
-  				if (t->data.So_luong_sach_dang_muon == 0)
-				{
-					gotoxy(30, 20);
-					cout << "Doc gia hien van chua muon sach nao.";
-					thong_bao("                                  ");
-					return;
-				}
-  				flag = 0;
-  				NGAY_THANG ngaytra;	// Dung de luu ngay tra
-				string tensach;
-				for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
-				{
-					if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
-					{
-						if (flag == chon)
-						{
-							tensach = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
-							break;
-						} 
-			 			flag++;
-					}
-  				}
-				for (int i = 0; i < ds_dau_sach.so_luong; i++) 
-				{
-					if (ds_dau_sach.list[i]->Ten_sach == tensach)
-					{
-						string tam; // Bien dung de luu lai ma sach cua sach duoc tra
-						 // Duyet ds muon tra cua doc gia de tim ra sach co ten do va tien hanh chinh sua thong tin
-						for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
-						{
-							string tensachtam;
-							tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
-							if (tensachtam == tensach)
-							{
-								if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2) // 0 la dang muon, 2 la lam mat sach. Lam mat sach thi khi den sach <=> Tra sach 
+								SetColor(27);
+								string tensachtam;
+								tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
+								dem++;
+								gotoxy(20,14+dem);
+								cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< tensachtam;
+								if (k->data.Trang_thai == 0)
 								{
-									k->data.Trang_thai = 1; // Sua trang thai muon tra lai la 1 (Da tra)
-									ShowCur(1);
-									gotoxy(30, 22);
-									cout << "Ngay tra: ";
-									do
+									gotoxy(96,14+dem);
+									cout << k->data.Trang_thai << " (Dang muon)";	
+								}
+								else if (k->data.Trang_thai == 2)
+								{
+									gotoxy(96,14+dem);
+									cout << k->data.Trang_thai << " (Da lam mat)";	
+								}
+								Normal();
+								break;
+							} 
+				 			flag++;
+				 			dem++;
+						}
+	  			  	}
+	  			}
+	  			break;
+	  			case 80 :if (chon+1 <t->data.So_luong_sach_dang_muon)
+	  			{
+	  		        Normal();
+	              	Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
+	              	chon++;
+	              	dem = 0;
+	              	flag = 0;
+	              	for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
+					{
+						if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
+						{
+							if (flag == chon)
+							{
+								SetColor(27);
+								string tensachtam;
+								tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
+								dem++;
+								gotoxy(20,14+dem);
+								cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< tensachtam;
+								if (k->data.Trang_thai == 0)
+								{
+									gotoxy(96,14+dem);
+									cout << k->data.Trang_thai << " (Dang muon)";	
+								}
+								else if (k->data.Trang_thai == 2)
+								{
+									gotoxy(96,14+dem);
+									cout << k->data.Trang_thai << " (Da lam mat)";	
+								}
+								Normal();
+								break;
+							} 
+				 			flag++;
+				 			dem++;
+						}
+	  			  	}	
+	  			}
+	  			break;
+	  			case 13 : 
+	  			{
+	  				if (t->data.So_luong_sach_dang_muon == 0)
+					{
+						gotoxy(30, 20);
+						cout << "Doc gia hien van chua muon sach nao.";
+						thong_bao("                                  ");
+						return;
+					}
+	  				flag = 0;
+	  				NGAY_THANG ngaytra;	// Dung de luu ngay tra
+					string tensach;
+					for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
+					{
+						if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
+						{
+							if (flag == chon)
+							{
+								tensach = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
+								break;
+							} 
+				 			flag++;
+						}
+	  				}
+					for (int i = 0; i < ds_dau_sach.so_luong; i++) 
+					{
+						if (ds_dau_sach.list[i]->Ten_sach == tensach)
+						{
+							string tam; // Bien dung de luu lai ma sach cua sach duoc tra
+							 // Duyet ds muon tra cua doc gia de tim ra sach co ten do va tien hanh chinh sua thong tin
+							for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
+							{
+								string tensachtam;
+								tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
+								if (tensachtam == tensach)
+								{
+									if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2) // 0 la dang muon, 2 la lam mat sach. Lam mat sach thi khi den sach <=> Tra sach 
 									{
-										Nhap_ngay_thang(k->data.Ngay_tra, 41, 22);
-										if (Tinh_ngay(k->data.Ngay_tra) - Tinh_ngay(k->data.Ngay_muon) < 0)
+										k->data.Trang_thai = 1; // Sua trang thai muon tra lai la 1 (Da tra)
+										ShowCur(1);
+										gotoxy(30, 22);
+										cout << "Ngay tra: ";
+										do
 										{
-											thong_bao("Ngay tra khong the nho hon ngay muon. Xin kiem tra lai.");	
-											xoa_man_hinh(41-5, 22+1, 20, 1);
-											xoa_man_hinh(41-4, 22+2, 20, 1);
-											xoa_man_hinh(41-6, 22+3, 20, 1);
-										}	
-									}while (Tinh_ngay(k->data.Ngay_tra) - Tinh_ngay(k->data.Ngay_muon) < 0);
-									// k->data.Ngay_tra = ngaytra; // Lay ngay hien tai lam ngay tra. Khong ro la nen cho nhap ngay hay lay luon ngay hien tai?
-									tam = k->data.Ma_sach; 
-									t->data.So_luong_sach_dang_muon--;
-									// Nen xoa hay khong? Xoa: du lieu duoc giai phong => Du da hon ve bo nho. Khong xoa: co the lay lai du lieu va lam them phan "Lich su muon sach"
-									Xoa_1_node_muon_tra_theo_ma_sach(t->data.ds_muon_tra_cua_doc_gia, tam);
-									break;
+											Nhap_ngay_thang(k->data.Ngay_tra, 41, 22);
+											if (Tinh_ngay(k->data.Ngay_tra) - Tinh_ngay(k->data.Ngay_muon) < 0)
+											{
+												thong_bao("Ngay tra khong the nho hon ngay muon. Xin kiem tra lai.");	
+												xoa_man_hinh(41-5, 22+1, 20, 1);
+												xoa_man_hinh(41-4, 22+2, 20, 1);
+												xoa_man_hinh(41-6, 22+3, 20, 1);
+											}	
+										}while (Tinh_ngay(k->data.Ngay_tra) - Tinh_ngay(k->data.Ngay_muon) < 0);
+										// k->data.Ngay_tra = ngaytra; // Lay ngay hien tai lam ngay tra. Khong ro la nen cho nhap ngay hay lay luon ngay hien tai?
+										tam = k->data.Ma_sach; 
+										t->data.So_luong_sach_dang_muon--;
+										// Nen xoa hay khong? Xoa: du lieu duoc giai phong => Du da hon ve bo nho. Khong xoa: co the lay lai du lieu va lam them phan "Lich su muon sach"
+										Xoa_1_node_muon_tra_theo_ma_sach(t->data.ds_muon_tra_cua_doc_gia, tam);
+										break;
+									}
+								}
+							}
+							// Sua phan muon tra xong tien hanh sua thong tin danh muc sach do lai
+							for (NODE_DANH_MUC_SACH *g = ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.pHead; g != NULL; g = g->pNext)
+							{
+								if (g->data.Ma_sach == tam)
+								{
+									g->data.Trang_thai = 0; // Cho muon duoc									
 								}
 							}
 						}
-						// Sua phan muon tra xong tien hanh sua thong tin danh muc sach do lai
-						for (NODE_DANH_MUC_SACH *g = ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach.pHead; g != NULL; g = g->pNext)
-						{
-							if (g->data.Ma_sach == tam)
-							{
-								g->data.Trang_thai = 0; // Cho muon duoc									
-							}
-						}
 					}
-				}
-				thong_bao("Xac nhan da tra.");
-				chon = 0;
-				xoa_man_hinh(18 ,12, 95, 15);
-				khung_sach_dang_muon();
-				dem = 0;
-				for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
-				{
-					if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
+					thong_bao("Xac nhan da tra.");
+					chon = 0;
+					xoa_man_hinh(18 ,12, 95, 15);
+					khung_sach_dang_muon();
+					dem = 0;
+					for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
 					{
-						if (dem == 0) SetColor(27);
-						string tensachtam;
-						tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
-						dem++;
-						gotoxy(20,14+dem);
-						cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< tensachtam;
-						if (k->data.Trang_thai == 0)
+						if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
 						{
-							gotoxy(96,14+dem);
-							cout << k->data.Trang_thai << " (Dang muon)";	
+							if (dem == 0) SetColor(27);
+							string tensachtam;
+							tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
+							dem++;
+							gotoxy(20,14+dem);
+							cout<< k->data.Ma_sach<<"\t"<< k->data.Ngay_muon.Ngay << "/" << k->data.Ngay_muon.Thang << "/" << k->data.Ngay_muon.Nam<<"\t"<< tensachtam;
+							if (k->data.Trang_thai == 0)
+							{
+								gotoxy(96,14+dem);
+								cout << k->data.Trang_thai << " (Dang muon)";	
+							}
+							else if (k->data.Trang_thai == 2)
+							{
+								gotoxy(96,14+dem);
+								cout << k->data.Trang_thai << " (Da lam mat)";	
+							}
+							Normal();
 						}
-						else if (k->data.Trang_thai == 2)
-						{
-							gotoxy(96,14+dem);
-							cout << k->data.Trang_thai << " (Da lam mat)";	
-						}
-						Normal();
 					}
 				}
-			}
-			break;
-  			case 27: return; 
-  			}  // end switch
-  		} while (1);
-  		
+				break;
+	  			case 27: return; 
+	  			}  // end switch
+	  		} while (1);
 		}
-		Xu_li_tra_sach(t->pRight, ds_dau_sach, ds_dms, mathe);
 	}
 }
 void Xu_li_lam_mat_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int mathe)
 {
 	ShowCur(0);
-	huong_dan_tra_sach();
 	if (t != NULL)
 	{
-		Xu_li_lam_mat_sach(t->pLeft, ds_dau_sach, ds_dms, mathe);
-		if (t->data.Ma_the == mathe)
+		if (mathe < t->data.Ma_the)
+		{
+			Xu_li_lam_mat_sach(t->pLeft, ds_dau_sach, ds_dms, mathe);
+		}
+		else if (mathe > t->data.Ma_the)
+		{
+			Xu_li_lam_mat_sach(t->pRight, ds_dau_sach, ds_dms, mathe);
+		}
+		else
 		{
 			Xuat_danh_sach_sach_dang_muon_cua_1_doc_gia(ds_dau_sach, t->data.ds_muon_tra_cua_doc_gia, t);
 			if (t->data.So_luong_sach_dang_muon == 0)
@@ -673,6 +690,7 @@ void Xu_li_lam_mat_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_
 			}
 			int dem = 0;
 			int chon = 0;
+			huong_dan_tra_sach();
 			for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
 			{
 				if (k->data.Trang_thai == 0 || k->data.Trang_thai == 2)
@@ -851,9 +869,7 @@ void Xu_li_lam_mat_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_
   			case 27: return ; 
   			}  // end switch
   		} while (1);
-		
-		}	
-		Xu_li_lam_mat_sach(t->pRight, ds_dau_sach, ds_dms, mathe);
+		}
 	}
 }	
 

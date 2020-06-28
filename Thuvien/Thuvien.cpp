@@ -501,56 +501,20 @@ int main()
 					}	
 					break;
 				}
-				case 4:
-				{
-					ve_lai_man_hinh();
-					DeMuc("             DEN SACH");
-					huong_dan_xem_danh_sach_sach_dang_muon_doc_gia();
-					gotoxy(30, 9);
-					cout << "Nhap ma the doc gia: "; 
-					while (true)
-					{
-						if (kbhit())
-						{
-							char key = getch();
-							if (key == 13)
-							{
-								ShowCur(1);
-								int mathe;
-								Nhap_so(mathe, 51, 9);
-								if (Kiem_tra_trung_ma_the(t, mathe) == false)
-								{
-									thong_bao("Doc gia khong co trong thu vien.");
-									break;
-								}
-								else
-								{
-									Xu_li_tra_sach(t, ds_dau_sach, ds_dms, mathe);			
-									break;
-								}
-							}
-							else if (key == 27)
-							{
-								break;
-							}
-						}
-					}
-					break;
-				}
 				case 0 : thoat++; break;
 			}
 			system("cls");
-   				khung_vien();
-   				huong_dan();
-				if(thoat != 0) 
-				{
-					thoat=0;
-					break;
-				}
+   			khung_vien();
+   			huong_dan();
+			if(thoat != 0) 
+			{
+				thoat=0;
+				break;
 			}
-			while(1);
-			break;
 		}
+		while(1);
+		break;
+	}
     case so_item: 
     	{
     		int chon_thoat;

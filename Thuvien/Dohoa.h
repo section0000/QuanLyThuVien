@@ -14,7 +14,7 @@
 #define so_item_dms  3
 #define dong_menu_dms  8
 #define cot_menu_dms  51 
-#define so_item_mt  4
+#define so_item_mt  3
 #define dong_menu_mt  8
 #define cot_menu_mt  51 
 #define so_item_thoat  2
@@ -612,8 +612,7 @@ do {
 //menu muon tra
 char menu_mt [so_item_mt][50] = {"             MUON SACH            ",
 				  			     "             TRA SACH             ",
-				  			     "           LAM MAT SACH           ",
-				  			     "             DEN SACH             "};
+				  			     "           LAM MAT SACH           ",};
 int MenuDongMT(char td [so_item_mt][50]){
 	DeMuc("          MUON TRA SACH          ");
 	khung_menu();

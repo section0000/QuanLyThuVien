@@ -393,7 +393,6 @@ void Xoa_node_bat_ki(TREE &t, int mathe, DS_DOC_GIA &ds_dg, DS_DAU_SACH ds_dau_s
         {
         	gotoxy(60,11);
 			cout << "THONG TIN DOC GIA";
-        	//Xuat_thong_tin_1_doc_gia(t->data);
         	khung_xuat_thong_tin_dg(13, 13, 4);
 			Tinh_ngay_qua_han_cua_cac_doc_gia(t);
 			Xuat_thong_tin_1_doc_gia_theo_hang(t->data, 16, 0);
