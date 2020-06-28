@@ -1120,9 +1120,9 @@ void Xoa_sach(DS_DANH_MUC_SACH &ds_dms, DS_DAU_SACH ds_dau_sach)
 						cout << "DANH MUC SACH";
 						khung_xuat_dms(27, 13, 20);
 						Xuat_dms_cua_1_dau_sach(ds_dau_sach.list[chon]->ds_danh_muc_sach_cua_dau_sach, 16);
+						huong_dan_chinh_sua_sach();
 						gotoxy(30, 35);
 						cout << "Nhap ma sach: ";
-						huong_dan_chinh_sua_sach();
 						ShowCur(0);
 						while (true)
 						{
@@ -1322,9 +1322,9 @@ void Hieu_chinh_sach(DS_DANH_MUC_SACH &ds_dms, DS_DAU_SACH ds_dau_sach)
 						cout << "DANH MUC SACH";
 						khung_xuat_dms(27, 13, 20);
 						Xuat_dms_cua_1_dau_sach(ds_dau_sach.list[chon]->ds_danh_muc_sach_cua_dau_sach, 16);
+						huong_dan_chinh_sua_sach();
 						gotoxy(30, 35);
 						cout << "Nhap ma sach: ";
-						huong_dan_chinh_sua_sach();
 						ShowCur(0);
 						while (true)
 						{
