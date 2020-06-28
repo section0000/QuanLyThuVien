@@ -81,7 +81,7 @@ void Chuan_hoa_chu(string &a)
 		}
 	}
 }
-bool Kiem_tra_nhap_ho_ten(string hoten) // Chi cho nhap chu cai, khoang trang, va mot so ki tu dac biet nhu "., -, &" (VD: Robert M. Pirsig, Randy Pausch & Jeffrey Zaslow, Antoine de Saint-ExupÃ©ry,...)
+bool Kiem_tra_nhap_ho_ten(string hoten) // Chi cho nhap chu cai, khoang trang, va mot so ki tu dac biet nhu "., -, &" (VD: Robert M. Pirsig, Randy Pausch & Jeffrey Zaslow, Antoine de Saint-ExupÃƒÂ©ry,...)
 {
 	for (int i = 0; i < hoten.length(); i++)
 	{
@@ -244,8 +244,15 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 {
 	if (t != NULL)
 	{
-		Chinh_sua_thong_tin_doc_gia(t->pLeft, mathe);
-		if (t->data.Ma_the == mathe)
+		if (mathe < t->data.Ma_the)
+		{
+			Chinh_sua_thong_tin_doc_gia(t->pLeft, mathe);
+		}
+		else if (mathe > t->data.Ma_the)
+		{
+			Chinh_sua_thong_tin_doc_gia(t->pRight, mathe);
+		}
+		else
 		{
 			huong_dan_chinh_sua_doc_gia();
 			gotoxy(60,11);
@@ -354,7 +361,6 @@ void Chinh_sua_thong_tin_doc_gia(TREE &t, int mathe)
 				}
 			}
 		}
-		Chinh_sua_thong_tin_doc_gia(t->pRight, mathe);
 	}
 }
 // Xoa
@@ -394,7 +400,7 @@ void Xoa_node_bat_ki(TREE &t, int mathe, DS_DOC_GIA &ds_dg, DS_DAU_SACH ds_dau_s
         	gotoxy(60,11);
 			cout << "THONG TIN DOC GIA";
         	khung_xuat_thong_tin_dg(13, 13, 4);
-			Tinh_ngay_qua_han_cua_cac_doc_gia(t);
+			// Tinh_ngay_qua_han_cua_cac_doc_gia(t);
 			Xuat_thong_tin_1_doc_gia_theo_hang(t->data, 16, 0);
         	gotoxy(20,22);
 			cout<<"Ma sach \tNgay muon \tTen sach \t\t\t\t\tTrang thai sach";	
