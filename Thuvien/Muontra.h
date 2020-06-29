@@ -243,13 +243,13 @@ void Muon_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms, int 
 								break;
 							case 13:
 						
-								tensach = ds_dau_sach.list[chon]->Ten_sach;
+								//tensach = ds_dau_sach.list[chon]->Ten_sach;
 								// Neu dang muon sach thuoc dau sach nay thi khong duoc muon nua
 								for (NODE_MUON_TRA *k = t->data.ds_muon_tra_cua_doc_gia.pHead; k != NULL; k = k->pNext)
 								{
 									string tensachtam;
 									tensachtam = Tra_ve_ten_sach(ds_dau_sach, k->data.Ma_sach);
-									if (tensachtam == tensach && k->data.Trang_thai == 0)
+									if (tensachtam == ds_dau_sach.list[chon]->Ten_sach && k->data.Trang_thai == 0)
 									{
 										thong_bao("Doc gia hien dang muon sach nay roi.");
 										thoat++;
@@ -606,10 +606,9 @@ void Xu_li_tra_sach(TREE &t, DS_DAU_SACH &ds_dau_sach, DS_DANH_MUC_SACH &ds_dms,
 								}
 								break;
 							}
-						}	
-						break;
-					} 
-				 	flag++;
+							flag++;
+						}
+					}
 					/*for (int i = 0; i < ds_dau_sach.so_luong; i++) 
 					{
 						if (ds_dau_sach.list[i]->Ten_sach == tensach)

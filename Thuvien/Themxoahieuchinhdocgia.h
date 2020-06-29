@@ -81,7 +81,7 @@ void Chuan_hoa_chu(string &a)
 		}
 	}
 }
-bool Kiem_tra_nhap_ho_ten(string hoten) // Chi cho nhap chu cai, khoang trang, va mot so ki tu dac biet nhu "., -, &" (VD: Robert M. Pirsig, Randy Pausch & Jeffrey Zaslow, Antoine de Saint-ExupÃƒÂ©ry,...)
+bool Kiem_tra_nhap_ho_ten(string hoten) // Chi cho nhap chu cai, khoang trang, va mot so ki tu dac biet nhu "., -, &" (VD: Robert M. Pirsig, Randy Pausch & Jeffrey Zaslow, Antoine de Saint-Exup�ry,...)
 {
 	for (int i = 0; i < hoten.length(); i++)
 	{

@@ -46,7 +46,7 @@ struct dau_sach
 typedef struct dau_sach DAU_SACH;
 struct ds_dau_sach
 {
-	DAU_SACH *list[MAX_DAU_SACH+1];
+	DAU_SACH *list[MAX_DAU_SACH];
 	int so_luong = 0;	
 };
 typedef struct ds_dau_sach DS_DAU_SACH;

@@ -317,16 +317,20 @@ void Xoa_dau_sach(DS_DAU_SACH &ds_dau_sach)
 									{
 										// 	C1: 
 										// B1: Doi vi tri
+										delete ds_dau_sach.list[i];
+										ds_dau_sach.list[i] = NULL;
 										for (int i = vitri; i < ds_dau_sach.so_luong-1; i++)
 										{
-											ds_dau_sach.list[i]->ISBN = ds_dau_sach.list[i+1]->ISBN;
-											ds_dau_sach.list[i]->Ten_sach = ds_dau_sach.list[i+1]->Ten_sach;
-											ds_dau_sach.list[i]->So_trang = ds_dau_sach.list[i+1]->So_trang;
-											ds_dau_sach.list[i]->Tac_gia = ds_dau_sach.list[i+1]->Tac_gia;
-											ds_dau_sach.list[i]->Nam_xuat_ban = ds_dau_sach.list[i+1]->Nam_xuat_ban;
-											ds_dau_sach.list[i]->The_loai = ds_dau_sach.list[i+1]->The_loai;
-											ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach = ds_dau_sach.list[i+1]->ds_danh_muc_sach_cua_dau_sach;
-											ds_dau_sach.list[i]->Check = ds_dau_sach.list[i+1]->Check;
+//											ds_dau_sach.list[i]->ISBN = ds_dau_sach.list[i+1]->ISBN;
+//											ds_dau_sach.list[i]->Ten_sach = ds_dau_sach.list[i+1]->Ten_sach;
+//											ds_dau_sach.list[i]->So_trang = ds_dau_sach.list[i+1]->So_trang;
+//											ds_dau_sach.list[i]->Tac_gia = ds_dau_sach.list[i+1]->Tac_gia;
+//											ds_dau_sach.list[i]->Nam_xuat_ban = ds_dau_sach.list[i+1]->Nam_xuat_ban;
+//											ds_dau_sach.list[i]->So_lan_muon = ds_dau_sach.list[i+1]->So_lan_muon;
+//											ds_dau_sach.list[i]->The_loai = ds_dau_sach.list[i+1]->The_loai;
+//											ds_dau_sach.list[i]->ds_danh_muc_sach_cua_dau_sach = ds_dau_sach.list[i+1]->ds_danh_muc_sach_cua_dau_sach;
+//											ds_dau_sach.list[i]->Check = ds_dau_sach.list[i+1]->Check;
+											ds_dau_sach.list[i] = ds_dau_sach.list[i+1];
 										}	
 										// B2: Giai phong 
 										// DAU_SACH *tam = ds_dau_sach.list[ds_dau_sach.so_luong-1];
